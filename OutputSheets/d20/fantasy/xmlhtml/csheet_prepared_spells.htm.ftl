@@ -375,6 +375,7 @@
 </div>
 </div>
 
+
 <div class="two-col" style="gap:14px; align-items:start;">
 
 <!-- LEFT: Special Qualities -->
@@ -454,6 +455,7 @@
 </div>
 </div>
 </#if>
+
 </div>
 
 </div><!-- end two-col: Special Qualities | Feats/Traits/Domains -->
@@ -587,6 +589,7 @@
   </div>
 </div>
 </div>
+
 
 <div class="no-break" style="margin-bottom:8px;">
   <table style="table-layout:fixed; margin-bottom:4px;">
@@ -770,6 +773,7 @@
 </@loop>
 </@loop>
 
+
 <div class="no-break" style="margin-bottom:8px;">
   <h2>Concentration Quick Reference</h2>
   <div class="note-box" style="margin-bottom:4px;">
@@ -909,6 +913,7 @@
   </div>
 </div>
 </div>
+
 
 <!-- ═══ RULES REFERENCE ═══ -->
 <div class="no-break" style="margin-bottom:8px;">
