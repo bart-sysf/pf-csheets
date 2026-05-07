@@ -552,9 +552,12 @@
 </@loop>
 <#assign charSize = pcstring('SIZE')?lower_case />
 <#assign unarmedDie = "1d3" />
-<#if charSize == "s"><#assign unarmedDie = "1d2" />
-<#elseif charSize == "m"><#assign unarmedDie = "1d3" />
-<#elseif charSize == "l"><#assign unarmedDie = "1d4" />
+<#if charSize?starts_with("t") || charSize == "s"><#assign unarmedDie = "1d2" />
+<#elseif charSize?starts_with("m")><#assign unarmedDie = "1d3" />
+<#elseif charSize?starts_with("l")><#assign unarmedDie = "1d4" />
+<#elseif charSize?starts_with("h")><#assign unarmedDie = "1d6" />
+<#elseif charSize?starts_with("g")><#assign unarmedDie = "1d8" />
+<#elseif charSize?starts_with("c")><#assign unarmedDie = "2d6" />
 </#if>
 <#assign strMod = pcstring('STAT.0.MOD.SIGN') />
     <tr style="background:var(--c6);">
