@@ -129,7 +129,6 @@
 </style>
 </head>
 <body>
-
 <!-- ═══ HEADER ═══ -->
 <div class="no-break">
   <h1>${pcstring('NAME')}</h1>
@@ -454,6 +453,7 @@
 </div>
 </div>
 </#if>
+
 </div>
 
 </div><!-- end two-col: Special Qualities | Feats/Traits/Domains -->
@@ -551,10 +551,22 @@
 </#if>
 </@loop>
 <#assign charSize = pcstring('SIZE')?lower_case />
+<#assign sizeKey = charSize />
+<#if charSize?starts_with("tiny")><#assign sizeKey = "t" />
+<#elseif charSize?starts_with("small")><#assign sizeKey = "s" />
+<#elseif charSize?starts_with("medium")><#assign sizeKey = "m" />
+<#elseif charSize?starts_with("large")><#assign sizeKey = "l" />
+<#elseif charSize?starts_with("huge")><#assign sizeKey = "h" />
+<#elseif charSize?starts_with("gargantuan")><#assign sizeKey = "g" />
+<#elseif charSize?starts_with("colossal")><#assign sizeKey = "c" />
+</#if>
 <#assign unarmedDie = "1d3" />
-<#if charSize = "s"><#assign unarmedDie = "1d2" />
-<#elseif charSize = "m"><#assign unarmedDie = "1d3" />
-<#elseif charSize = "l"><#assign unarmedDie = "1d4" />
+<#if sizeKey == "t" || sizeKey == "s"><#assign unarmedDie = "1d2" />
+<#elseif sizeKey == "m"><#assign unarmedDie = "1d3" />
+<#elseif sizeKey == "l"><#assign unarmedDie = "1d4" />
+<#elseif sizeKey == "h"><#assign unarmedDie = "1d6" />
+<#elseif sizeKey == "g"><#assign unarmedDie = "1d8" />
+<#elseif sizeKey == "c"><#assign unarmedDie = "2d6" />
 </#if>
 <#assign strMod = pcstring('STAT.0.MOD.SIGN') />
     <tr style="background:var(--c6);">
@@ -723,7 +735,7 @@
     <#if (spelllevelcount > 0)>
       <div class="spell-level-block">
         <div class="spell-level-head">
-          <#if (level = 0)>Cantrips (Level 0) &mdash; Unlimited Uses<#else>Level ${level} &mdash; Spells/Day: ${pcstring('SPELLLISTCAST.${class}.${level}')}</#if>
+          <#if (level == 0)>Cantrips (Level 0) &mdash; Unlimited Uses<#else>Level ${level} &mdash; Spells/Day: ${pcstring('SPELLLISTCAST.${class}.${level}')}</#if>
         </div>
         <table style="table-layout:fixed;margin-bottom:2px;">
           <tr>
@@ -749,7 +761,7 @@
               <span class="src">[${pcstring('SPELLMEM.${class}.0.${level}.${spell}.SOURCE')}]</span>
             </td>
             <td class="border" align="center" style="font-size:11pt;letter-spacing:1px;">
-              <#if (level = 0)>&infin;<#else>${pcstring('SPELLLISTCAST.${class}.${level}')}</#if>
+              <#if (level == 0)>&infin;<#else>${pcstring('SPELLLISTCAST.${class}.${level}')}</#if>
             </td>
             <td class="border" align="center" style="font-size:8pt;">
               <#if !hasNoSave><b>${spSaveShort}</b><br/>DC ${spDC}<br/></#if>
@@ -786,7 +798,7 @@
     <#if (spelllevelcount > 0)>
       <div class="spell-level-block">
         <div class="spell-level-head">
-          <#if (level = 0)>Cantrips (Level 0) &mdash; Unlimited Uses<#else>Level ${level} &mdash; Prepared: ${pcstring('SPELLLISTCAST.${class}.${level}')}</#if>
+          <#if (level == 0)>Cantrips (Level 0) &mdash; Unlimited Uses<#else>Level ${level} &mdash; Prepared: ${pcstring('SPELLLISTCAST.${class}.${level}')}</#if>
         </div>
         <table style="table-layout:fixed;margin-bottom:2px;">
           <tr>
@@ -812,7 +824,7 @@
               <span class="src">[${pcstring('SPELLMEM.${class}.${spellbook}.${level}.${spell}.SOURCE')}]</span>
             </td>
             <td class="border" align="center" style="font-size:11pt;letter-spacing:1px;">
-              <#if (level = 0)>&infin;<#else><@loop from=1 to=pcvar("SPELLMEM.${class}.${spellbook}.${level}.${spell}.TIMES")>&#9744;</@loop></#if>
+              <#if (level == 0)>&infin;<#else><@loop from=1 to=pcvar("SPELLMEM.${class}.${spellbook}.${level}.${spell}.TIMES")>&#9744;</@loop></#if>
             </td>
             <td class="border" align="center" style="font-size:8pt;">
               <#if !hasNoSave><b>${spSaveShort}</b><br/>DC ${spDC}<br/></#if>
@@ -898,7 +910,6 @@
     If you fail the concentration check, the spell is lost and has no effect.
   </div>
 </div>
-
 
 <div class="no-break">
 <h2>Equipment</h2>
@@ -1335,6 +1346,7 @@
   PCGen ${pcstring('EXPORT.VERSION')} &mdash; ${pcstring('EXPORT.DATE')} &mdash;
   Player: ${pcstring('PLAYERNAME')} &mdash; Character: ${pcstring('NAME')}
 </div>
+
 
 </body>
 </html>

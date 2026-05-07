@@ -1,0 +1,64 @@
+<!-- ═══ KNOWN SPELLS (spellbook 0 — spontaneous casters: sorcerer, bard, oracle, etc.) ═══ -->
+<@loop from=pcvar('COUNT[SPELLRACE]') to=pcvar('COUNT[SPELLRACE]+COUNT[CLASSES]-1') ; class , class_has_next>
+<#if (pcstring("SPELLLISTCLASS.${class}") != '')>
+  <#assign knownCount = 0 />
+  <@loop from=0 to=9 ; level , level_has_next>
+    <#assign knownCount = knownCount + pcvar('COUNT[SPELLSINBOOK.${class}.0.${level}]') />
+  </@loop>
+  <#if (knownCount > 0)>
+  <h2>Known Spells &mdash; ${pcstring('SPELLLISTCLASS.${class}')}</h2>
+  <div class="help-text" style="margin-bottom:4px;">
+    Known spells are available at any time and cast spontaneously. Spells per day (uses) are shown per level.
+  </div>
+  <@loop from=0 to=9 ; level , level_has_next>
+    <#assign spelllevelcount = pcvar('COUNT[SPELLSINBOOK.${class}.0.${level}]') />
+    <#if (spelllevelcount > 0)>
+      <div class="spell-level-block">
+        <div class="spell-level-head">
+          <#if (level == 0)>Cantrips (Level 0) &mdash; Unlimited Uses<#else>Level ${level} &mdash; Spells/Day: ${pcstring('SPELLLISTCAST.${class}.${level}')}</#if>
+        </div>
+        <table style="table-layout:fixed;margin-bottom:2px;">
+          <tr>
+            <th class="border" align="left" style="width:23%;">Spell</th>
+            <th class="border" style="width:7%;" align="center">Uses</th>
+            <th class="border" style="width:14%;" align="center">Save, DC &amp; SR</th>
+            <th class="border" style="width:16%;" align="center">Range, Time &amp; Duration</th>
+            <th class="border" align="left" style="width:40%;">Effect / Description</th>
+          </tr>
+<@loop from=0 to=spelllevelcount-1 ; spell , spell_has_next>
+          <#assign spSave = pcstring('SPELLMEM.${class}.0.${level}.${spell}.SAVEINFO') />
+          <#assign spDC   = pcstring('SPELLMEM.${class}.0.${level}.${spell}.DC') />
+          <#assign spSR   = pcstring('SPELLMEM.${class}.0.${level}.${spell}.SR') />
+          <#assign spSaveShort = spSave />
+          <#if spSave?lower_case?contains("fortitude")><#assign spSaveShort = "Fortitude" /></#if>
+          <#if spSave?lower_case?contains("reflex")><#assign spSaveShort = "Reflex" /></#if>
+          <#if spSave?lower_case?contains("will")><#assign spSaveShort = "Will" /></#if>
+          <#assign hasNoSave = (spSave = "None" || spSave = "" || spSave?lower_case = "none") />
+          <tr>
+            <td class="border" style="font-size:8pt;">
+              <b>${pcstring('SPELLMEM.${class}.0.${level}.${spell}.NAME')}</b><br/>
+              <i style="font-size:7pt;">${pcstring('SPELLMEM.${class}.0.${level}.${spell}.SCHOOL')}</i><br />
+              <span class="src">[${pcstring('SPELLMEM.${class}.0.${level}.${spell}.SOURCE')}]</span>
+            </td>
+            <td class="border" align="center" style="font-size:11pt;letter-spacing:1px;">
+              <#if (level == 0)>&infin;<#else>${pcstring('SPELLLISTCAST.${class}.${level}')}</#if>
+            </td>
+            <td class="border" align="center" style="font-size:8pt;">
+              <#if !hasNoSave><b>${spSaveShort}</b><br/>DC ${spDC}<br/></#if>
+              SR: <#if (spSR != "")>${spSR}<#else>&mdash;</#if>
+            </td>
+            <td class="border" align="center" style="font-size:7pt;">
+              ${pcstring('SPELLMEM.${class}.0.${level}.${spell}.RANGE')}<br/>
+              ${pcstring('SPELLMEM.${class}.0.${level}.${spell}.CASTINGTIME')}<br/>
+              ${pcstring('SPELLMEM.${class}.0.${level}.${spell}.DURATION')}
+            </td>
+            <td class="border" style="font-size:7pt;">${pcstring('SPELLMEM.${class}.0.${level}.${spell}.EFFECT')}</td>
+          </tr>
+</@loop>
+        </table>
+      </div>
+    </#if>
+  </@loop>
+  </#if>
+</#if>
+</@loop>

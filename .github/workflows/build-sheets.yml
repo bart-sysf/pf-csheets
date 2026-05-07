@@ -1,0 +1,43 @@
+name: Build Sheets
+
+on:
+  workflow_dispatch:
+  push:
+    paths:
+      - 'templates/**'
+      - 'components/**'
+      - 'scripts/build_sheets.py'
+      - '.github/workflows/build-sheets.yml'
+
+permissions:
+  contents: write
+
+jobs:
+  build-sheets:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.x'
+
+      - name: Build sheets from templates
+        run: python scripts/build_sheets.py
+
+      - name: Commit built sheets if changed
+        run: |
+          if git diff --quiet -- OutputSheets; then
+            echo "No OutputSheets changes detected"
+            exit 0
+          fi
+
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add OutputSheets
+          git commit -m "chore: rebuild OutputSheets from templates"
+          git push

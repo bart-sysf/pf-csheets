@@ -6,9 +6,30 @@ Custom PCGen output sheets for Pathfinder 1e. Currently includes a prepared-spel
 
 - A collection of PCGen **output sheets** (FreeMarker `.ftl` templates) for Pathfinder 1e characters.
 - The sheets are drop-in replacements or additions for the standard PCGen output-sheet folder.
-- `OutputSheets/d20/fantasy/xmlhtml/csheet_prepared_spells.htm.ftl` — a character sheet focused on prepared spells, styled for easy table-side reading.
+- `templates/d20/fantasy/xmlhtml/` — source sheet templates using component placeholders.
+- `components/` — reusable sheet blocks (skills, feats, weapons, inventory, spellbook, prepared spells, quick view, common conditions, biography, and more).
+- `OutputSheets/d20/fantasy/xmlhtml/` — compiled output sheets ready to copy into PCGen.
 
-If you want to change how the sheet looks or what it shows, edit the `.ftl` file directly. The template uses PCGen's `${pcstring(...)}` and `<#...>` directives to pull character data at export time.
+If you want to change how the sheet looks or what it shows, edit files in `templates/` and `components/`, then compile to `OutputSheets/`. The templates use PCGen's `${pcstring(...)}` and `<#...>` directives to pull character data at export time.
+
+
+## Component syntax
+
+Templates use component tokens in this format (templates are now mostly style + ordered component tokens):
+
+```
+{{ component:skills }}
+```
+
+During build, each token is replaced with the content of `components/<name>.ftl`.
+
+## Build compiled sheets
+
+```
+python scripts/build_sheets.py
+```
+
+This compiles everything from `templates/` to `OutputSheets/` using `components/`.
 
 ## Where to put the sheets
 
@@ -36,7 +57,11 @@ PCGen looks for output sheets inside its own `outputsheets` folder. The director
 
 ## Where the important pieces live
 
-- `OutputSheets/d20/fantasy/xmlhtml/csheet_prepared_spells.htm.ftl` — the prepared-spells sheet template
+- `templates/d20/fantasy/xmlhtml/csheet_prepared_spells.htm.ftl` — prepared-spells source template
+- `templates/d20/fantasy/xmlhtml/csheet_known_spells.htm.ftl` — known+prepared spells source template
+- `components/*.ftl` — reusable sheet blocks inserted during build (including quick view, common conditions, biography, rules references, and combat sections)
+- `scripts/build_sheets.py` — local compiler for templates/components into `OutputSheets/`
+- `.github/workflows/build-sheets.yml` — CI workflow that rebuilds and auto-commits `OutputSheets/`
 
 ## Contributing
 
@@ -50,9 +75,10 @@ Pull requests are welcome, especially if you want to:
 ### A good contribution path
 
 1. Fork the repository or create a branch.
-2. Make your changes to the `.ftl` template(s).
-3. Export a test character from PCGen to verify the output looks correct.
-4. Open a pull request with a clear explanation of what the sheet shows or how the layout changed.
+2. Make your changes in `templates/` and `components/`.
+3. Compile with `python scripts/build_sheets.py` to regenerate `OutputSheets/`.
+4. Export a test character from PCGen to verify the output looks correct.
+5. Open a pull request with a clear explanation of what the sheet shows or how the layout changed.
 
 ### Content conventions
 
