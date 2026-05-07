@@ -68,4 +68,3 @@
   <#if !hasSkillCond><span style="color:var(--c4);font-size:8pt;">No modifiers</span></#if>
 </div>
 </div>
-

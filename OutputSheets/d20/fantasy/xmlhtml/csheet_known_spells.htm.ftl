@@ -161,6 +161,7 @@
   </table>
 </div>
 
+
 <!-- ═══ ABILITY SCORES ═══ -->
 <div class="no-break">
 <h2>Ability Scores</h2>
@@ -174,6 +175,7 @@
 </@loop>
 </div>
 </div>
+
 
 <!-- ═══ COMBAT ═══ -->
 <h2>Combat</h2>
@@ -245,6 +247,7 @@
   </div>
 </div>
 
+
 <!-- ═══ SAVES ═══ -->
 <div class="no-break">
   <h2>Saves</h2>
@@ -290,6 +293,7 @@
   </div>
 </div>
 
+
 <!-- ═══ NOTES ═══ -->
 <div class="no-break">
 <h2>Notes (Description)</h2>
@@ -303,6 +307,7 @@
   ${descRaw}
 </div>
 </div>
+
 
 <!-- ═══ SKILLS ═══ -->
 <div style="page-break-before: always;">
@@ -460,6 +465,7 @@
 
 </div><!-- end two-col: Special Qualities | Feats/Traits/Domains -->
 
+
 <div class="no-break">
 <h2>Special Attacks</h2>
 <div style="margin-bottom:8px;">
@@ -488,6 +494,7 @@
   </table>
 </div>
 </div>
+
 
 <div class="no-break">
 <h2>Weapons</h2>
@@ -663,6 +670,7 @@
   <div class="help-text">All maneuvers provoke AoO unless you have the Improved feat for that maneuver &mdash; failing by 5+ lets the foe attempt the same maneuver on you as a free action</div>
 </div>
 
+
 <div class="note-box no-break" style="margin-bottom:8px;">
   <span style="font-size:7pt;font-weight:bold;">Conditional Attack / Combat Modifiers:</span><br/>
   <#assign hasCombatCond = false />
@@ -672,6 +680,7 @@
   </@loop>
   <#if !hasCombatCond><span style="color:var(--c4);font-size:8pt;">No modifiers</span></#if>
 </div>
+
 
 <div class="no-break">
 <h2>Armor &amp; Shields</h2>
@@ -708,6 +717,7 @@
   </div>
 </div>
 </div>
+
 
 <!-- ═══ KNOWN SPELLS (spellbook 0 — spontaneous casters: sorcerer, bard, oracle, etc.) ═══ -->
 <@loop from=pcvar('COUNT[SPELLRACE]') to=pcvar('COUNT[SPELLRACE]+COUNT[CLASSES]-1') ; class , class_has_next>
@@ -1016,6 +1026,7 @@
   </div>
 </div>
 
+
 <!-- ═══ ATTACKS OF OPPORTUNITY REFERENCE ═══ -->
 <div class="no-break" style="margin-bottom:8px;">
   <h2>AoO Quick Reference</h2>
@@ -1066,6 +1077,7 @@
     </tr>
   </table>
 </div>
+
 
 <!-- ═══ ABILITY INFLUENCE REFERENCE ═══ -->
 <div class="no-break" style="margin-bottom:8px;">
@@ -1118,6 +1130,7 @@
     Ability damage/drain quick rule: every 2 points usually changes the ability modifier by 1, which then shifts all dependent values above.
   </div>
 </div>
+
 
 <!-- ═══ CONDITIONS REFERENCE ═══ -->
 <div class="no-break" style="margin-bottom:8px;">
@@ -1239,6 +1252,7 @@
   </div>
 </div>
 
+
 <div class="quick-page" style="page-break-before: always;">
   <h2>Quick Reference Sheet</h2>
 
@@ -1314,6 +1328,7 @@
   </div>
 </div>
 
+
 <div class="no-break" style="page-break-before: always;">
 <h2>Biography</h2>
 <div class="note-box" style="margin-bottom:8px;">
@@ -1327,6 +1342,7 @@
 </div>
 </div>
 
+
 <#if (pcstring('PORTRAIT') != '')>
 <div class="no-break">
 <h2>Portrait</h2>
@@ -1336,11 +1352,13 @@
 </div>
 </#if>
 
+
 <hr/>
 <div style="font-size:7pt;text-align:center;color:var(--c4);">
   PCGen ${pcstring('EXPORT.VERSION')} &mdash; ${pcstring('EXPORT.DATE')} &mdash;
   Player: ${pcstring('PLAYERNAME')} &mdash; Character: ${pcstring('NAME')}
 </div>
+
 
 </body>
 </html>

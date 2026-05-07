@@ -7,7 +7,7 @@ Custom PCGen output sheets for Pathfinder 1e. Currently includes a prepared-spel
 - A collection of PCGen **output sheets** (FreeMarker `.ftl` templates) for Pathfinder 1e characters.
 - The sheets are drop-in replacements or additions for the standard PCGen output-sheet folder.
 - `templates/d20/fantasy/xmlhtml/` — source sheet templates using component placeholders.
-- `components/` — reusable sheet blocks (skills, feats, weapons, inventory, spellbook, prepared spells).
+- `components/` — reusable sheet blocks (skills, feats, weapons, inventory, spellbook, prepared spells, quick view, common conditions, biography, and more).
 - `OutputSheets/d20/fantasy/xmlhtml/` — compiled output sheets ready to copy into PCGen.
 
 If you want to change how the sheet looks or what it shows, edit files in `templates/` and `components/`, then compile to `OutputSheets/`. The templates use PCGen's `${pcstring(...)}` and `<#...>` directives to pull character data at export time.
@@ -15,7 +15,7 @@ If you want to change how the sheet looks or what it shows, edit files in `templ
 
 ## Component syntax
 
-Templates use component tokens in this format:
+Templates use component tokens in this format (templates are now mostly style + ordered component tokens):
 
 ```
 {{ component:skills }}
@@ -59,7 +59,7 @@ PCGen looks for output sheets inside its own `outputsheets` folder. The director
 
 - `templates/d20/fantasy/xmlhtml/csheet_prepared_spells.htm.ftl` — prepared-spells source template
 - `templates/d20/fantasy/xmlhtml/csheet_known_spells.htm.ftl` — known+prepared spells source template
-- `components/*.ftl` — reusable sheet blocks inserted during build
+- `components/*.ftl` — reusable sheet blocks inserted during build (including quick view, common conditions, biography, rules references, and combat sections)
 - `scripts/build_sheets.py` — local compiler for templates/components into `OutputSheets/`
 - `.github/workflows/build-sheets.yml` — CI workflow that rebuilds and auto-commits `OutputSheets/`
 
