@@ -63,9 +63,9 @@
 </@loop>
 <#assign charSize = pcstring('SIZE')?lower_case />
 <#assign unarmedDie = "1d3" />
-<#if charSize = "s"><#assign unarmedDie = "1d2" />
-<#elseif charSize = "m"><#assign unarmedDie = "1d3" />
-<#elseif charSize = "l"><#assign unarmedDie = "1d4" />
+<#if charSize == "s"><#assign unarmedDie = "1d2" />
+<#elseif charSize == "m"><#assign unarmedDie = "1d3" />
+<#elseif charSize == "l"><#assign unarmedDie = "1d4" />
 </#if>
 <#assign strMod = pcstring('STAT.0.MOD.SIGN') />
     <tr style="background:var(--c6);">

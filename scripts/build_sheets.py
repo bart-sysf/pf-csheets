@@ -9,6 +9,7 @@ TEMPLATES_DIR = ROOT / "templates"
 COMPONENTS_DIR = ROOT / "components"
 OUTPUT_DIR = ROOT / "OutputSheets"
 TOKEN_RE = re.compile(r"\{\{\s*component:([a-zA-Z0-9_-]+)\s*\}\}")
+MAX_EXPANSION_DEPTH = 20
 
 
 def load_components() -> dict[str, str]:
@@ -20,7 +21,7 @@ def load_components() -> dict[str, str]:
 
 def expand_components(content: str, components: dict[str, str]) -> str:
     expanded = content
-    for _ in range(20):
+    for _ in range(MAX_EXPANSION_DEPTH):
         changed = False
 
         def repl(match: re.Match[str]) -> str:
