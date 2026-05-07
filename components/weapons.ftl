@@ -63,12 +63,12 @@
 </@loop>
 <#assign charSize = pcstring('SIZE')?lower_case />
 <#assign unarmedDie = "1d3" />
-<#if charSize?starts_with("t") || charSize == "s"><#assign unarmedDie = "1d2" />
-<#elseif charSize?starts_with("m")><#assign unarmedDie = "1d3" />
-<#elseif charSize?starts_with("l")><#assign unarmedDie = "1d4" />
-<#elseif charSize?starts_with("h")><#assign unarmedDie = "1d6" />
-<#elseif charSize?starts_with("g")><#assign unarmedDie = "1d8" />
-<#elseif charSize?starts_with("c")><#assign unarmedDie = "2d6" />
+<#if (charSize == "t" || charSize?starts_with("tiny") || charSize == "s" || charSize?starts_with("small"))><#assign unarmedDie = "1d2" />
+<#elseif (charSize == "m" || charSize?starts_with("medium"))><#assign unarmedDie = "1d3" />
+<#elseif (charSize == "l" || charSize?starts_with("large"))><#assign unarmedDie = "1d4" />
+<#elseif (charSize == "h" || charSize?starts_with("huge"))><#assign unarmedDie = "1d6" />
+<#elseif (charSize == "g" || charSize?starts_with("gargantuan"))><#assign unarmedDie = "1d8" />
+<#elseif (charSize == "c" || charSize?starts_with("colossal"))><#assign unarmedDie = "2d6" />
 </#if>
 <#assign strMod = pcstring('STAT.0.MOD.SIGN') />
     <tr style="background:var(--c6);">
