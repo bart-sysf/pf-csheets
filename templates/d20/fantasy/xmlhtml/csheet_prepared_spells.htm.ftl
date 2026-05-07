@@ -129,51 +129,28 @@
 </style>
 </head>
 <body>
-
 {{ component:header }}
-
 {{ component:ability_scores }}
-
 {{ component:combat }}
-
 {{ component:saves }}
-
 {{ component:notes }}
-
 {{ component:skills }}
-
 {{ component:special_qualities }}
-
 {{ component:special_attacks }}
-
 {{ component:weapons }}
-
 {{ component:combat_maneuvers }}
-
 {{ component:combat_conditionals }}
-
 {{ component:armor_shields }}
-
 {{ component:prepared_spells }}
-
 {{ component:concentration_reference }}
-
 {{ component:inventory }}
-
 {{ component:rules_reference }}
-
 {{ component:aoo_reference }}
-
 {{ component:ability_influence }}
-
 {{ component:common_conditions }}
-
 {{ component:quick_view }}
-
 {{ component:biography }}
-
 {{ component:portrait }}
-
 {{ component:footer }}
 
 </body>
