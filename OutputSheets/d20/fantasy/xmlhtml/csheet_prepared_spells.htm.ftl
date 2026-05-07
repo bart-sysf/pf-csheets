@@ -721,7 +721,7 @@
     <#if (spelllevelcount > 0)>
       <div class="spell-level-block">
         <div class="spell-level-head">
-          <#if (level = 0)>Cantrips (Level 0) &mdash; Unlimited Uses<#else>Level ${level} &mdash; Prepared: ${pcstring('SPELLLISTCAST.${class}.${level}')}</#if>
+          <#if (level == 0)>Cantrips (Level 0) &mdash; Unlimited Uses<#else>Level ${level} &mdash; Prepared: ${pcstring('SPELLLISTCAST.${class}.${level}')}</#if>
         </div>
         <table style="table-layout:fixed;margin-bottom:2px;">
           <tr>
@@ -747,7 +747,7 @@
               <span class="src">[${pcstring('SPELLMEM.${class}.${spellbook}.${level}.${spell}.SOURCE')}]</span>
             </td>
             <td class="border" align="center" style="font-size:11pt;letter-spacing:1px;">
-              <#if (level = 0)>&infin;<#else><@loop from=1 to=pcvar("SPELLMEM.${class}.${spellbook}.${level}.${spell}.TIMES")>&#9744;</@loop></#if>
+              <#if (level == 0)>&infin;<#else><@loop from=1 to=pcvar("SPELLMEM.${class}.${spellbook}.${level}.${spell}.TIMES")>&#9744;</@loop></#if>
             </td>
             <td class="border" align="center" style="font-size:8pt;">
               <#if !hasNoSave><b>${spSaveShort}</b><br/>DC ${spDC}<br/></#if>

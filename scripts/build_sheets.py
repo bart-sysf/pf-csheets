@@ -9,7 +9,7 @@ TEMPLATES_DIR = ROOT / "templates"
 COMPONENTS_DIR = ROOT / "components"
 OUTPUT_DIR = ROOT / "OutputSheets"
 TOKEN_RE = re.compile(r"\{\{\s*component:([a-zA-Z0-9_-]+)\s*\}\}")
-MAX_EXPANSION_DEPTH = 20
+MAX_EXPANSION_DEPTH = 20  # Prevent infinite recursion from cyclic/nested component references
 
 
 def load_components() -> dict[str, str]:
@@ -37,7 +37,7 @@ def expand_components(content: str, components: dict[str, str]) -> str:
         if not changed:
             break
     if TOKEN_RE.search(expanded):
-        raise ValueError("Unresolved component tokens remain after expansion")
+        raise ValueError(f"Unresolved component tokens remain after expansion: {TOKEN_RE.findall(expanded)}")
     return expanded
 
 
