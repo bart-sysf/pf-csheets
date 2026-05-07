@@ -551,13 +551,22 @@
 </#if>
 </@loop>
 <#assign charSize = pcstring('SIZE')?lower_case />
+<#assign sizeKey = charSize />
+<#if charSize?starts_with("tiny")><#assign sizeKey = "t" />
+<#elseif charSize?starts_with("small")><#assign sizeKey = "s" />
+<#elseif charSize?starts_with("medium")><#assign sizeKey = "m" />
+<#elseif charSize?starts_with("large")><#assign sizeKey = "l" />
+<#elseif charSize?starts_with("huge")><#assign sizeKey = "h" />
+<#elseif charSize?starts_with("gargantuan")><#assign sizeKey = "g" />
+<#elseif charSize?starts_with("colossal")><#assign sizeKey = "c" />
+</#if>
 <#assign unarmedDie = "1d3" />
-<#if (charSize == "t" || charSize?starts_with("tiny") || charSize == "s" || charSize?starts_with("small"))><#assign unarmedDie = "1d2" />
-<#elseif (charSize == "m" || charSize?starts_with("medium"))><#assign unarmedDie = "1d3" />
-<#elseif (charSize == "l" || charSize?starts_with("large"))><#assign unarmedDie = "1d4" />
-<#elseif (charSize == "h" || charSize?starts_with("huge"))><#assign unarmedDie = "1d6" />
-<#elseif (charSize == "g" || charSize?starts_with("gargantuan"))><#assign unarmedDie = "1d8" />
-<#elseif (charSize == "c" || charSize?starts_with("colossal"))><#assign unarmedDie = "2d6" />
+<#if sizeKey == "t" || sizeKey == "s"><#assign unarmedDie = "1d2" />
+<#elseif sizeKey == "m"><#assign unarmedDie = "1d3" />
+<#elseif sizeKey == "l"><#assign unarmedDie = "1d4" />
+<#elseif sizeKey == "h"><#assign unarmedDie = "1d6" />
+<#elseif sizeKey == "g"><#assign unarmedDie = "1d8" />
+<#elseif sizeKey == "c"><#assign unarmedDie = "2d6" />
 </#if>
 <#assign strMod = pcstring('STAT.0.MOD.SIGN') />
     <tr style="background:var(--c6);">

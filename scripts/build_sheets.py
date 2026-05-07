@@ -9,7 +9,7 @@ TEMPLATES_DIR = ROOT / "templates"
 COMPONENTS_DIR = ROOT / "components"
 OUTPUT_DIR = ROOT / "OutputSheets"
 TOKEN_RE = re.compile(r"\{\{\s*component:([a-zA-Z0-9_-]+)\s*\}\}")
-MAX_EXPANSION_DEPTH = 20  # Prevent infinite recursion from cyclic/nested component references
+MAX_EXPANSION_DEPTH = 20  # Guard against cyclic/nested references; normal templates should resolve in a few passes
 
 
 def load_components() -> dict[str, str]:
