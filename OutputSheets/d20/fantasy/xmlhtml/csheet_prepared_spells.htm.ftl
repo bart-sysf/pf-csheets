@@ -504,8 +504,9 @@
 <#assign wCat = pcstring("WEAPON.${wp}.CATEGORY")?lower_case />
 <#assign isRanged = wCat?contains("ranged") />
 <#assign isLight = pcboolean("WEAPON.${wp}.ISTYPE.Light") />
-<#assign isSplash = pcboolean("WEAPON.${wp}.ISTYPE.Splash") />
 <#assign wType = pcstring("WEAPON.${wp}.TYPE")?lower_case />
+<#assign wName = pcstring("WEAPON.${wp}.NAME")?lower_case />
+<#assign isSplash = pcboolean("WEAPON.${wp}.ISTYPE.Splash") || wType?contains("splash") || wName?contains("splash") />
 <#assign wTypeFull = "" />
 <#if wType?contains("p")><#assign wTypeFull = wTypeFull + "Piercing " /></#if>
 <#if wType?contains("s")><#assign wTypeFull = wTypeFull + "Slashing " /></#if>
