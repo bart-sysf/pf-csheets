@@ -15,6 +15,7 @@
 <#assign wCat = pcstring("WEAPON.${wp}.CATEGORY")?lower_case />
 <#assign isRanged = wCat?contains("ranged") />
 <#assign isLight = pcboolean("WEAPON.${wp}.ISTYPE.Light") />
+<#assign isSplash = pcboolean("WEAPON.${wp}.ISTYPE.Splash") />
 <#assign wType = pcstring("WEAPON.${wp}.TYPE")?lower_case />
 <#assign wTypeFull = "" />
 <#if wType?contains("p")><#assign wTypeFull = wTypeFull + "Piercing " /></#if>
@@ -28,7 +29,7 @@
       </td>
       <#if isRanged>
         <td class="border val" colspan="3" align="center" style="font-size:8pt;">${pcstring('WEAPON.${wp}.TOTALHIT')} (ranged, ${pcstring('WEAPON.${wp}.RANGE')})</td>
-        <td class="border" align="center" style="font-size:8pt;">${pcstring('WEAPON.${wp}.DAMAGE')}</td>
+        <td class="border" align="center" style="font-size:8pt;"><#if isSplash>${pcstring('WEAPON.${wp}.BASICDAMAGE')}<#else>${pcstring('WEAPON.${wp}.DAMAGE')}</#if></td>
       <#else>
         <td class="border val">${pcstring('WEAPON.${wp}.BASEHIT')}</td>
         <td class="border val">${pcstring('WEAPON.${wp}.THHIT')}</td>
