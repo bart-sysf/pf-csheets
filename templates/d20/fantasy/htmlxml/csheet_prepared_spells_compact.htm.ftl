@@ -155,9 +155,13 @@
   .compact-combat-grid { display: grid; grid-template-columns: minmax(0, 2fr) minmax(0, 3fr); gap: 6px; align-items: start; }
   .compact-abilities .six-col { grid-template-columns: repeat(3, 1fr); }
 
-  @page { margin: 8mm 8mm 14mm; }
+  @page { margin: 8mm 8mm 20mm; }
   @media screen { body.compact-sheet { padding-bottom: 14mm; } }
-  @media print { body { margin: 0; background: white; } body.compact-sheet { margin: 0; } }
+  @media print {
+    body { margin: 0; background: white; }
+    body.compact-sheet { margin: 0; }
+    .compact-page-start { break-before: page; page-break-before: always; }
+  }
 </style>
 </head>
 <body class="compact-sheet">
@@ -183,8 +187,8 @@
   <div>{{ component:compact/concentration_reference }}</div>
   <div>{{ component:compact/rules_reference }}</div>
 </div>
-{{ component:compact/inventory }}
-<div class="compact-reference-grid">
+<div class="compact-page-start">{{ component:compact/inventory }}</div>
+<div class="compact-reference-grid compact-page-start">
   <div>{{ component:compact/biography }}</div>
   <div>{{ component:compact/portrait }}</div>
 </div>

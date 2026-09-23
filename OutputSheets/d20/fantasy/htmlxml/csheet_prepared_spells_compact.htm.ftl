@@ -155,9 +155,13 @@
   .compact-combat-grid { display: grid; grid-template-columns: minmax(0, 2fr) minmax(0, 3fr); gap: 6px; align-items: start; }
   .compact-abilities .six-col { grid-template-columns: repeat(3, 1fr); }
 
-  @page { margin: 8mm 8mm 14mm; }
+  @page { margin: 8mm 8mm 20mm; }
   @media screen { body.compact-sheet { padding-bottom: 14mm; } }
-  @media print { body { margin: 0; background: white; } body.compact-sheet { margin: 0; } }
+  @media print {
+    body { margin: 0; background: white; }
+    body.compact-sheet { margin: 0; }
+    .compact-page-start { break-before: page; page-break-before: always; }
+  }
 </style>
 </head>
 <body class="compact-sheet">
@@ -908,7 +912,7 @@
 </div>
 </div>
 </div>
-<div class="no-break">
+<div class="compact-page-start"><div class="no-break">
 <h2>Equipment</h2>
 <div style="margin-bottom:2px;">
   <table style="table-layout:fixed;">
@@ -920,21 +924,20 @@
       <th class="border" style="width:10%;">Cost</th>
       <th class="border" align="center" style="width:31%;">Uses (check off when used)</th>
     </tr>
-<#-- MERGELOC combines identical items at the same location so QTY reflects the stack size. -->
-<@loop from=0 to=pcvar('COUNT[EQUIPMENT.MERGELOC.NOT.Coin.NOT.Gem]-1') ; eq , eq_has_next>
-<#assign eqType = pcstring("EQ.MERGELOC.NOT.Coin.NOT.Gem.${eq}.TYPE")?lower_case />
-<#assign eqQty = pcvar("EQ.MERGELOC.NOT.Coin.NOT.Gem.${eq}.QTY") />
-<#assign eqCharges = pcvar("EQ.MERGELOC.NOT.Coin.NOT.Gem.${eq}.CHARGES") />
+<@loop from=0 to=pcvar('COUNT[EQUIPMENT.Not.Coin.NOT.Gem]-1') ; eq , eq_has_next>
+<#assign eqType = pcstring("EQ.Not.Coin.NOT.Gem.${eq}.TYPE")?lower_case />
+<#assign eqQty = pcvar("EQ.Not.Coin.NOT.Gem.${eq}.QTY") />
+<#assign eqCharges = pcvar("EQ.Not.Coin.NOT.Gem.${eq}.CHARGES") />
 <#assign isUsable = eqType?contains("consumable") || eqType?contains("potion") || eqType?contains("ammunition") || eqType?contains("wand") || eqType?contains("scroll") || eqCharges gt 0 />
-<#assign eqSprop = pcstring('EQ.MERGELOC.NOT.Coin.NOT.Gem.${eq}.SPROP') />
-<#assign eqDesc = pcstring('EQ.MERGELOC.NOT.Coin.NOT.Gem.${eq}.DESC') />
+<#assign eqSprop = pcstring('EQ.Not.Coin.NOT.Gem.${eq}.SPROP') />
+<#assign eqDesc = pcstring('EQ.Not.Coin.NOT.Gem.${eq}.DESC') />
 <#assign hasDetail = (eqSprop != "" || eqDesc != "") />
     <tr>
-      <td class="border" style="font-size:7.25pt;">${pcstring('EQ.MERGELOC.NOT.Coin.NOT.Gem.${eq}.NAME.MAGIC~<b>~</b>')}</td>
-      <td class="border" align="center" style="font-size:7.25pt;">${pcstring('EQ.MERGELOC.NOT.Coin.NOT.Gem.${eq}.LOCATION')}</td>
-      <td class="border" align="center">${pcstring('EQ.MERGELOC.NOT.Coin.NOT.Gem.${eq}.QTY')}</td>
-      <td class="border" align="center">${pcstring('EQ.MERGELOC.NOT.Coin.NOT.Gem.${eq}.WT')}</td>
-      <td class="border" align="center">${pcstring('EQ.MERGELOC.NOT.Coin.NOT.Gem.${eq}.COST')}</td>
+      <td class="border" style="font-size:7.25pt;">${pcstring('EQ.Not.Coin.NOT.Gem.${eq}.NAME.MAGIC~<b>~</b>')}</td>
+      <td class="border" align="center" style="font-size:7.25pt;">${pcstring('EQ.Not.Coin.NOT.Gem.${eq}.LOCATION')}</td>
+      <td class="border" align="center">${pcstring('EQ.Not.Coin.NOT.Gem.${eq}.QTY')}</td>
+      <td class="border" align="center">${pcstring('EQ.Not.Coin.NOT.Gem.${eq}.WT')}</td>
+      <td class="border" align="center">${pcstring('EQ.Not.Coin.NOT.Gem.${eq}.COST')}</td>
       <td class="border" align="center" style="font-size:9.5pt;letter-spacing:2px;padding:2px 4px;">
         <#if isUsable>
           <#if eqCharges gt 0>
@@ -982,8 +985,8 @@
   </div>
 </div>
 </div>
-
-<div class="compact-reference-grid">
+</div>
+<div class="compact-reference-grid compact-page-start">
   <div><div class="no-break" style="">
 <h2>Biography</h2>
 <div class="note-box" style="margin-bottom:2px;">
