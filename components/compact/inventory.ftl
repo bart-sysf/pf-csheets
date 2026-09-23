@@ -10,20 +10,21 @@
       <th class="border" style="width:10%;">Cost</th>
       <th class="border" align="center" style="width:31%;">Uses (check off when used)</th>
     </tr>
-<@loop from=0 to=pcvar('COUNT[EQUIPMENT.Not.Coin.NOT.Gem]-1') ; eq , eq_has_next>
-<#assign eqType = pcstring("EQ.Not.Coin.NOT.Gem.${eq}.TYPE")?lower_case />
-<#assign eqQty = pcvar("EQ.Not.Coin.NOT.Gem.${eq}.QTY") />
-<#assign eqCharges = pcvar("EQ.Not.Coin.NOT.Gem.${eq}.CHARGES") />
+<#-- MERGELOC combines identical items at the same location so QTY reflects the stack size. -->
+<@loop from=0 to=pcvar('COUNT[EQUIPMENT.MERGELOC.NOT.Coin.NOT.Gem]-1') ; eq , eq_has_next>
+<#assign eqType = pcstring("EQ.MERGELOC.NOT.Coin.NOT.Gem.${eq}.TYPE")?lower_case />
+<#assign eqQty = pcvar("EQ.MERGELOC.NOT.Coin.NOT.Gem.${eq}.QTY") />
+<#assign eqCharges = pcvar("EQ.MERGELOC.NOT.Coin.NOT.Gem.${eq}.CHARGES") />
 <#assign isUsable = eqType?contains("consumable") || eqType?contains("potion") || eqType?contains("ammunition") || eqType?contains("wand") || eqType?contains("scroll") || eqCharges gt 0 />
-<#assign eqSprop = pcstring('EQ.Not.Coin.NOT.Gem.${eq}.SPROP') />
-<#assign eqDesc = pcstring('EQ.Not.Coin.NOT.Gem.${eq}.DESC') />
+<#assign eqSprop = pcstring('EQ.MERGELOC.NOT.Coin.NOT.Gem.${eq}.SPROP') />
+<#assign eqDesc = pcstring('EQ.MERGELOC.NOT.Coin.NOT.Gem.${eq}.DESC') />
 <#assign hasDetail = (eqSprop != "" || eqDesc != "") />
     <tr>
-      <td class="border" style="font-size:7.25pt;">${pcstring('EQ.Not.Coin.NOT.Gem.${eq}.NAME.MAGIC~<b>~</b>')}</td>
-      <td class="border" align="center" style="font-size:7.25pt;">${pcstring('EQ.Not.Coin.NOT.Gem.${eq}.LOCATION')}</td>
-      <td class="border" align="center">${pcstring('EQ.Not.Coin.NOT.Gem.${eq}.QTY')}</td>
-      <td class="border" align="center">${pcstring('EQ.Not.Coin.NOT.Gem.${eq}.WT')}</td>
-      <td class="border" align="center">${pcstring('EQ.Not.Coin.NOT.Gem.${eq}.COST')}</td>
+      <td class="border" style="font-size:7.25pt;">${pcstring('EQ.MERGELOC.NOT.Coin.NOT.Gem.${eq}.NAME.MAGIC~<b>~</b>')}</td>
+      <td class="border" align="center" style="font-size:7.25pt;">${pcstring('EQ.MERGELOC.NOT.Coin.NOT.Gem.${eq}.LOCATION')}</td>
+      <td class="border" align="center">${pcstring('EQ.MERGELOC.NOT.Coin.NOT.Gem.${eq}.QTY')}</td>
+      <td class="border" align="center">${pcstring('EQ.MERGELOC.NOT.Coin.NOT.Gem.${eq}.WT')}</td>
+      <td class="border" align="center">${pcstring('EQ.MERGELOC.NOT.Coin.NOT.Gem.${eq}.COST')}</td>
       <td class="border" align="center" style="font-size:9.5pt;letter-spacing:2px;padding:2px 4px;">
         <#if isUsable>
           <#if eqCharges gt 0>

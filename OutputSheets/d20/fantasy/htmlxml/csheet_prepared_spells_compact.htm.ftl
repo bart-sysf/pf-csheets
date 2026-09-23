@@ -152,9 +152,11 @@
   .compact-sheet .eq-detail p { line-height: 1.15; margin-block-end: 2px; }
   .compact-sheet .mini-row-fill td { padding: 1px 2px; }
   .compact-core-grid, .compact-reference-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 6px; align-items: start; }
+  .compact-combat-grid { display: grid; grid-template-columns: minmax(0, 2fr) minmax(0, 3fr); gap: 6px; align-items: start; }
   .compact-abilities .six-col { grid-template-columns: repeat(3, 1fr); }
 
-  @page { margin: 8mm; }
+  @page { margin: 8mm 8mm 14mm; }
+  @media screen { body.compact-sheet { padding-bottom: 14mm; } }
   @media print { body { margin: 0; background: white; } body.compact-sheet { margin: 0; } }
 </style>
 </head>
@@ -493,35 +495,6 @@
 </div><!-- end two-col: Special Qualities | Feats/Traits/Domains -->
 
 <div class="no-break">
-<h2>Special Attacks</h2>
-<div style="margin-bottom:2px;">
-  <table style="table-layout:fixed;">
-    <#if (pcvar('countdistinct("ABILITIES","CATEGORY=Special Ability","TYPE=SpecialAttack","VISIBILITY=DEFAULT[or]VISIBILITY=OUTPUT_ONLY")') > 0)>
-    <@loop from=0 to=pcvar('countdistinct("ABILITIES","CATEGORY=Special Ability","TYPE=SpecialAttack","VISIBILITY=DEFAULT[or]VISIBILITY=OUTPUT_ONLY")-1') ; sa , sa_has_next>
-    <tr>
-      <td class="border" style="font-size:7.25pt;">
-        <b>${pcstring('ABILITYALL.Special Ability.VISIBLE.${sa}.TYPE=SpecialAttack')}</b><br />
-        <span class="src">[${pcstring('ABILITYALL.Special Ability.VISIBLE.${sa}.TYPE=SpecialAttack.SOURCE')}]</span><br/>
-        <span style="font-size:6.25pt;">${pcstring('ABILITYALL.Special Ability.VISIBLE.${sa}.TYPE=SpecialAttack.DESC')}</span>
-      </td>
-      <td class="border" align="center" style="font-size:7.25pt; width:35%;">
-        <#assign saUses = pcstring('ABILITYALL.Special Ability.VISIBLE.${sa}.TYPE=SpecialAttack.ASPECT.UsesPerDay') />
-        <#if (saUses != "")>
-          Uses/day: <b>${saUses}</b><br/>
-          <#assign saUsesN = pcvar('ABILITYALL.Special Ability.VISIBLE.${sa}.TYPE=SpecialAttack.ASPECT.UsesPerDay.INTVAL') />
-          <#if (saUsesN > 0)>
-          <span style="font-size:10pt; letter-spacing:3px;"><@loop from=1 to=saUsesN>&#9744;</@loop></span>
-          </#if>
-        </#if>
-      </td>
-    </tr>
-    </@loop>
-    </#if>
-  </table>
-</div>
-</div>
-
-<div class="no-break">
 <h2>Weapons</h2>
 <div style="margin-bottom:2px;">
   <table style="table-layout:fixed;">
@@ -636,7 +609,38 @@
 </div>
 </div>
 
-<div class="no-break" style="margin-bottom:2px;">
+<div class="compact-combat-grid">
+  <div><div class="no-break">
+<h2>Special Attacks</h2>
+<div style="margin-bottom:2px;">
+  <table style="table-layout:fixed;">
+    <#if (pcvar('countdistinct("ABILITIES","CATEGORY=Special Ability","TYPE=SpecialAttack","VISIBILITY=DEFAULT[or]VISIBILITY=OUTPUT_ONLY")') > 0)>
+    <@loop from=0 to=pcvar('countdistinct("ABILITIES","CATEGORY=Special Ability","TYPE=SpecialAttack","VISIBILITY=DEFAULT[or]VISIBILITY=OUTPUT_ONLY")-1') ; sa , sa_has_next>
+    <tr>
+      <td class="border" style="font-size:7.25pt;">
+        <b>${pcstring('ABILITYALL.Special Ability.VISIBLE.${sa}.TYPE=SpecialAttack')}</b><br />
+        <span class="src">[${pcstring('ABILITYALL.Special Ability.VISIBLE.${sa}.TYPE=SpecialAttack.SOURCE')}]</span><br/>
+        <span style="font-size:6.25pt;">${pcstring('ABILITYALL.Special Ability.VISIBLE.${sa}.TYPE=SpecialAttack.DESC')}</span>
+      </td>
+      <td class="border" align="center" style="font-size:7.25pt; width:35%;">
+        <#assign saUses = pcstring('ABILITYALL.Special Ability.VISIBLE.${sa}.TYPE=SpecialAttack.ASPECT.UsesPerDay') />
+        <#if (saUses != "")>
+          Uses/day: <b>${saUses}</b><br/>
+          <#assign saUsesN = pcvar('ABILITYALL.Special Ability.VISIBLE.${sa}.TYPE=SpecialAttack.ASPECT.UsesPerDay.INTVAL') />
+          <#if (saUsesN > 0)>
+          <span style="font-size:10pt; letter-spacing:3px;"><@loop from=1 to=saUsesN>&#9744;</@loop></span>
+          </#if>
+        </#if>
+      </td>
+    </tr>
+    </@loop>
+    </#if>
+  </table>
+</div>
+</div>
+</div>
+  <div><div class="no-break" style="margin-bottom:2px;">
+  <h2>Combat Maneuvers</h2>
   <table style="table-layout:fixed; margin-bottom:2px;">
     <tr>
       <th class="border" align="left" style="width:18%;">Maneuver</th>
@@ -707,7 +711,8 @@
   </table>
   <div class="help-text">All maneuvers provoke AoO unless you have the Improved feat for that maneuver &mdash; failing by 5+ lets the foe attempt the same maneuver on you as a free action</div>
 </div>
-
+</div>
+</div>
 <div class="note-box no-break" style="margin-bottom:2px;">
   <span style="font-size:6.25pt;font-weight:bold;">Conditional Attack / Combat Modifiers:</span><br/>
   <#assign hasCombatCond = false />
@@ -886,16 +891,6 @@
   <div><!-- ═══ RULES REFERENCE ═══ -->
 <div class="no-break" style="margin-bottom:2px;">
   <h2>Rules Reference</h2>
-  <div class="note-box" style="margin-bottom:3px;">
-    <b>Rest</b><br/>
-    <b>8 hrs</b>: Recover 1 HP / level + 1 point of ability damage.<br/>
-    <b>24 hrs</b>: Same, but 2 HP and points.<br/>
-    <b>With healer present/health check</b>: Same, but 3 HP and points.
-  </div>
-  <div class="note-box" style="margin-bottom:3px;">
-    <b>House Rules</b><br/>
-    <b>Level Up</b>: Player and DM roll 1 Hit Die + Con modifier for extra HP. Highest value counts.
-  </div>
   <div class="note-box" style="margin-bottom:2px;">
     <b>Common Quick Rules</b><br/>
     &bull; <b>Flanking</b>: +2 attack.<br/>
@@ -909,13 +904,6 @@
     &bull; <b>Swift / Immediate</b>: one per round; immediate uses next turn's swift.<br/>
     &bull; <b>Criticals</b>: Nat 20 threatens; confirm with another hit roll (not another 20).<br/>
     &bull; <b>Dying / Stabilize</b>: &lt;0 HP lose 1 HP/round; stabilize check DC 10 + negative HP.
-  </div>
-<div class="note-box" style="margin-bottom:3px;">
-    <b>Coins</b><br/>
-    <b>Gold (gp)</b>: Most common coin piece<br/>
-    <b>Silver (sp)</b>: 10sp = 1gp<br/>
-    <b>Copper (cp)</b>: 100cp = 10sp = 1gp<br/>
-    <b>Platinum (pp)</b>: 1pp = 10gp
   </div>
 </div>
 </div>
@@ -932,20 +920,21 @@
       <th class="border" style="width:10%;">Cost</th>
       <th class="border" align="center" style="width:31%;">Uses (check off when used)</th>
     </tr>
-<@loop from=0 to=pcvar('COUNT[EQUIPMENT.Not.Coin.NOT.Gem]-1') ; eq , eq_has_next>
-<#assign eqType = pcstring("EQ.Not.Coin.NOT.Gem.${eq}.TYPE")?lower_case />
-<#assign eqQty = pcvar("EQ.Not.Coin.NOT.Gem.${eq}.QTY") />
-<#assign eqCharges = pcvar("EQ.Not.Coin.NOT.Gem.${eq}.CHARGES") />
+<#-- MERGELOC combines identical items at the same location so QTY reflects the stack size. -->
+<@loop from=0 to=pcvar('COUNT[EQUIPMENT.MERGELOC.NOT.Coin.NOT.Gem]-1') ; eq , eq_has_next>
+<#assign eqType = pcstring("EQ.MERGELOC.NOT.Coin.NOT.Gem.${eq}.TYPE")?lower_case />
+<#assign eqQty = pcvar("EQ.MERGELOC.NOT.Coin.NOT.Gem.${eq}.QTY") />
+<#assign eqCharges = pcvar("EQ.MERGELOC.NOT.Coin.NOT.Gem.${eq}.CHARGES") />
 <#assign isUsable = eqType?contains("consumable") || eqType?contains("potion") || eqType?contains("ammunition") || eqType?contains("wand") || eqType?contains("scroll") || eqCharges gt 0 />
-<#assign eqSprop = pcstring('EQ.Not.Coin.NOT.Gem.${eq}.SPROP') />
-<#assign eqDesc = pcstring('EQ.Not.Coin.NOT.Gem.${eq}.DESC') />
+<#assign eqSprop = pcstring('EQ.MERGELOC.NOT.Coin.NOT.Gem.${eq}.SPROP') />
+<#assign eqDesc = pcstring('EQ.MERGELOC.NOT.Coin.NOT.Gem.${eq}.DESC') />
 <#assign hasDetail = (eqSprop != "" || eqDesc != "") />
     <tr>
-      <td class="border" style="font-size:7.25pt;">${pcstring('EQ.Not.Coin.NOT.Gem.${eq}.NAME.MAGIC~<b>~</b>')}</td>
-      <td class="border" align="center" style="font-size:7.25pt;">${pcstring('EQ.Not.Coin.NOT.Gem.${eq}.LOCATION')}</td>
-      <td class="border" align="center">${pcstring('EQ.Not.Coin.NOT.Gem.${eq}.QTY')}</td>
-      <td class="border" align="center">${pcstring('EQ.Not.Coin.NOT.Gem.${eq}.WT')}</td>
-      <td class="border" align="center">${pcstring('EQ.Not.Coin.NOT.Gem.${eq}.COST')}</td>
+      <td class="border" style="font-size:7.25pt;">${pcstring('EQ.MERGELOC.NOT.Coin.NOT.Gem.${eq}.NAME.MAGIC~<b>~</b>')}</td>
+      <td class="border" align="center" style="font-size:7.25pt;">${pcstring('EQ.MERGELOC.NOT.Coin.NOT.Gem.${eq}.LOCATION')}</td>
+      <td class="border" align="center">${pcstring('EQ.MERGELOC.NOT.Coin.NOT.Gem.${eq}.QTY')}</td>
+      <td class="border" align="center">${pcstring('EQ.MERGELOC.NOT.Coin.NOT.Gem.${eq}.WT')}</td>
+      <td class="border" align="center">${pcstring('EQ.MERGELOC.NOT.Coin.NOT.Gem.${eq}.COST')}</td>
       <td class="border" align="center" style="font-size:9.5pt;letter-spacing:2px;padding:2px 4px;">
         <#if isUsable>
           <#if eqCharges gt 0>
@@ -992,229 +981,6 @@
     <span class="mval" style="font-size:9.5pt;">${pcstring('GOLD.TRUNC')} gp</span>
   </div>
 </div>
-</div>
-
-<!-- ═══ ATTACKS OF OPPORTUNITY REFERENCE ═══ -->
-<div class="no-break" style="margin-bottom:2px;">
-  <h2>AoO Quick Reference</h2>
-  <table style="table-layout:fixed; margin-bottom:2px;">
-    <tr>
-      <th class="border" align="left" style="width:45%;">Action</th>
-      <th class="border" align="left" style="width:55%;">Notes</th>
-    </tr>
-    <tr class="shaded">
-      <td class="border" style="font-size:7.25pt;">Move out of threatened square</td>
-      <td class="border" style="font-size:7.25pt;">5-ft step, withdraw (first square), or Acrobatics can avoid</td>
-    </tr>
-    <tr>
-      <td class="border" style="font-size:7.25pt;">Ranged attack in melee</td>
-      <td class="border" style="font-size:7.25pt;">Any ranged attack while threatened</td>
-    </tr>
-    <tr class="shaded">
-      <td class="border" style="font-size:7.25pt;">Cast spell in melee</td>
-      <td class="border" style="font-size:7.25pt;">Cast defensively to avoid provoking (Concentration check)</td>
-    </tr>
-    <tr>
-      <td class="border" style="font-size:7.25pt;">Drink potion / use scroll</td>
-      <td class="border" style="font-size:7.25pt;">Using items in melee commonly provokes</td>
-    </tr>
-    <tr class="shaded">
-      <td class="border" style="font-size:7.25pt;">Stand up from prone</td>
-      <td class="border" style="font-size:7.25pt;">Common trigger after trip</td>
-    </tr>
-    <tr>
-      <td class="border" style="font-size:7.25pt;">Combat maneuver (without Improved feat)</td>
-      <td class="border" style="font-size:7.25pt;">Trip, disarm, grapple, etc.; improved feat usually prevents</td>
-    </tr>
-    <tr class="shaded">
-      <td class="border" style="font-size:7.25pt;">Retrieve stowed item</td>
-      <td class="border" style="font-size:7.25pt;">Digging in backpack/pouch while threatened</td>
-    </tr>
-    <tr>
-      <td class="border" style="font-size:7.25pt;">Pick up item</td>
-      <td class="border" style="font-size:7.25pt;">Picking up from ground in melee</td>
-    </tr>
-    <tr class="shaded">
-      <td class="border" style="font-size:7.25pt;">Load crossbow</td>
-      <td class="border" style="font-size:7.25pt;">Most loading actions in melee provoke</td>
-    </tr>
-    <tr>
-      <td class="border" style="font-size:7.25pt;">Unarmed strike without Improved Unarmed Strike</td>
-      <td class="border" style="font-size:7.25pt;">Barehanded attacks vs armed foes can provoke</td>
-    </tr>
-  </table>
-</div>
-
-<!-- ═══ ABILITY INFLUENCE REFERENCE ═══ -->
-<div class="no-break" style="margin-bottom:2px;">
-  <h2>Ability Influence (Quick Calc)</h2>
-  <table style="table-layout:fixed; margin-bottom:2px;">
-    <tr>
-      <th class="border" align="left" style="width:12%;">Ability</th>
-      <th class="border" style="width:13%;" align="center">Score / Mod</th>
-      <th class="border" align="left" style="width:43%;">Primary Effects On This Sheet</th>
-      <th class="border" align="left" style="width:32%;">Current Derived Values</th>
-    </tr>
-    <tr class="shaded">
-      <td class="border" style="font-size:7.25pt;"><b>STR</b></td>
-      <td class="border val">14 (+2)</td>
-      <td class="border" style="font-size:7.25pt;">Melee attack, melee damage, CMB, CMD, carry/lift limits</td>
-      <td class="border" style="font-size:7.25pt;">Melee: +2 | CMB: +2 | CMD: 13</td>
-    </tr>
-    <tr>
-      <td class="border" style="font-size:7.25pt;"><b>DEX</b></td>
-      <td class="border val">12 (+1)</td>
-      <td class="border" style="font-size:7.25pt;">Ranged attack, initiative, AC ability bonus, CMD, Dexterity skills, Reflex save</td>
-      <td class="border" style="font-size:7.25pt;">Ranged: +1 | Init: +1 | AC ability: 1</td>
-    </tr>
-    <tr class="shaded">
-      <td class="border" style="font-size:7.25pt;"><b>CON</b></td>
-      <td class="border val">14 (+2)</td>
-      <td class="border" style="font-size:7.25pt;">Hit points per level/HD, Fortitude save, concentration-related checks</td>
-      <td class="border" style="font-size:7.25pt;">Max HP: 10 | Hit Dice: (1d8)+2</td>
-    </tr>
-    <tr>
-      <td class="border" style="font-size:7.25pt;"><b>INT</b></td>
-      <td class="border val">11 (+0)</td>
-      <td class="border" style="font-size:7.25pt;">Bonus skill ranks/level, INT-based skills, knowledge checks, some feat prerequisites</td>
-      <td class="border" style="font-size:7.25pt;">See Skills table for INT-based totals</td>
-    </tr>
-    <tr class="shaded">
-      <td class="border" style="font-size:7.25pt;"><b>WIS</b></td>
-      <td class="border val">16 (+3)</td>
-      <td class="border" style="font-size:7.25pt;">Will save, WIS-based skills, divine spellcasting checks/DCs when applicable</td>
-      <td class="border" style="font-size:7.25pt;">See Saves/Skills and Prepared Spells sections</td>
-    </tr>
-    <tr>
-      <td class="border" style="font-size:7.25pt;"><b>CHA</b></td>
-      <td class="border val">12 (+1)</td>
-      <td class="border" style="font-size:7.25pt;">Social skills, class features that key from CHA, turning/channel effects when used</td>
-      <td class="border" style="font-size:7.25pt;">See class feature and ability notes</td>
-    </tr>
-  </table>
-  <div class="help-text">
-    Ability damage/drain quick rule: every 2 points usually changes the ability modifier by 1, which then shifts all dependent values above.
-  </div>
-</div>
-
-<!-- ═══ CONDITIONS REFERENCE ═══ -->
-<div class="no-break" style="margin-bottom:2px;">
-  <h2>Common Conditions &amp; Modifiers</h2>
-  <table style="table-layout:fixed; margin-bottom:2px;">
-    <tr>
-      <th class="border" align="left" style="width:22%;">Condition / Situation</th>
-      <th class="border" align="left" style="width:48%;">Main Effect</th>
-      <th class="border" align="left" style="width:30%;">Quick Modifier</th>
-    </tr>
-    <tr class="shaded">
-      <td class="border" style="font-size:7.25pt;"><b>Shaken</b></td>
-      <td class="border" style="font-size:7.25pt;">General fear penalties</td>
-      <td class="border" style="font-size:7.25pt;">&minus;2 attacks, saves, skills, ability checks</td>
-    </tr>
-    <tr>
-      <td class="border" style="font-size:7.25pt;"><b>Frightened</b></td>
-      <td class="border" style="font-size:7.25pt;">As shaken; must flee if possible</td>
-      <td class="border" style="font-size:7.25pt;">&minus;2 attacks, saves, skills, checks</td>
-    </tr>
-    <tr class="shaded">
-      <td class="border" style="font-size:7.25pt;"><b>Courage</b></td>
-      <td class="border" style="font-size:7.25pt;">Morale combat boost</td>
-      <td class="border" style="font-size:7.25pt;">+1 to hit; +1 saves vs fear</td>
-    </tr>
-    <tr>
-      <td class="border" style="font-size:7.25pt;"><b>Guidance</b></td>
-      <td class="border" style="font-size:7.25pt;">Single-use bonus</td>
-      <td class="border" style="font-size:7.25pt;">+1 attack, +1 save, or +1 skill check</td>
-    </tr>
-    <tr class="shaded">
-      <td class="border" style="font-size:7.25pt;"><b>Sickened</b></td>
-      <td class="border" style="font-size:7.25pt;">Nausea/weakness penalties</td>
-      <td class="border" style="font-size:7.25pt;">&minus;2 attacks, weapon dmg, saves, skills, checks</td>
-    </tr>
-    <tr>
-      <td class="border" style="font-size:7.25pt;"><b>Fatigued</b></td>
-      <td class="border" style="font-size:7.25pt;">Tired; cannot run/charge</td>
-      <td class="border" style="font-size:7.25pt;">&minus;2 Str, &minus;2 Dex</td>
-    </tr>
-    <tr class="shaded">
-      <td class="border" style="font-size:7.25pt;"><b>Exhausted</b></td>
-      <td class="border" style="font-size:7.25pt;">Severe fatigue; slower movement</td>
-      <td class="border" style="font-size:7.25pt;">&minus;6 Str, &minus;6 Dex</td>
-    </tr>
-    <tr>
-      <td class="border" style="font-size:7.25pt;"><b>Prone</b></td>
-      <td class="border" style="font-size:7.25pt;">Worse in melee, better vs ranged</td>
-      <td class="border" style="font-size:7.25pt;">&minus;4 melee attacks, &minus;4 AC vs melee, +4 AC vs ranged</td>
-    </tr>
-    <tr class="shaded">
-      <td class="border" style="font-size:7.25pt;"><b>Flat-Footed</b></td>
-      <td class="border" style="font-size:7.25pt;">Not ready to react</td>
-      <td class="border" style="font-size:7.25pt;">Lose Dex to AC (and dodge bonuses)</td>
-    </tr>
-    <tr>
-      <td class="border" style="font-size:7.25pt;"><b>Entangled</b></td>
-      <td class="border" style="font-size:7.25pt;">Restricted movement/offense</td>
-      <td class="border" style="font-size:7.25pt;">&minus;2 attack, &minus;4 Dex, move at half speed</td>
-    </tr>
-    <tr class="shaded">
-      <td class="border" style="font-size:7.25pt;"><b>Grappled</b></td>
-      <td class="border" style="font-size:7.25pt;">Limited actions in grapple</td>
-      <td class="border" style="font-size:7.25pt;">&minus;2 attacks and AC; no AoO</td>
-    </tr>
-    <tr>
-      <td class="border" style="font-size:7.25pt;"><b>Pinned</b></td>
-      <td class="border" style="font-size:7.25pt;">Immobile in grapple</td>
-      <td class="border" style="font-size:7.25pt;">Cannot move; very limited actions</td>
-    </tr>
-    <tr class="shaded">
-      <td class="border" style="font-size:7.25pt;"><b>Staggered</b></td>
-      <td class="border" style="font-size:7.25pt;">Only one major action</td>
-      <td class="border" style="font-size:7.25pt;">Either one standard or one move action</td>
-    </tr>
-    <tr>
-      <td class="border" style="font-size:7.25pt;"><b>Stunned</b></td>
-      <td class="border" style="font-size:7.25pt;">Drop items; no actions</td>
-      <td class="border" style="font-size:7.25pt;">Drop everything, &minus;2 AC, lose Dex to AC, no actions</td>
-    </tr>
-    <tr class="shaded">
-      <td class="border" style="font-size:7.25pt;"><b>Flanking</b></td>
-      <td class="border" style="font-size:7.25pt;">Attacking same foe from opposite sides</td>
-      <td class="border" style="font-size:7.25pt;">+2 melee attack</td>
-    </tr>
-    <tr>
-      <td class="border" style="font-size:7.25pt;"><b>Charge</b></td>
-      <td class="border" style="font-size:7.25pt;">Move then strike aggressively</td>
-      <td class="border" style="font-size:7.25pt;">+2 attack, &minus;2 AC until next turn</td>
-    </tr>
-    <tr class="shaded">
-      <td class="border" style="font-size:7.25pt;"><b>Fighting Defensively</b></td>
-      <td class="border" style="font-size:7.25pt;">Trade attack for defense</td>
-      <td class="border" style="font-size:7.25pt;">&minus;4 attack, +2 AC</td>
-    </tr>
-    <tr>
-      <td class="border" style="font-size:7.25pt;"><b>Total Defense</b></td>
-      <td class="border" style="font-size:7.25pt;">No attacks; full defense</td>
-      <td class="border" style="font-size:7.25pt;">+4 AC</td>
-    </tr>
-    <tr class="shaded">
-      <td class="border" style="font-size:7.25pt;"><b>Blinded</b></td>
-      <td class="border" style="font-size:7.25pt;">Cannot see</td>
-      <td class="border" style="font-size:7.25pt;">&minus;2 AC, lose Dex to AC, &minus;4 many Str/Dex checks, move half speed</td>
-    </tr>
-    <tr>
-      <td class="border" style="font-size:7.25pt;"><b>Invisible Attacker</b></td>
-      <td class="border" style="font-size:7.25pt;">Defender cannot see attacker</td>
-      <td class="border" style="font-size:7.25pt;">Attacker often +2 melee; target loses Dex to AC; may require miss chance</td>
-    </tr>
-    <tr class="shaded">
-      <td class="border" style="font-size:7.25pt;"><b>Helpless / Coup de Grace</b></td>
-      <td class="border" style="font-size:7.25pt;">Helpless targets are vulnerable</td>
-      <td class="border" style="font-size:7.25pt;">Coup de grace: auto crit; target Fort save (DC 10 + damage dealt) or die</td>
-    </tr>
-  </table>
-  <div class="help-text">
-    Quick reference only: if an effect conflicts with a specific spell, feat, or monster ability, use the specific rule text first.
-  </div>
 </div>
 
 <div class="compact-reference-grid">

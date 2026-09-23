@@ -152,9 +152,11 @@
   .compact-sheet .eq-detail p { line-height: 1.15; margin-block-end: 2px; }
   .compact-sheet .mini-row-fill td { padding: 1px 2px; }
   .compact-core-grid, .compact-reference-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 6px; align-items: start; }
+  .compact-combat-grid { display: grid; grid-template-columns: minmax(0, 2fr) minmax(0, 3fr); gap: 6px; align-items: start; }
   .compact-abilities .six-col { grid-template-columns: repeat(3, 1fr); }
 
-  @page { margin: 8mm; }
+  @page { margin: 8mm 8mm 14mm; }
+  @media screen { body.compact-sheet { padding-bottom: 14mm; } }
   @media print { body { margin: 0; background: white; } body.compact-sheet { margin: 0; } }
 </style>
 </head>
@@ -169,9 +171,11 @@
 {{ component:compact/combat }}
 {{ component:compact/skills }}
 {{ component:compact/special_qualities }}
-{{ component:compact/special_attacks }}
 {{ component:compact/weapons }}
-{{ component:compact/combat_maneuvers }}
+<div class="compact-combat-grid">
+  <div>{{ component:compact/special_attacks }}</div>
+  <div>{{ component:compact/combat_maneuvers }}</div>
+</div>
 {{ component:compact/combat_conditionals }}
 {{ component:compact/armor_shields }}
 {{ component:compact/prepared_spells }}
@@ -180,9 +184,6 @@
   <div>{{ component:compact/rules_reference }}</div>
 </div>
 {{ component:compact/inventory }}
-{{ component:compact/aoo_reference }}
-{{ component:compact/ability_influence }}
-{{ component:compact/common_conditions }}
 <div class="compact-reference-grid">
   <div>{{ component:compact/biography }}</div>
   <div>{{ component:compact/portrait }}</div>

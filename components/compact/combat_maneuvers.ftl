@@ -1,4 +1,5 @@
 <div class="no-break" style="margin-bottom:2px;">
+  <h2>Combat Maneuvers</h2>
   <table style="table-layout:fixed; margin-bottom:2px;">
     <tr>
       <th class="border" align="left" style="width:18%;">Maneuver</th>
