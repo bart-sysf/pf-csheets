@@ -1,14 +1,15 @@
 # Pathfinder Character Sheets for PCGen
 
-Custom PCGen output sheets for Pathfinder 1e. Currently includes a prepared-spells character sheet rendered as a clean HTML file from your PCGen character data.
+Custom PCGen output sheets for Pathfinder 1e. Includes standard and compact prepared-spells character sheets rendered as clean HTML files from your PCGen character data.
 
 ## What this repository is
 
 - A collection of PCGen **output sheets** (FreeMarker `.ftl` templates) for Pathfinder 1e characters.
 - The sheets are drop-in replacements or additions for the standard PCGen output-sheet folder.
-- `templates/d20/fantasy/xmlhtml/` — source sheet templates using component placeholders.
+- `templates/d20/fantasy/htmlxml/` — source sheet templates using component placeholders.
 - `components/` — reusable sheet blocks (skills, feats, weapons, inventory, spellbook, prepared spells, quick view, common conditions, biography, and more).
-- `OutputSheets/d20/fantasy/xmlhtml/` — compiled output sheets ready to copy into PCGen.
+- `components/compact/` — independent, denser component copies used only by the compact sheet.
+- `OutputSheets/d20/fantasy/htmlxml/` — compiled output sheets ready to copy into PCGen.
 
 If you want to change how the sheet looks or what it shows, edit files in `templates/` and `components/`, then compile to `OutputSheets/`. The templates use PCGen's `${pcstring(...)}` and `<#...>` directives to pull character data at export time.
 
@@ -21,7 +22,7 @@ Templates use component tokens in this format (templates are now mostly style + 
 {{ component:skills }}
 ```
 
-During build, each token is replaced with the content of `components/<name>.ftl`.
+During build, each token is replaced with the matching path below `components/` (for example, `compact/header` resolves to `components/compact/header.ftl`).
 
 ## Build compiled sheets
 
@@ -39,7 +40,7 @@ PCGen looks for output sheets inside its own `outputsheets` folder. The director
 
 | Operating system | PCGen data folder |
 | :-- | :-- |
-| Windows | `C:\Users\<you>\AppData\Roaming\pcgen\outputsheets\` |
+| Windows | `C:\Users\<you>\AppData\Local\pcgen\<version>\outputsheets\` |
 | macOS | `~/Library/Application Support/pcgen/outputsheets/` |
 | Linux | `~/.local/share/pcgen/outputsheets/` |
 
@@ -50,16 +51,19 @@ PCGen looks for output sheets inside its own `outputsheets` folder. The director
 1. Clone or download this repository.
 2. Copy the `OutputSheets/` folder into your PCGen data folder so that the path becomes:
    ```
-   <pcgen data>/outputsheets/d20/fantasy/xmlhtml/csheet_prepared_spells.htm.ftl
+   <pcgen data>/outputsheets/d20/fantasy/htmlxml/csheet_prepared_spells.htm.ftl
+   <pcgen data>/outputsheets/d20/fantasy/htmlxml/csheet_prepared_spells_compact.htm.ftl
    ```
 3. Open PCGen, load your character, and choose **Export**.
-4. Under the **d20/fantasy/xmlhtml** output-sheet group, select **csheet_prepared_spells** and export to HTML.
+4. Under the **d20/fantasy/htmlxml** output-sheet group, select **csheet_prepared_spells_compact** for the denser layout (or **csheet_prepared_spells** for the original) and export to HTML.
 
 ## Where the important pieces live
 
-- `templates/d20/fantasy/xmlhtml/csheet_prepared_spells.htm.ftl` — prepared-spells source template
-- `templates/d20/fantasy/xmlhtml/csheet_known_spells.htm.ftl` — known+prepared spells source template
+- `templates/d20/fantasy/htmlxml/csheet_prepared_spells.htm.ftl` — prepared-spells source template
+- `templates/d20/fantasy/htmlxml/csheet_prepared_spells_compact.htm.ftl` — compact prepared-spells source template
+- `templates/d20/fantasy/htmlxml/csheet_known_spells.htm.ftl` — known+prepared spells source template
 - `components/*.ftl` — reusable sheet blocks inserted during build (including quick view, common conditions, biography, rules references, and combat sections)
+- `components/compact/*.ftl` — compact sheet component copies; edit these without affecting the original sheets
 - `scripts/build_sheets.py` — local compiler for templates/components into `OutputSheets/`
 - `.github/workflows/build-sheets.yml` — CI workflow that rebuilds and auto-commits `OutputSheets/`
 

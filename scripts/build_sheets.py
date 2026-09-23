@@ -8,14 +8,15 @@ ROOT = Path(__file__).resolve().parent.parent
 TEMPLATES_DIR = ROOT / "templates"
 COMPONENTS_DIR = ROOT / "components"
 OUTPUT_DIR = ROOT / "OutputSheets"
-TOKEN_RE = re.compile(r"\{\{\s*component:([a-zA-Z0-9_-]+)\s*\}\}")
+TOKEN_RE = re.compile(r"\{\{\s*component:([a-zA-Z0-9_/-]+)\s*\}\}")
 MAX_EXPANSION_DEPTH = 20  # Guard against cyclic/nested references; normal templates should resolve in a few passes
 
 
 def load_components() -> dict[str, str]:
     components: dict[str, str] = {}
-    for path in sorted(COMPONENTS_DIR.glob("*.ftl")):
-        components[path.stem] = path.read_text(encoding="utf-8")
+    for path in sorted(COMPONENTS_DIR.rglob("*.ftl")):
+        name = path.relative_to(COMPONENTS_DIR).with_suffix("").as_posix()
+        components[name] = path.read_text(encoding="utf-8")
     return components
 
 
