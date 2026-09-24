@@ -7,7 +7,7 @@
     <title>Pathfinder 1e · Table Reference</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Roboto+Slab:wght@400;500;600;700&amp;display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto+Mono:wght@500;600&amp;family=Roboto+Slab:wght@400;500;600;700&amp;display=swap" rel="stylesheet">
     <style>
         :root {
             --ink: #302a24;
@@ -145,6 +145,15 @@
             font-size: 11.5px
         }
 
+        .compact-table {
+            font-size: 10.5px
+        }
+
+        .compact-table th,
+        .compact-table td {
+            padding: 2px 4px
+        }
+
         th,
         td {
             padding: 3px 5px;
@@ -174,6 +183,40 @@
         .formula {
             font-weight: 700;
             color: #613d30
+        }
+
+        .ability-calculation {
+            font-family: "Roboto Mono", "Courier New", monospace;
+            color: #613d30
+        }
+
+        .ability-calculation .equation {
+            font-size: 12px;
+            font-weight: 600;
+            margin-bottom: 5px
+        }
+
+        .ability-calculation .example {
+            font-size: 10px;
+            line-height: 1.45
+        }
+
+        .modifier-table {
+            table-layout: fixed;
+            margin-top: 6px;
+            font: 500 9.5px/1.2 "Roboto Mono", "Courier New", monospace
+        }
+
+        .modifier-table th,
+        .modifier-table td {
+            padding: 2px 1px;
+            text-align: center;
+            vertical-align: middle
+        }
+
+        .modifier-table th:first-child {
+            width: 38px;
+            text-align: left
         }
 
         .tag {
@@ -264,9 +307,6 @@
         <div class="grid">
             <div>
                 <h2>Rolls &amp; ability modifiers</h2>
-                <div class="box call"><span class="formula">Ability modifier = floor((score − 10) / 2)</span><br>8–9: −1
-                    · 10–11: +0 · 12–13: +1 · 14–15: +2 · 16–17: +3 · 18–19: +4 · 20–21: +5</div>
-                <p><b>Example:</b> Constitution 15 → +2; Constitution 9 → −1. Round negative halves down too.</p>
                 <table>
                     <tr>
                         <th>Ability</th>
@@ -282,22 +322,31 @@
                     </tr>
                     <tr>
                         <td><b>CON</b></td>
-                        <td>HP per Hit Die and Fortitude. No associated skills; not normally used for spell concentration.</td>
+                        <td>HP per Hit Die and Fortitude. No associated skills; Change affects HP directly.</td>
                     </tr>
                     <tr>
                         <td><b>INT</b></td>
-                        <td>Skill ranks and bonus languages; Appraise, Craft, Knowledge, Linguistics and Spellcraft; some spellcasting.</td>
+                        <td>Skill ranks and bonus languages; Appraise, Craft, Knowledge, Linguistics and Spellcraft; Wizard spellcasting.</td>
                     </tr>
                     <tr>
                         <td><b>WIS</b></td>
-                        <td>Will; Heal, Perception, Profession, Sense Motive and Survival; some spellcasting.</td>
+                        <td>Will; Heal, Perception, Profession, Sense Motive and Survival; Cleric/Druid/Ranger spellcasting.</td>
                     </tr>
                     <tr>
                         <td><b>CHA</b></td>
-                        <td>Social and performance skills, Use Magic Device, channel energy DCs; some spellcasting.</td>
+                        <td>Social and performance skills and checks, handling checks, channel energy DCs; Bard/Paladin/Sorcerer spellcasting.</td>
                     </tr>
                 </table>
                 <p class="small">Class features, feats and special abilities can replace these defaults.</p>
+                <div class="box call ability-calculation">
+                    <div class="equation">modifier = floor((score − 10) ÷ 2)</div>
+                    <div class="example">score 15 → floor(5 ÷ 2) = floor(2.5) = +2</div>
+                    <div class="example">score 9 → floor(−1 ÷ 2) = floor(−0.5) = −1</div>
+                    <table class="modifier-table">
+                        <tr><th>Score</th><th>8–9</th><th>10–11</th><th>12–13</th><th>14–15</th><th>16–17</th><th>18–19</th><th>20–21</th></tr>
+                        <tr><th>Mod.</th><td>−1</td><td>+0</td><td>+1</td><td>+2</td><td>+3</td><td>+4</td><td>+5</td></tr>
+                    </table>
+                </div>
                 <div class="box"><b>Core checks:</b> d20 + relevant modifiers ≥ DC / AC / CMD. Natural 20 and natural 1
                     automatically hit and miss on <em>attack rolls</em>; saving throws also auto succeed/fail. Ability
                     and skill checks have no general automatic 20/1 rule.</div>
@@ -505,7 +554,7 @@
                     <tr>
                         <td><b>Trip</b></td>
                         <td>Knock target prone; replaces a melee attack. Target must be at most one size category larger
-                            (unless an ability changes this).</td>
+                            (unless an ability changes this). Fail by ≥10: you fall prone.</td>
                     </tr>
                     <tr>
                         <td><b>Disarm</b></td>
@@ -519,6 +568,14 @@
                         <td><b>Bull rush</b></td>
                         <td>Push target 5 ft, +5 ft for each 5 by which you exceed CMD; standard action or part of a
                             charge.</td>
+                    </tr>
+                    <tr>
+                        <td><b>Drag</b></td>
+                        <td>Pull target 5 ft, +5 ft for each 5 by which you exceed CMD; standard action.</td>
+                    </tr>
+                    <tr>
+                        <td><b>Overrun</b></td>
+                        <td>Move through target; exceed CMD by 5 to knock it prone.</td>
                     </tr>
                     <tr>
                         <td><b>Grapple</b></td>
@@ -611,6 +668,14 @@
                     <tr>
                         <td>Charge</td>
                         <td>+2 melee attack; −2 AC until start of next turn.</td>
+                    </tr>
+                    <tr>
+                        <td>Higher ground</td>
+                        <td>+1 on melee attack rolls.</td>
+                    </tr>
+                    <tr>
+                        <td>Kneeling / sitting</td>
+                        <td>−2 AC against melee attacks; +2 AC against ranged attacks.</td>
                     </tr>
                     <tr>
                         <td>Cover / soft cover</td>
@@ -774,6 +839,18 @@
                 </ul>
                 <h2>Coins</h2>
                 <div class="box call"><b>10 cp = 1 sp · 10 sp = 1 gp · 10 gp = 1 pp</b><br>Therefore 1 gp = 100 cp; 1 pp = 100 sp = 1,000 cp. Standard coins weigh 1 lb per 50 coins.</div>
+                <h2>Typical skill DCs</h2>
+                <table class="compact-table">
+                    <tr><th>Check</th><th>Typical DC / modifier</th></tr>
+                    <tr><td>Acrobatics</td><td>Move through threatened area: CMD; through enemy’s square: CMD +5.</td></tr>
+                    <tr><td>Climb</td><td>Knotted rope by wall 0; rope by wall or knotted rope 5; unknotted rope/tree 15; rough rock/brick 25.</td></tr>
+                    <tr><td>Swim</td><td>Calm 10; rough 15; stormy 20. Normally move at quarter speed.</td></tr>
+                    <tr><td>Heal</td><td>First aid or stop bleed 15; treat deadly wounds 20; poison/disease uses its save DC.</td></tr>
+                    <tr><td>Knowledge</td><td>Identify a creature’s abilities or weaknesses: 10 + its CR.</td></tr>
+                    <tr><td>Spellcraft</td><td>Identify spell being cast: 15 + spell level; magic item with <em>detect magic</em>: 15 + CL.</td></tr>
+                    <tr><td>Perception</td><td>+1 DC per 10 ft; closed door +5; wall +10/ft; invisible creature +20.</td></tr>
+                </table>
+                <p class="small">These are common benchmarks; circumstances and the GM can change the DC.</p>
             </div>
             <div>
                 <h2>Bonus stacking</h2>
@@ -796,6 +873,16 @@
                 <p><b>Special size modifier:</b> Fine −8 · Diminutive −4 · Tiny −2 · Small −1 · Medium 0 · Large +1 ·
                     Huge +2 · Gargantuan +4 · Colossal +8. This differs from the ordinary size modifier to AC and
                     attack rolls.</p>
+                <h2>Additional conditions</h2>
+                <table class="compact-table">
+                    <tr><th>Condition</th><th>At-a-glance effect</th></tr>
+                    <tr><td><b>Confused</b></td><td>Each turn d%: 01–25 normal; 26–50 babble; 51–75 self-hit for 1d8 + STR; 76–100 attack nearest.</td></tr>
+                    <tr><td><b>Panicked</b></td><td>Drop held items and flee at top speed; −2 saves, skills and ability checks. Cower if cornered.</td></tr>
+                    <tr><td><b>Cowering</b></td><td>No actions; −2 AC and lose DEX bonus to AC.</td></tr>
+                    <tr><td><b>Dazzled</b></td><td>−1 attacks and sight-based Perception checks.</td></tr>
+                    <tr><td><b>Broken</b></td><td>Weapon: −2 attack/damage, crit only 20/×2. Armor/shield: half AC bonus; armor doubles its check penalty. Wand/staff: double charges.</td></tr>
+                    <tr><td><b>Squeezing</b></td><td>Move at half speed; −4 on attacks and AC.</td></tr>
+                </table>
             </div>
         </div>
         <footer><span></span><span>Page 5</span></footer>
