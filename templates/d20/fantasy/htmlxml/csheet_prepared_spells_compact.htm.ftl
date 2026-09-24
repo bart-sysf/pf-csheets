@@ -147,8 +147,9 @@
   .compact-sheet .src { font-size: 5.5pt; }
   .compact-sheet .help-text { font-size: 6pt; margin: 1px 0 2px; line-height: 1.2; }
   .compact-sheet hr { margin: 4px 0; }
-  .compact-sheet .no-break, .compact-sheet .spell-level-block { page-break-inside: auto; break-inside: auto; }
-  .compact-sheet .eq-detail { font-size: 6pt; padding: 1px 3px; line-height: 1.15; }
+  .compact-sheet .no-break { page-break-inside: auto; break-inside: auto; }
+  .compact-sheet .spell-level-block { page-break-inside: avoid; break-inside: avoid; }
+  .compact-sheet .eq-detail { font-size: 6pt; padding: 1px 3px 1px 14px; line-height: 1.15; }
   .compact-sheet .eq-detail p { line-height: 1.15; margin-block-end: 2px; }
   .compact-sheet .mini-row-fill td { padding: 1px 2px; }
   .compact-core-grid, .compact-reference-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 6px; align-items: start; }
@@ -175,22 +176,15 @@
 {{ component:compact/combat }}
 {{ component:compact/skills }}
 {{ component:compact/special_qualities }}
-{{ component:compact/weapons }}
-<div class="compact-combat-grid">
-  <div>{{ component:compact/special_attacks }}</div>
-  <div>{{ component:compact/combat_maneuvers }}</div>
-</div>
+{{ component:compact/special_attacks }}
 {{ component:compact/combat_conditionals }}
+{{ component:compact/weapons }}
 {{ component:compact/armor_shields }}
 {{ component:compact/prepared_spells }}
-<div class="compact-reference-grid">
-  <div>{{ component:compact/concentration_reference }}</div>
-  <div>{{ component:compact/rules_reference }}</div>
-</div>
 <div class="compact-page-start">{{ component:compact/inventory }}</div>
-<div class="compact-reference-grid compact-page-start">
-  <div>{{ component:compact/biography }}</div>
-  <div>{{ component:compact/portrait }}</div>
+<div class="compact-page-start">
+  {{ component:compact/biography }}
+  {{ component:compact/portrait }}
 </div>
 {{ component:compact/footer }}
 

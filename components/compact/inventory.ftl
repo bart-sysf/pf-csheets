@@ -42,6 +42,11 @@
     </tr>
     </#if>
 </@loop>
+    <tr class="inventory-write-in" style="height:22px;"><td class="border">&nbsp;</td><td class="border"></td><td class="border"></td><td class="border"></td><td class="border"></td><td class="border"></td></tr>
+    <tr class="inventory-write-in" style="height:22px;"><td class="border">&nbsp;</td><td class="border"></td><td class="border"></td><td class="border"></td><td class="border"></td><td class="border"></td></tr>
+    <tr class="inventory-write-in" style="height:22px;"><td class="border">&nbsp;</td><td class="border"></td><td class="border"></td><td class="border"></td><td class="border"></td><td class="border"></td></tr>
+    <tr class="inventory-write-in" style="height:22px;"><td class="border">&nbsp;</td><td class="border"></td><td class="border"></td><td class="border"></td><td class="border"></td><td class="border"></td></tr>
+    <tr class="inventory-write-in" style="height:22px;"><td class="border">&nbsp;</td><td class="border"></td><td class="border"></td><td class="border"></td><td class="border"></td><td class="border"></td></tr>
     <tr>
       <td colspan="2" align="right" style="font-size:7.25pt;"><b>Totals:</b></td>
       <td class="border" colspan="2" align="center">${pcstring('TOTAL.WEIGHT')}</td>

@@ -38,12 +38,17 @@
     * Armor bonus reduced by check penalty if not proficient &mdash;
     Max Dex cap limits Dex bonus when wearing armor
   </div>
+  <#assign hitDieTypes = pcstring("HITDICE")?replace("[ ]+", "", "r") />
+  <#assign hitDieTypes = hitDieTypes?replace("[0-9]+d([0-9]+)", "d$1", "r") />
+  <#assign hitDieTypes = hitDieTypes?replace("[()]", "", "r") />
+  <#assign hitDieTypes = hitDieTypes?replace("[+-][0-9]+$", "", "r") />
+  <#assign hitDieTypes = hitDieTypes?replace("+", " / ") />
   <table style="table-layout:fixed; margin-top:1.5px; margin-bottom:2px;">
     <tr>
       <td><div class="mini"><span class="mname">BAB</span><span class="mval">${pcstring('ATTACK.MELEE')}</span></div></td>
       <td><div class="mini"><span class="mname">Melee Hit</span><span class="mval">${pcstring('ATTACK.MELEE.TOTAL')}</span></div></td>
       <td><div class="mini"><span class="mname">Ranged Hit</span><span class="mval">${pcstring('ATTACK.RANGED.TOTAL')}</span></div></td>
-      <td><div class="mini"><span class="mname">Hit Die</span><span class="mval">${pcstring('HITDICE')}</span></div></td>
+      <td><div class="mini"><span class="mname">Hit Die</span><span class="mval"><#if hitDieTypes != "">${hitDieTypes}<#else>&mdash;</#if></span></div></td>
       <td><div class="mini"><span class="mname">CMB</span><span class="mval">${pcstring('VAR.CMB.INTVAL.SIGN')}</span></div></td>
       <td><div class="mini"><span class="mname">CMD</span><span class="mval">${pcstring('VAR.CMD.INTVAL')}</span></div></td>
       <td><div class="mini"><span class="mname">SR</span><span class="mval"><#if (pcstring('SR') != '')>${pcstring('SR')}<#else>0</#if></span></div></td>

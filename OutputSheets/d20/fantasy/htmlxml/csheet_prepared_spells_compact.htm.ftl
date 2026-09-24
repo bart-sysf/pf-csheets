@@ -147,8 +147,9 @@
   .compact-sheet .src { font-size: 5.5pt; }
   .compact-sheet .help-text { font-size: 6pt; margin: 1px 0 2px; line-height: 1.2; }
   .compact-sheet hr { margin: 4px 0; }
-  .compact-sheet .no-break, .compact-sheet .spell-level-block { page-break-inside: auto; break-inside: auto; }
-  .compact-sheet .eq-detail { font-size: 6pt; padding: 1px 3px; line-height: 1.15; }
+  .compact-sheet .no-break { page-break-inside: auto; break-inside: auto; }
+  .compact-sheet .spell-level-block { page-break-inside: avoid; break-inside: avoid; }
+  .compact-sheet .eq-detail { font-size: 6pt; padding: 1px 3px 1px 14px; line-height: 1.15; }
   .compact-sheet .eq-detail p { line-height: 1.15; margin-block-end: 2px; }
   .compact-sheet .mini-row-fill td { padding: 1px 2px; }
   .compact-core-grid, .compact-reference-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 6px; align-items: start; }
@@ -326,12 +327,17 @@
     * Armor bonus reduced by check penalty if not proficient &mdash;
     Max Dex cap limits Dex bonus when wearing armor
   </div>
+  <#assign hitDieTypes = pcstring("HITDICE")?replace("[ ]+", "", "r") />
+  <#assign hitDieTypes = hitDieTypes?replace("[0-9]+d([0-9]+)", "d$1", "r") />
+  <#assign hitDieTypes = hitDieTypes?replace("[()]", "", "r") />
+  <#assign hitDieTypes = hitDieTypes?replace("[+-][0-9]+$", "", "r") />
+  <#assign hitDieTypes = hitDieTypes?replace("+", " / ") />
   <table style="table-layout:fixed; margin-top:1.5px; margin-bottom:2px;">
     <tr>
       <td><div class="mini"><span class="mname">BAB</span><span class="mval">${pcstring('ATTACK.MELEE')}</span></div></td>
       <td><div class="mini"><span class="mname">Melee Hit</span><span class="mval">${pcstring('ATTACK.MELEE.TOTAL')}</span></div></td>
       <td><div class="mini"><span class="mname">Ranged Hit</span><span class="mval">${pcstring('ATTACK.RANGED.TOTAL')}</span></div></td>
-      <td><div class="mini"><span class="mname">Hit Die</span><span class="mval">${pcstring('HITDICE')}</span></div></td>
+      <td><div class="mini"><span class="mname">Hit Die</span><span class="mval"><#if hitDieTypes != "">${hitDieTypes}<#else>&mdash;</#if></span></div></td>
       <td><div class="mini"><span class="mname">CMB</span><span class="mval">${pcstring('VAR.CMB.INTVAL.SIGN')}</span></div></td>
       <td><div class="mini"><span class="mname">CMD</span><span class="mval">${pcstring('VAR.CMD.INTVAL')}</span></div></td>
       <td><div class="mini"><span class="mname">SR</span><span class="mval"><#if (pcstring('SR') != '')>${pcstring('SR')}<#else>0</#if></span></div></td>
@@ -499,6 +505,45 @@
 </div><!-- end two-col: Special Qualities | Feats/Traits/Domains -->
 
 <div class="no-break">
+<h2>Special Attacks</h2>
+<div style="margin-bottom:2px;">
+  <table style="table-layout:fixed;">
+    <#if (pcvar('countdistinct("ABILITIES","CATEGORY=Special Ability","TYPE=SpecialAttack","VISIBILITY=DEFAULT[or]VISIBILITY=OUTPUT_ONLY")') > 0)>
+    <@loop from=0 to=pcvar('countdistinct("ABILITIES","CATEGORY=Special Ability","TYPE=SpecialAttack","VISIBILITY=DEFAULT[or]VISIBILITY=OUTPUT_ONLY")-1') ; sa , sa_has_next>
+    <tr>
+      <td class="border" style="font-size:7.25pt;">
+        <b>${pcstring('ABILITYALL.Special Ability.VISIBLE.${sa}.TYPE=SpecialAttack')}</b><br />
+        <span class="src">[${pcstring('ABILITYALL.Special Ability.VISIBLE.${sa}.TYPE=SpecialAttack.SOURCE')}]</span><br/>
+        <span style="font-size:6.25pt;">${pcstring('ABILITYALL.Special Ability.VISIBLE.${sa}.TYPE=SpecialAttack.DESC')}</span>
+      </td>
+      <td class="border" align="center" style="font-size:7.25pt; width:35%;">
+        <#assign saUses = pcstring('ABILITYALL.Special Ability.VISIBLE.${sa}.TYPE=SpecialAttack.ASPECT.UsesPerDay') />
+        <#if (saUses != "")>
+          Uses/day: <b>${saUses}</b><br/>
+          <#assign saUsesN = pcvar('ABILITYALL.Special Ability.VISIBLE.${sa}.TYPE=SpecialAttack.ASPECT.UsesPerDay.INTVAL') />
+          <#if (saUsesN > 0)>
+          <span style="font-size:10pt; letter-spacing:3px;"><@loop from=1 to=saUsesN>&#9744;</@loop></span>
+          </#if>
+        </#if>
+      </td>
+    </tr>
+    </@loop>
+    </#if>
+  </table>
+</div>
+</div>
+
+<div class="note-box no-break" style="margin-bottom:2px;">
+  <span style="font-size:6.25pt;font-weight:bold;">Conditional Attack / Combat Modifiers:</span><br/>
+  <#assign hasCombatCond = false />
+  <@loop from=0 to=pcvar('countdistinct("ABILITIES","ASPECT=CombatBonus")-1') ; ab , ab_has_next>
+    <#assign hasCombatCond = true />
+    &bull; ${pcstring('ABILITYALL.ANY.${ab}.ASPECT=CombatBonus.ASPECT.CombatBonus')}<br/>
+  </@loop>
+  <#if !hasCombatCond><span style="color:var(--c4);font-size:7.25pt;">No modifiers</span></#if>
+</div>
+
+<div class="no-break">
 <h2>Weapons</h2>
 <div style="margin-bottom:2px;">
   <table style="table-layout:fixed;">
@@ -613,120 +658,6 @@
 </div>
 </div>
 
-<div class="compact-combat-grid">
-  <div><div class="no-break">
-<h2>Special Attacks</h2>
-<div style="margin-bottom:2px;">
-  <table style="table-layout:fixed;">
-    <#if (pcvar('countdistinct("ABILITIES","CATEGORY=Special Ability","TYPE=SpecialAttack","VISIBILITY=DEFAULT[or]VISIBILITY=OUTPUT_ONLY")') > 0)>
-    <@loop from=0 to=pcvar('countdistinct("ABILITIES","CATEGORY=Special Ability","TYPE=SpecialAttack","VISIBILITY=DEFAULT[or]VISIBILITY=OUTPUT_ONLY")-1') ; sa , sa_has_next>
-    <tr>
-      <td class="border" style="font-size:7.25pt;">
-        <b>${pcstring('ABILITYALL.Special Ability.VISIBLE.${sa}.TYPE=SpecialAttack')}</b><br />
-        <span class="src">[${pcstring('ABILITYALL.Special Ability.VISIBLE.${sa}.TYPE=SpecialAttack.SOURCE')}]</span><br/>
-        <span style="font-size:6.25pt;">${pcstring('ABILITYALL.Special Ability.VISIBLE.${sa}.TYPE=SpecialAttack.DESC')}</span>
-      </td>
-      <td class="border" align="center" style="font-size:7.25pt; width:35%;">
-        <#assign saUses = pcstring('ABILITYALL.Special Ability.VISIBLE.${sa}.TYPE=SpecialAttack.ASPECT.UsesPerDay') />
-        <#if (saUses != "")>
-          Uses/day: <b>${saUses}</b><br/>
-          <#assign saUsesN = pcvar('ABILITYALL.Special Ability.VISIBLE.${sa}.TYPE=SpecialAttack.ASPECT.UsesPerDay.INTVAL') />
-          <#if (saUsesN > 0)>
-          <span style="font-size:10pt; letter-spacing:3px;"><@loop from=1 to=saUsesN>&#9744;</@loop></span>
-          </#if>
-        </#if>
-      </td>
-    </tr>
-    </@loop>
-    </#if>
-  </table>
-</div>
-</div>
-</div>
-  <div><div class="no-break" style="margin-bottom:2px;">
-  <h2>Combat Maneuvers</h2>
-  <table style="table-layout:fixed; margin-bottom:2px;">
-    <tr>
-      <th class="border" align="left" style="width:18%;">Maneuver</th>
-      <th class="border" style="width:10%;">CMB</th>
-      <th class="border" style="width:10%;">CMD</th>
-      <th class="border" align="left" style="width:62%;">Notes</th>
-    </tr>
-    <tr class="shaded">
-      <td class="border" style="font-size:7.25pt;">Grapple</td>
-      <td class="border val">${pcstring('VAR.CMB_Grapple.INTVAL.SIGN')}</td>
-      <td class="border val">${pcstring('VAR.CMD_Grapple.INTVAL')}</td>
-      <td class="border" style="font-size:6.25pt;">Pin, tie up, damage, or move a grappled foe. Grappled = &minus;2 attack/AC, no two-handed.</td>
-    </tr>
-    <tr>
-      <td class="border" style="font-size:7.25pt;">Trip</td>
-      <td class="border val">${pcstring('VAR.CMB_Trip.INTVAL.SIGN')}</td>
-      <td class="border val"><#if (pcvar("CantBeTripped") != 0)>Immune<#else>${pcstring('VAR.CMD_Trip.INTVAL')}</#if></td>
-      <td class="border" style="font-size:6.25pt;">Knock prone. Prone = &minus;4 melee attack, &minus;4 AC vs melee, +4 AC vs ranged.</td>
-    </tr>
-    <tr class="shaded">
-      <td class="border" style="font-size:7.25pt;">Disarm</td>
-      <td class="border val">${pcstring('VAR.CMB_Disarm.INTVAL.SIGN')}</td>
-      <td class="border val">${pcstring('VAR.CMD_Disarm.INTVAL')}</td>
-      <td class="border" style="font-size:6.25pt;">Knock weapon from foe. Beat CMD by 10+ = item lands 10ft away.</td>
-    </tr>
-    <tr>
-      <td class="border" style="font-size:7.25pt;">Bull Rush</td>
-      <td class="border val">${pcstring('VAR.CMB_BullRush.INTVAL.SIGN')}</td>
-      <td class="border val">${pcstring('VAR.CMD_BullRush.INTVAL')}</td>
-      <td class="border" style="font-size:6.25pt;">Push foe back 5ft + 5ft per 5 over CMD. You may follow.</td>
-    </tr>
-    <tr class="shaded">
-      <td class="border" style="font-size:7.25pt;">Sunder</td>
-      <td class="border val">${pcstring('VAR.CMB_Sunder.INTVAL.SIGN')}</td>
-      <td class="border val">${pcstring('VAR.CMD_Sunder.INTVAL')}</td>
-      <td class="border" style="font-size:6.25pt;">Damage a held/worn item. Broken = &minus;2 attack/damage or halved effectiveness.</td>
-    </tr>
-    <tr>
-      <td class="border" style="font-size:7.25pt;">Overrun</td>
-      <td class="border val">${pcstring('VAR.CMB_Overrun.INTVAL.SIGN')}</td>
-      <td class="border val">${pcstring('VAR.CMD_Overrun.INTVAL')}</td>
-      <td class="border" style="font-size:6.25pt;">Move through foe's space. Fail = blocked; beat by 5+ = foe prone.</td>
-    </tr>
-    <tr class="shaded">
-      <td class="border" style="font-size:7.25pt;">Dirty Trick</td>
-      <td class="border val">${pcstring('VAR.CMB_DirtyTrick.INTVAL.SIGN')}</td>
-      <td class="border val">${pcstring('VAR.CMD_DirtyTrick.INTVAL')}</td>
-      <td class="border" style="font-size:6.25pt;">Blind, entangle, or sicken 1 round (+1 per 5 over CMD). Std action to remove.</td>
-    </tr>
-    <tr>
-      <td class="border" style="font-size:7.25pt;">Drag</td>
-      <td class="border val">${pcstring('VAR.CMB_Drag.INTVAL.SIGN')}</td>
-      <td class="border val">${pcstring('VAR.CMD_Drag.INTVAL')}</td>
-      <td class="border" style="font-size:6.25pt;">Pull foe 5ft + 5ft per 5 over CMD toward you. Must move with them.</td>
-    </tr>
-    <tr class="shaded">
-      <td class="border" style="font-size:7.25pt;">Reposition</td>
-      <td class="border val">${pcstring('VAR.CMB_Reposition.INTVAL.SIGN')}</td>
-      <td class="border val">${pcstring('VAR.CMD_Reposition.INTVAL')}</td>
-      <td class="border" style="font-size:6.25pt;">Move foe to any adjacent square. Foe must remain adjacent.</td>
-    </tr>
-    <tr>
-      <td class="border" style="font-size:7.25pt;">Steal</td>
-      <td class="border val">${pcstring('VAR.CMB_Steal.INTVAL.SIGN')}</td>
-      <td class="border val">${pcstring('VAR.CMD_Steal.INTVAL')}</td>
-      <td class="border" style="font-size:6.25pt;">Take one carried/worn item (not wielded). No free hand required.</td>
-    </tr>
-  </table>
-  <div class="help-text">All maneuvers provoke AoO unless you have the Improved feat for that maneuver &mdash; failing by 5+ lets the foe attempt the same maneuver on you as a free action</div>
-</div>
-</div>
-</div>
-<div class="note-box no-break" style="margin-bottom:2px;">
-  <span style="font-size:6.25pt;font-weight:bold;">Conditional Attack / Combat Modifiers:</span><br/>
-  <#assign hasCombatCond = false />
-  <@loop from=0 to=pcvar('countdistinct("ABILITIES","ASPECT=CombatBonus")-1') ; ab , ab_has_next>
-    <#assign hasCombatCond = true />
-    &bull; ${pcstring('ABILITYALL.ANY.${ab}.ASPECT=CombatBonus.ASPECT.CombatBonus')}<br/>
-  </@loop>
-  <#if !hasCombatCond><span style="color:var(--c4);font-size:7.25pt;">No modifiers</span></#if>
-</div>
-
 <div class="no-break">
 <h2>Armor &amp; Shields</h2>
 <div style="margin-bottom:2px;">
@@ -826,92 +757,6 @@
 </@loop>
 </@loop>
 
-<div class="compact-reference-grid">
-  <div><div class="no-break" style="margin-bottom:2px;">
-  <h2>Concentration Quick Reference</h2>
-  <div class="note-box" style="margin-bottom:2px;">
-    <b>Concentration Check</b><br/>
-    d20 + caster level + spellcasting ability modifier + other bonuses<br/>
-    Spellcasting ability modifier is INT (wizard), WIS (cleric/druid), CHA (sorcerer/bard/oracle), etc.
-    <#assign hasConcClass = false />
-    <@loop from=pcvar('COUNT[SPELLRACE]') to=pcvar('COUNT[SPELLRACE]+COUNT[CLASSES]-1') ; class , class_has_next>
-      <#if (pcstring("SPELLLISTCLASS.${class}") != '' && pcstring("SPELLLISTCLASS.${class}.CONCENTRATION") != '')>
-        <#assign hasConcClass = true />
-        <br/>&bull; <b>${pcstring('SPELLLISTCLASS.${class}')}</b>: d20${pcstring('SPELLLISTCLASS.${class}.CONCENTRATION')} total
-        (CL ${pcstring('SPELLLISTCLASS.${class}.CASTERLEVEL')} + ${pcstring('SPELLLISTDCSTAT.${class}.0')})
-      </#if>
-    </@loop>
-    <#if !hasConcClass><br/><span style="color:var(--c4);">No spellcasting class concentration values found.</span></#if>
-  </div>
-  <table style="table-layout:fixed; margin-bottom:2px;">
-    <tr>
-      <th class="border" align="left" style="width:50%;">When A Check Is Required</th>
-      <th class="border" align="left" style="width:50%;">Concentration DC</th>
-    </tr>
-    <tr class="shaded">
-      <td class="border" style="font-size:7.25pt;">Cast defensively (to avoid provoking)</td>
-      <td class="border" style="font-size:7.25pt;">15 + (2 &times; spell level)</td>
-    </tr>
-    <tr>
-      <td class="border" style="font-size:7.25pt;">Take damage while casting</td>
-      <td class="border" style="font-size:7.25pt;">10 + damage dealt + spell level</td>
-    </tr>
-    <tr class="shaded">
-      <td class="border" style="font-size:7.25pt;">Taking continuous damage while casting</td>
-      <td class="border" style="font-size:7.25pt;">10 + half last damage dealt + spell level</td>
-    </tr>
-    <tr>
-      <td class="border" style="font-size:7.25pt;">Vigorous motion (mount, rough vehicle, choppy water)</td>
-      <td class="border" style="font-size:7.25pt;">10 + spell level</td>
-    </tr>
-    <tr class="shaded">
-      <td class="border" style="font-size:7.25pt;">Violent motion (violent weather, heavy turbulence)</td>
-      <td class="border" style="font-size:7.25pt;">15 + spell level</td>
-    </tr>
-    <tr>
-      <td class="border" style="font-size:7.25pt;">Extra violent motion (earthquake-level disruption)</td>
-      <td class="border" style="font-size:7.25pt;">20 + spell level</td>
-    </tr>
-    <tr class="shaded">
-      <td class="border" style="font-size:7.25pt;">Weather with high wind, rain, or debris</td>
-      <td class="border" style="font-size:7.25pt;">5 + spell level</td>
-    </tr>
-    <tr>
-      <td class="border" style="font-size:7.25pt;">Entangled while casting</td>
-      <td class="border" style="font-size:7.25pt;">15 + spell level</td>
-    </tr>
-    <tr class="shaded">
-      <td class="border" style="font-size:7.25pt;">Grappled or pinned while casting</td>
-      <td class="border" style="font-size:7.25pt;">10 + grappler CMB + spell level</td>
-    </tr>
-  </table>
-  <div class="help-text">
-    <b>Common Modifiers</b>: <b>Combat Casting</b> gives +4 on concentration checks to cast defensively or while grappled/pinned &mdash;
-    ability score increases, feats, traits, class features, and situational bonuses also apply.<br/>
-    If you fail the concentration check, the spell is lost and has no effect.
-  </div>
-</div>
-</div>
-  <div><!-- ═══ RULES REFERENCE ═══ -->
-<div class="no-break" style="margin-bottom:2px;">
-  <h2>Rules Reference</h2>
-  <div class="note-box" style="margin-bottom:2px;">
-    <b>Common Quick Rules</b><br/>
-    &bull; <b>Flanking</b>: +2 attack.<br/>
-    &bull; <b>Aid Another</b>: DC 10 check for ally +2 attack, AC, or check.<br/>
-    &bull; <b>Cover / Soft Cover</b>: +4 AC (+2 Reflex); creatures can grant soft cover.<br/>
-    &bull; <b>Ranged Into Melee</b>: &minus;4 to hit. Target 2 size &gt; ally? &minus;2 to hit. 3 sizes or Precise Shot? No penalty.<br/>
-    &bull; <b>Concealment</b>: Roll to hit and then 1d100 that should be greater than % of concealment (20%/50%).<br/>
-    &bull; <b>Casting Defensively</b>: Concentration DC = 15 + (2 &times; spell level).<br/>
-    &bull; <b>DR / Resistance</b>: DR reduces weapon damage; resistance reduces matching energy damage.<br/>
-    &bull; <b>Reach / Threatened Squares</b>: you threaten where you can melee; leaving can provoke.<br/>
-    &bull; <b>Swift / Immediate</b>: one per round; immediate uses next turn's swift.<br/>
-    &bull; <b>Criticals</b>: Nat 20 threatens; confirm with another hit roll (not another 20).<br/>
-    &bull; <b>Dying / Stabilize</b>: &lt;0 HP lose 1 HP/round; stabilize check DC 10 + negative HP.
-  </div>
-</div>
-</div>
-</div>
 <div class="compact-page-start"><div class="no-break">
 <h2>Equipment</h2>
 <div style="margin-bottom:2px;">
@@ -956,6 +801,11 @@
     </tr>
     </#if>
 </@loop>
+    <tr class="inventory-write-in" style="height:22px;"><td class="border">&nbsp;</td><td class="border"></td><td class="border"></td><td class="border"></td><td class="border"></td><td class="border"></td></tr>
+    <tr class="inventory-write-in" style="height:22px;"><td class="border">&nbsp;</td><td class="border"></td><td class="border"></td><td class="border"></td><td class="border"></td><td class="border"></td></tr>
+    <tr class="inventory-write-in" style="height:22px;"><td class="border">&nbsp;</td><td class="border"></td><td class="border"></td><td class="border"></td><td class="border"></td><td class="border"></td></tr>
+    <tr class="inventory-write-in" style="height:22px;"><td class="border">&nbsp;</td><td class="border"></td><td class="border"></td><td class="border"></td><td class="border"></td><td class="border"></td></tr>
+    <tr class="inventory-write-in" style="height:22px;"><td class="border">&nbsp;</td><td class="border"></td><td class="border"></td><td class="border"></td><td class="border"></td><td class="border"></td></tr>
     <tr>
       <td colspan="2" align="right" style="font-size:7.25pt;"><b>Totals:</b></td>
       <td class="border" colspan="2" align="center">${pcstring('TOTAL.WEIGHT')}</td>
@@ -986,8 +836,8 @@
 </div>
 </div>
 </div>
-<div class="compact-reference-grid compact-page-start">
-  <div><div class="no-break" style="">
+<div class="compact-page-start">
+  <div class="no-break" style="">
 <h2>Biography</h2>
 <div class="note-box" style="margin-bottom:2px;">
   <#assign bioRaw = pcstring('BIO') />
@@ -999,16 +849,15 @@
   ${bioRaw}
 </div>
 </div>
-</div>
-  <div><#if (pcstring('PORTRAIT') != '')>
+
+  <#if (pcstring('PORTRAIT') != '')>
 <div class="no-break">
-<h2>Portrait</h2>
-<div style="margin-bottom:2px; text-align:center;">
-  <img src="file://localhost/${pcstring('PORTRAIT')}" style="max-height:240px; max-width:60%; border:3px solid var(--c5); box-shadow: 0 2px 8px rgba(0,0,0,0.2);" alt="${pcstring('NAME')}" />
+<div style="margin:6px 0 2px; text-align:center;">
+  <img src="file://localhost/${pcstring('PORTRAIT')}" style="max-height:280px; height:auto; width:auto; max-width:100%; object-fit:contain; border:3px solid var(--c5); box-shadow: 0 2px 8px rgba(0,0,0,0.2);" alt="${pcstring('NAME')}" />
 </div>
 </div>
 </#if>
-</div>
+
 </div>
 <hr/>
 <div style="font-size:6.25pt;text-align:center;color:var(--c4);">
