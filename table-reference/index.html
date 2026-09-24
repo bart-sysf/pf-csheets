@@ -29,9 +29,9 @@
         }
 
         .toolbar {
+            display: flex;
             max-width: 210mm;
             margin: 12px auto;
-            display: flex;
             justify-content: space-between;
             align-items: center;
             gap: 16px
@@ -48,6 +48,8 @@
         }
 
         .sheet {
+            display: flex;
+            flex-direction: column;
             width: 210mm;
             min-height: 297mm;
             margin: 0 auto 15px;
@@ -58,10 +60,10 @@
         }
 
         header {
+            display: flex;
             border-bottom: 3px double var(--accent);
             padding-bottom: 6px;
             margin-bottom: 10px;
-            display: flex;
             justify-content: space-between;
             align-items: end
         }
@@ -228,12 +230,12 @@
         }
 
         footer {
-            margin-top: 12px;
+            display: flex;
+            margin-top: auto;
             padding-top: 5px;
             border-top: 1px solid var(--line);
             color: var(--muted);
             font-size: 10px;
-            display: flex;
             justify-content: space-between
         }
 
