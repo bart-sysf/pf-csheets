@@ -208,6 +208,10 @@
      width: 25%
  }
 
+ .death-table td:first-child {
+     width: 35%
+ }
+
  .modifier-matrix th,
  .modifier-matrix td {
      text-align: center;

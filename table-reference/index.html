@@ -331,6 +331,8 @@
             </div>
             <div class="sub">2 / 6 · Official conditions &amp; common benefits</div>
         </header>
+        
+        <h2>Common negative conditions and effects</h2>
         <div class="grid">
             <div>
                 <table class="condition-table">
@@ -371,24 +373,9 @@
                         <td>−1 attacks and sight-based Perception.</td>
                     </tr>
                     <tr>
-                        <td>Dead</td>
-                        <td>Usually at −CON hp or CON 0. Ordinary healing cannot help; life-restoring magic is required.
-                        </td>
-                    </tr>
-                    <tr>
                         <td>Deafened</td>
                         <td>−4 initiative; fail sound Perception; −4 opposed Perception; 20% failure for verbal spells.
                         </td>
-                    </tr>
-                    <tr>
-                        <td>Disabled</td>
-                        <td>At 0 hp, or stable and conscious below 0: one standard or move action; can take swift,
-                            immediate and free; half speed. Strenuous standard action causes 1 damage.</td>
-                    </tr>
-                    <tr>
-                        <td>Dying</td>
-                        <td>Below 0 hp and unstable: unconscious. Each turn DC 10 CON - negative hp; failure
-                            loses 1 hp. Dead at −CON.</td>
                     </tr>
                     <tr>
                         <td>Energy drained</td>
@@ -494,11 +481,6 @@
                         <td>Half speed; −4 attacks and AC.</td>
                     </tr>
                     <tr>
-                        <td>Stable</td>
-                        <td>Below 0 hp but not losing hp. Each hour, DC 10 CON − negative hp to become conscious and
-                            disabled.</td>
-                    </tr>
-                    <tr>
                         <td>Staggered</td>
                         <td>One standard or move action, plus swift/free actions; no full-round actions.</td>
                     </tr>
@@ -506,15 +488,11 @@
                         <td>Stunned</td>
                         <td>No actions; drop held items; −2 AC and lose DEX to AC.</td>
                     </tr>
-                    <tr>
-                        <td>Unconscious</td>
-                        <td>Helpless; usually from negative hp or nonlethal damage exceeding current hp.</td>
-                    </tr>
                 </table>
             </div>
 
             <div class="wide">
-                <h2>Common beneficial effects <span class="sub">— not official conditions</span></h2>
+                <h2>Common beneficial conditions and effects</h2>
                 <div class="effect-grid">
                     <table>
                         <tr>
@@ -780,12 +758,42 @@
                     If defender survives, they make a Fortitude save DC 10 + damage dealt or die anyway. Provokes AoOs.
                 </div>
 
-                <h2>Dying and stabilizing</h2>
-                <div class="box call"><b>At 0 hp:</b> disabled. <b>At −1 to −(CON score − 1):</b> unconscious and dying;
-                    lose 1 hp per round until stable. <b>At −CON score:</b> dead.</div>
-                <p>On your turn, make <b>DC 10 Constitution check</b> to stabilize, with a penalty equal to your
-                    negative hp total (e.g. −3 hp → check modifier −3; effectively DC 13 before CON modifier). Natural
-                    20 succeeds. A successful <b>DC 15 Heal check</b> or any hp healing can stabilize you.</p>
+                <h2>Death &amp; dying</h2>
+                <table class="death-table">
+                    <tr>
+                        <th>HP / state</th>
+                        <th>What happens</th>
+                    </tr>
+                    <tr>
+                        <td>0 hp · Disabled</td>
+                        <td>One standard or move action per round, plus swift/immediate/free actions; half speed. Any
+                            standard or other strenuous action deals 1 damage afterward.</td>
+                    </tr>
+                    <tr>
+                        <td>Negative hp above −CON score · Dying</td>
+                        <td>Unconscious; lose 1 hp each round until stable or dead. Attempt a DC 10 CON check each turn
+                            to stabilize.</td>
+                    </tr>
+                    <tr>
+                        <td>Stable below 0</td>
+                        <td>Unconscious, not losing hp. Each hour, DC 10 CON check with the negative-hp penalty to wake
+                            as disabled; if stable unaided, failure costs 1 hp.</td>
+                    </tr>
+                    <tr>
+                        <td>−CON hp or CON 0 · Dead</td>
+                        <td>Also if killed outright. Cannot benefit from normal or magical healing; only life-restoring
+                            magic can help.</td>
+                    </tr>
+                    <tr>
+                        <td>Unconscious (other causes)</td>
+                        <td>Helpless; can also result when nonlethal damage exceeds current hp.</td>
+                    </tr>
+                </table>
+                <div class="box call"><b>Stabilize while dying:</b> Each turn, make a <span class="formula">DC 10 CON
+                        check</span> with a penalty equal to current negative hp (at −3 hp, apply −3). A natural 20
+                    succeeds automatically. A successful <b>DC 15 Heal check</b> or any hp healing also stabilizes you.
+                </div>
+
                 <h2>Rest and long-term care</h2>
                 <table>
                     <tr>
