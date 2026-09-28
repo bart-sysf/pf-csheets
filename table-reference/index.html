@@ -7,7 +7,7 @@
     <title>Pathfinder 1e · Table Reference</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Roboto+Mono:wght@500;600&amp;family=Roboto+Slab:wght@400;500;600;700&amp;display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto+Slab:wght@400;500;600;700&amp;display=swap" rel="stylesheet">
     <style>
         :root {
             --ink: #302a24;
@@ -110,13 +110,27 @@
             grid-column: 1/-1
         }
 
-        .sheet:nth-of-type(2) h2 {
-            margin-top: 7px
+        .sheet:nth-of-type(3) {
+            font-size: 12px;
+            line-height: 1.25
         }
 
-        .sheet:nth-of-type(2) .box {
-            padding: 6px 8px;
-            margin: 5px 0
+        .sheet:nth-of-type(3) h2 {
+            margin: 5px 0 3px
+        }
+
+        .sheet:nth-of-type(3) p {
+            margin: 3px 0 5px
+        }
+
+        .sheet:nth-of-type(3) table {
+            font-size: 10.5px;
+            line-height: 1.22
+        }
+
+        .sheet:nth-of-type(3) .box {
+            padding: 5px 7px;
+            margin: 4px 0
         }
 
         .box {
@@ -187,8 +201,38 @@
             color: #613d30
         }
 
+        .condition-table {
+            font-size: 9.25px;
+            line-height: 1.2
+        }
+
+        .condition-table th,
+        .condition-table td {
+            padding: 2px 3px
+        }
+
+        .condition-table td:first-child {
+            width: 25%
+        }
+
+        .modifier-matrix {
+            font: 500 9.5px/1.2 "Roboto Slab", Rockwell, "Bookman Old Style", serif
+        }
+
+        .modifier-matrix th,
+        .modifier-matrix td {
+            padding: 2px 3px;
+            text-align: center;
+            vertical-align: middle
+        }
+
+        .modifier-matrix th:first-child,
+        .modifier-matrix td:first-child {
+            font-family: "Roboto Slab", Rockwell, "Bookman Old Style", serif;
+            text-align: left
+        }
+
         .ability-calculation {
-            font-family: "Roboto Mono", "Courier New", monospace;
             color: #613d30
         }
 
@@ -206,7 +250,7 @@
         .modifier-table {
             table-layout: fixed;
             margin-top: 6px;
-            font: 500 9.5px/1.2 "Roboto Mono", "Courier New", monospace
+            font: 500 9.5px/1.2 "Roboto Slab", Rockwell, "Bookman Old Style", serif
         }
 
         .modifier-table th,
@@ -296,7 +340,7 @@
 </head>
 
 <body>
-    <div class="toolbar"><span>Pathfinder 1e · Core rules quick reference · 5 A4 pages</span><button
+    <div class="toolbar"><span>Pathfinder 1e · Core rules quick reference · 6 A4 pages</span><button
             onclick="window.print()">Print / Save PDF</button></div>
     <section class="sheet">
         <header>
@@ -304,7 +348,7 @@
                 <div class="tag">Pathfinder first edition · Table reference</div>
                 <h1>At the Table</h1>
             </div>
-            <div class="sub">1 / 5 · Numbers &amp; conditions</div>
+            <div class="sub">1 / 6 · Numbers &amp; modifiers</div>
         </header>
         <div class="grid">
             <div>
@@ -349,11 +393,11 @@
                         <tr><th>Mod.</th><td>−1</td><td>+0</td><td>+1</td><td>+2</td><td>+3</td><td>+4</td><td>+5</td></tr>
                     </table>
                 </div>
-                <div class="box"><b>Core checks:</b> d20 + relevant modifiers ≥ DC / AC / CMD. Natural 20 and natural 1
+                <div class="box"><span class="formula"><b>Core checks:</b> d20 + relevant modifiers ≥ DC / AC / CMD.</span> Natural 20 and natural 1
                     automatically hit and miss on <em>attack rolls</em>; saving throws also auto succeed/fail. Ability
                     and skill checks have no general automatic 20/1 rule.</div>
                 <h2>Quick combat math</h2>
-                <table>
+                <table >
                     <tr>
                         <th>Statistic</th>
                         <th>Default calculation</th>
@@ -387,97 +431,111 @@
                     bonus.</p>
             </div>
             <div>
-                <h2>Negative conditions</h2>
-                <table>
-                    <tr>
-                        <th>Condition</th>
-                        <th>At-a-glance effect</th>
-                    </tr>
-                    <tr>
-                        <td><b>Prone</b></td>
-                        <td>−4 melee attacks; no ranged attacks except crossbow; −4 AC vs melee, +4 AC vs ranged.
-                            Standing is a move action and provokes.</td>
-                    </tr>
-                    <tr>
-                        <td><b>Flat-footed</b></td>
-                        <td>Lose positive DEX bonus and dodge bonuses to AC; usually cannot make AoOs before first turn.
-                        </td>
-                    </tr>
-                    <tr>
-                        <td><b>Shaken</b></td>
-                        <td>−2 on attack rolls, saves, skill checks, and ability checks.</td>
-                    </tr>
-                    <tr>
-                        <td><b>Sickened</b></td>
-                        <td>−2 on attack rolls, weapon damage rolls, saves, skill checks, and ability checks.</td>
-                    </tr>
-                    <tr>
-                        <td><b>Fatigued</b></td>
-                        <td>−2 STR and DEX; cannot run or charge.</td>
-                    </tr>
-                    <tr>
-                        <td><b>Exhausted</b></td>
-                        <td>−6 STR and DEX; half speed; cannot run or charge.</td>
-                    </tr>
-                    <tr>
-                        <td><b>Entangled</b></td>
-                        <td>Half speed; cannot run or charge; −2 attacks, −4 DEX; casting requires concentration (see
-                            page 4).</td>
-                    </tr>
-                    <tr>
-                        <td><b>Grappled</b></td>
-                        <td>No movement or AoOs; −4 DEX; −2 attacks and combat maneuver checks except to grapple/escape;
-                            casting requires concentration.</td>
-                    </tr>
-                    <tr>
-                        <td><b>Blinded</b></td>
-                        <td>−2 AC, lose DEX bonus; −4 on most STR/DEX skill checks; half speed; opponents have total
-                            concealment (50% miss chance).</td>
-                    </tr>
-                    <tr>
-                        <td><b>Stunned</b></td>
-                        <td>Cannot act; drops held items; −2 AC, loses DEX bonus. Opponents get +4 CMB against you.</td>
-                    </tr>
-                    <tr>
-                        <td><b>Dazed</b></td>
-                        <td>Cannot act, but no AC penalty.</td>
-                    </tr>
-                    <tr>
-                        <td><b>Staggered</b></td>
-                        <td>Only one standard <em>or</em> move action per turn (plus swift/free actions); cannot full
-                            attack.</td>
-                    </tr>
-                    <tr>
-                        <td><b>Nauseated</b></td>
-                        <td>Only a single move action per turn; no attacks or spellcasting.</td>
-                    </tr>
-                    <tr>
-                        <td><b>Frightened</b></td>
-                        <td>As shaken (−2 attacks, saves, skills, ability checks); flee the source if possible.</td>
-                    </tr>
-                    <tr>
-                        <td><b>Pinned</b></td>
-                        <td>Immobile in a grapple; lose DEX bonus to AC, take −4 AC; very limited actions, including
-                            possible spellcasting with concentration check.</td>
-                    </tr>
-                    <tr>
-                        <td><b>Helpless</b></td>
-                        <td>DEX 0 (−5); melee attackers +4; vulnerable to coup de grace.</td>
-                    </tr>
-                    <tr>
-                        <td><b>Deafened</b></td>
-                        <td>−4 initiative; fail sound-based Perception; 20% chance to lose spells with verbal components.</td>
-                    </tr>
-                    <tr>
-                        <td><b>Paralyzed</b></td>
-                        <td>Cannot move or act; effective STR and DEX 0; helpless. Purely mental actions remain possible.</td>
-                    </tr>
+                <h2>Attack-roll modifiers</h2>
+                <table class="modifier-matrix">
+                    <tr><th>Attacker is / has</th><th>Melee</th><th>Ranged</th></tr>
+                    <tr><td>Dazzled</td><td>−1</td><td>−1</td></tr>
+                    <tr><td>Entangled</td><td>−2</td><td>−2</td></tr>
+                    <tr><td>Flanking defender</td><td>+2</td><td>—</td></tr>
+                    <tr><td>Invisible</td><td>+2; deny DEX</td><td>+2; deny DEX</td></tr>
+                    <tr><td>Higher ground</td><td>+1</td><td>+0</td></tr>
+                    <tr><td>Prone</td><td>−4</td><td>—*</td></tr>
+                    <tr><td>Shaken / frightened</td><td>−2</td><td>−2</td></tr>
+                    <tr><td>Squeezing</td><td>−4</td><td>−4</td></tr>
                 </table>
-                <p class="small">Conditions here are shortened for speed; use the full rule for edge cases, stacking,
-                    duration and special abilities.</p>
+                <p class="small">* While prone, a creature can use a crossbow or shuriken. “Deny DEX” means the defender
+                    loses any positive DEX bonus to AC against that attack.</p>
+
+                <h2>Armor Class modifiers</h2>
+                <table class="modifier-matrix">
+                    <tr><th>Defender is / has</th><th>vs melee</th><th>vs ranged</th></tr>
+                    <tr><td>Cover</td><td>+4</td><td>+4</td></tr>
+                    <tr><td>Blinded</td><td>−2; lose DEX</td><td>−2; lose DEX</td></tr>
+                    <tr><td>Concealed / invisible</td><td colspan="2">Miss chance; see page 4</td></tr>
+                    <tr><td>Cowering</td><td>−2; lose DEX</td><td>−2; lose DEX</td></tr>
+                    <tr><td>Entangled</td><td>+0; DEX −4</td><td>+0; DEX −4</td></tr>
+                    <tr><td>Flat-footed</td><td>Lose DEX</td><td>Lose DEX</td></tr>
+                    <tr><td>Grappling*</td><td>Lose DEX</td><td>Lose DEX</td></tr>
+                    <tr><td>Helpless</td><td>−4; lose DEX</td><td>+0; lose DEX</td></tr>
+                    <tr><td>Kneeling / sitting</td><td>−2</td><td>+2</td></tr>
+                    <tr><td>Pinned</td><td>−4; lose DEX</td><td>+0; lose DEX</td></tr>
+                    <tr><td>Prone</td><td>−4</td><td>+4</td></tr>
+                    <tr><td>Squeezing</td><td>−4</td><td>−4</td></tr>
+                    <tr><td>Stunned</td><td>−2; lose DEX</td><td>−2; lose DEX</td></tr>
+                </table>
+                <p class="small">* Against attackers outside the grapple. These tables reproduce the core common combat
+                    modifier tables; named conditions have fuller rules on page 2.</p>
             </div>
         </div>
         <footer><span></span><span>Page 1</span></footer>
+    </section>
+
+    <section class="sheet">
+        <header>
+            <div>
+                <div class="tag">Pathfinder first edition · Table reference</div>
+                <h1>Conditions &amp; effects</h1>
+            </div>
+            <div class="sub">2 / 6 · Official conditions &amp; common benefits</div>
+        </header>
+        <div class="grid">
+            <div>
+                <table class="condition-table">
+                    <tr><th>Condition</th><th>At-a-glance effect</th></tr>
+                    <tr><td><b>Bleed</b></td><td>Take listed damage at start of turn. DC 15 Heal or any hp healing stops it; same-type bleed does not stack.</td></tr>
+                    <tr><td><b>Blinded</b></td><td>−2 AC; lose DEX to AC; −4 most STR/DEX skills; foes have total concealment. Half speed or DC 10 Acrobatics.</td></tr>
+                    <tr><td><b>Broken</b></td><td>Weapon −2 attack/damage and 20/×2 crit; armor/shield half AC bonus; armor doubles ACP; wand/staff uses double charges.</td></tr>
+                    <tr><td><b>Confused</b></td><td>Each turn d%: 01–25 normal; 26–50 babble; 51–75 self-hit for 1d8 + STR; 76–100 attack nearest.</td></tr>
+                    <tr><td><b>Cowering</b></td><td>No actions; −2 AC and lose DEX to AC.</td></tr>
+                    <tr><td><b>Dazed</b></td><td>No actions; no AC penalty.</td></tr>
+                    <tr><td><b>Dazzled</b></td><td>−1 attacks and sight-based Perception.</td></tr>
+                    <tr><td><b>Dead</b></td><td>Usually at −CON hp or CON 0. Ordinary healing cannot help; life-restoring magic is required.</td></tr>
+                    <tr><td><b>Deafened</b></td><td>−4 initiative; fail sound Perception; −4 opposed Perception; 20% failure for verbal spells.</td></tr>
+                    <tr><td><b>Disabled</b></td><td>At 0 hp, or stable and conscious below 0: one standard or move; half speed. Strenuous standard action causes 1 damage.</td></tr>
+                    <tr><td><b>Dying</b></td><td>Below 0 hp and unstable: unconscious. Each turn DC 10 CON − negative hp; failure loses 1 hp. Dead at −CON.</td></tr>
+                    <tr><td><b>Energy drained</b></td><td>Gain negative levels. If negative levels equal or exceed Hit Dice, die.</td></tr>
+                    <tr><td><b>Entangled</b></td><td>Half speed; no run/charge; −2 attacks, −4 DEX. Casting: concentration DC 15 + spell level.</td></tr>
+                    <tr><td><b>Exhausted</b></td><td>Half speed; no run/charge; −6 STR/DEX. One hour of complete rest reduces this to fatigued.</td></tr>
+                    <tr><td><b>Fascinated</b></td><td>No actions except attend; −4 reaction skills. Potential threat grants new save; obvious threat breaks effect.</td></tr>
+                    <tr><td><b>Fatigued</b></td><td>No run/charge; −2 STR/DEX. Eight hours of complete rest removes it.</td></tr>
+                    <tr><td><b>Flat-footed</b></td><td>Lose positive DEX bonus to AC and cannot make AoOs unless an ability says otherwise.</td></tr>
+                    <tr><td><b>Frightened</b></td><td>As shaken, and flee the source if possible.</td></tr>
+                </table>
+            </div>
+            <div>
+                <table class="condition-table">
+                    <tr><th>Condition</th><th>At-a-glance effect</th></tr>
+                    <tr><td><b>Grappled</b></td><td>No movement/AoOs; −4 DEX; −2 attacks/CMB except grapple or escape; no two-hand actions. Casting needs concentration.</td></tr>
+                    <tr><td><b>Helpless</b></td><td>DEX 0 (−5); melee attackers +4; vulnerable to coup de grace.</td></tr>
+                    <tr><td><b>Incorporeal</b></td><td>Immune to nonmagical attacks; usually half damage from magic weapons/spells, but full from force and incorporeal sources.</td></tr>
+                    <tr><td><b>Invisible</b></td><td>+2 attacks against sighted foes; they lose DEX to AC; total concealment against sighted attackers.</td></tr>
+                    <tr><td><b>Nauseated</b></td><td>Only a move action; no attacks, spells, concentration, or other attention-demanding actions.</td></tr>
+                    <tr><td><b>Panicked</b></td><td>Drop held items and flee at top speed; −2 saves, skills, and ability checks. Cower if cornered.</td></tr>
+                    <tr><td><b>Paralyzed</b></td><td>Cannot move or physically act; STR/DEX 0 and helpless. Purely mental actions remain possible.</td></tr>
+                    <tr><td><b>Petrified</b></td><td>Unconscious stone. Missing pieces cause permanent harm if restored without them.</td></tr>
+                    <tr><td><b>Pinned</b></td><td>Immobile; denied DEX; −4 AC. Can try to escape and take verbal/mental actions; no S/M spells; casting needs concentration.</td></tr>
+                    <tr><td><b>Prone</b></td><td>−4 melee attacks; only crossbow/shuriken ranged; AC −4 vs melee, +4 vs ranged. Standing provokes.</td></tr>
+                    <tr><td><b>Shaken</b></td><td>−2 attacks, saves, skills, and ability checks.</td></tr>
+                    <tr><td><b>Sickened</b></td><td>−2 attacks, weapon damage, saves, skills, and ability checks.</td></tr>
+                    <tr><td><b>Stable</b></td><td>Below 0 hp but not losing hp. Each hour, DC 10 CON − negative hp to become conscious and disabled.</td></tr>
+                    <tr><td><b>Staggered</b></td><td>One standard or move action, plus swift/free actions; no full-round actions.</td></tr>
+                    <tr><td><b>Stunned</b></td><td>No actions; drop held items; −2 AC and lose DEX to AC.</td></tr>
+                    <tr><td><b>Unconscious</b></td><td>Helpless; usually from negative hp or nonlethal damage exceeding current hp.</td></tr>
+                </table>
+            </div>
+            <div class="wide">
+                <p class="small"><b>Squeezing:</b> <span >Half speed; −4 attacks and AC.</span> <span class="sub">Combat state, not a condition-glossary entry.</span></p>
+                <h2>Common beneficial effects <span class="sub">— not official conditions</span></h2>
+                <table class="compact-table">
+                    <tr><th>Effect</th><th>At-a-glance benefit</th><th>Effect</th><th>At-a-glance benefit</th></tr>
+                    <tr><td><b>Bless</b></td><td>+1 morale attacks and saves vs fear.</td><td><b>Inspire courage</b></td><td>+1 competence attacks/weapon damage; +1 morale saves vs charm/fear. Scales.</td></tr>
+                    <tr><td><b>Guidance</b></td><td>+1 competence on one attack, save, or skill check.</td><td><b>Heroism</b></td><td>+2 morale attacks, saves, and skills.</td></tr>
+                    <tr><td><b>Aid</b></td><td>Bless effect plus 1d8 + CL temp hp, max +10.</td><td><b>Shield of faith</b></td><td>+2 deflection AC; +1 per 6 CL, max +5.</td></tr>
+                </table>
+                <p class="small">Bonuses of the same type usually do not stack. Use the highest unless a rule says otherwise.</p>
+            </div>
+        </div>
+        <footer><span></span><span>Page 2</span></footer>
     </section>
     <section class="sheet">
         <header>
@@ -485,7 +543,7 @@
                 <div class="tag">Pathfinder first edition · Table reference</div>
                 <h1>Combat &amp; movement</h1>
             </div>
-            <div class="sub">2 / 5 · AoOs &amp; maneuvers</div>
+            <div class="sub">3 / 6 · AoOs, actions &amp; maneuvers</div>
         </header>
         <div class="grid">
             <div>
@@ -541,6 +599,8 @@
                     initiative; aware combatants take one standard <em>or</em> move action, plus free actions. Unaware
                     combatants do not act. Everyone is flat-footed until their first turn unless an ability says
                     otherwise. If everyone or no one is aware, skip the surprise round.</div>
+                <h2>Common free actions</h2>
+                <p><b>On your turn:</b> cease concentrating on a spell; drop an item; drop prone; prepare ordinary spell components or a focus; speak briefly. Drawing ammunition is part of the attack, not a separate action. Free actions generally do not provoke, and the GM may limit how many are reasonable. Speaking can occur outside your turn.</p>
             </div>
             <div>
                 <h2>Combat maneuvers</h2>
@@ -603,7 +663,7 @@
                 </p>
             </div>
         </div>
-        <footer><span></span><span>Page 2</span></footer>
+        <footer><span></span><span>Page 3</span></footer>
     </section>
     <section class="sheet">
         <header>
@@ -611,12 +671,12 @@
                 <div class="tag">Pathfinder first edition · Table reference</div>
                 <h1>Attacks &amp; recovery</h1>
             </div>
-            <div class="sub">3 / 5 · Attacks, conditions &amp; rest</div>
+            <div class="sub">4 / 6 · Attacks &amp; recovery</div>
         </header>
         <div class="grid">
             <div>
                 <h2>Attack rules and modifiers</h2>
-                <table>
+                <table >
                     <tr>
                         <th>Situation</th>
                         <th>Quick rule</th>
@@ -672,14 +732,6 @@
                         <td>+2 melee attack; −2 AC until start of next turn.</td>
                     </tr>
                     <tr>
-                        <td>Higher ground</td>
-                        <td>+1 on melee attack rolls.</td>
-                    </tr>
-                    <tr>
-                        <td>Kneeling / sitting</td>
-                        <td>−2 AC against melee attacks; +2 AC against ranged attacks.</td>
-                    </tr>
-                    <tr>
                         <td>Cover / soft cover</td>
                         <td>Cover grants +4 AC and +2 Reflex against attacks crossing it; creatures give soft cover (+4
                             AC, no Reflex bonus). Cover may block attacks of opportunity.</td>
@@ -696,7 +748,7 @@
                     negative hp total (e.g. −3 hp → check modifier −3; effectively DC 13 before CON modifier). Natural
                     20 succeeds. A successful <b>DC 15 Heal check</b> or any hp healing can stabilize you.</p>
                 <h2>Rest and long-term care</h2>
-                <table>
+                <table >
                     <tr>
                         <th>Rest</th>
                         <th>Natural recovery</th>
@@ -724,7 +776,7 @@
                     square with a 50% miss chance. They can coexist.</div>
             </div>
         </div>
-        <footer><span></span><span>Page 3</span></footer>
+        <footer><span></span><span>Page 4</span></footer>
     </section>
       <section class="sheet">
         <header>
@@ -732,7 +784,7 @@
                 <div class="tag">Pathfinder first edition · Table reference</div>
                 <h1>Spellcasting</h1>
             </div>
-            <div class="sub">4 / 5 · Concentration &amp; effects</div>
+            <div class="sub">5 / 6 · Concentration &amp; casting</div>
         </header>
         <div class="grid">
             <div>
@@ -741,7 +793,7 @@
                         bonuses ≥ DC</span><br>Usually INT for wizard; WIS for cleric/druid/ranger; CHA for
                     bard/paladin/sorcerer. Use your class feature for other casters. <b>Constitution is not the
                         default.</b></div>
-                <table>
+                <table >
                     <tr>
                         <th>When casting...</th>
                         <th>DC</th>
@@ -792,7 +844,7 @@
             </div>
             <div>
                 <h2>Spellcasting and AoOs</h2>
-                <p>Casting while threatened generally provokes (see page 2). A successful defensive cast avoids the
+                <p>Casting while threatened generally provokes (see page 3). A successful defensive cast avoids the
                     casting AoO (DC on this page). Delivering a held melee touch spell does not itself provoke; a ranged
                     touch attack usually does.</p>
                 <p><b>Spell-like abilities</b> usually provoke and may be used defensively. <b>Supernatural
@@ -801,23 +853,9 @@
                 <p><b>Timing matters:</b> a spell with a casting time of 1 round or longer remains vulnerable to
                     interruption until completion. If casting defensively and also subject to a separate disruption,
                     resolve applicable checks separately.</p>
-                <h2>Positive conditions &amp; effects</h2>
-                <table>
-                    <tr>
-                        <th>Effect</th>
-                        <th>At-a-glance benefit</th>
-                    </tr>
-                    <tr><td><b>Bless</b></td><td>+1 morale on attack rolls and saves against fear.</td></tr>
-                    <tr><td><b>Inspire courage</b></td><td>+1 competence on attacks and weapon damage; +1 morale on saves against charm and fear. Scales with bard level.</td></tr>
-                    <tr><td><b>Guidance</b></td><td>+1 competence on one attack roll, save, or skill check; discharges when used.</td></tr>
-                    <tr><td><b>Heroism</b></td><td>+2 morale on attack rolls, saves, and skill checks.</td></tr>
-                    <tr><td><b>Aid</b></td><td>Same +1 morale effects as bless (they do not stack), plus 1d8 + caster level temporary HP (maximum +10).</td></tr>
-                    <tr><td><b>Shield of faith</b></td><td>+2 deflection AC; another +1 per 6 caster levels, maximum +5.</td></tr>
-                    <tr><td><b>Invisible</b></td><td>+2 attacks against sighted foes; they lose DEX to AC; total concealment against sighted attackers.</td></tr>
-                </table>
             </div>
         </div>
-        <footer><span></span><span>Page 4</span></footer>
+        <footer><span></span><span>Page 5</span></footer>
     </section>
     <section class="sheet">
         <header>
@@ -825,7 +863,7 @@
                 <div class="tag">Pathfinder first edition · Table reference</div>
                 <h1>Generic</h1>
             </div>
-            <div class="sub">5 / 5 · Advancement &amp; references</div>
+            <div class="sub">6 / 6 · Advancement &amp; references</div>
         </header>
         <div class="grid">
             <div>
@@ -872,22 +910,12 @@
                     <tr><td>CMB / CMD</td><td>Combat Maneuver Bonus / Defense</td></tr>
                 </table>
                 <h2>Combat maneuver size</h2>
-                <p><b>Special size modifier:</b> Fine −8 · Diminutive −4 · Tiny −2 · Small −1 · Medium 0 · Large +1 ·
+                <p ><b>Special size modifier:</b> Fine −8 · Diminutive −4 · Tiny −2 · Small −1 · Medium 0 · Large +1 ·
                     Huge +2 · Gargantuan +4 · Colossal +8. This differs from the ordinary size modifier to AC and
                     attack rolls.</p>
-                <h2>Additional conditions</h2>
-                <table class="compact-table">
-                    <tr><th>Condition</th><th>At-a-glance effect</th></tr>
-                    <tr><td><b>Confused</b></td><td>Each turn d%: 01–25 normal; 26–50 babble; 51–75 self-hit for 1d8 + STR; 76–100 attack nearest.</td></tr>
-                    <tr><td><b>Panicked</b></td><td>Drop held items and flee at top speed; −2 saves, skills and ability checks. Cower if cornered.</td></tr>
-                    <tr><td><b>Cowering</b></td><td>No actions; −2 AC and lose DEX bonus to AC.</td></tr>
-                    <tr><td><b>Dazzled</b></td><td>−1 attacks and sight-based Perception checks.</td></tr>
-                    <tr><td><b>Broken</b></td><td>Weapon: −2 attack/damage, crit only 20/×2. Armor/shield: half AC bonus; armor doubles its check penalty. Wand/staff: double charges.</td></tr>
-                    <tr><td><b>Squeezing</b></td><td>Move at half speed; −4 on attacks and AC.</td></tr>
-                </table>
             </div>
         </div>
-        <footer><span></span><span>Page 5</span></footer>
+        <footer><span></span><span>Page 6</span></footer>
     </section>
 </body>
 
