@@ -98,7 +98,7 @@
                     critical hits or fumbles; saving throws also auto succeed/fail. Ability and skill checks have no
                     general automatic 20/1 rule.
                 </div>
-                <h2>Important common combat formulas</h2>
+                <h2>Common combat formulas</h2>
                 <table>
                     <tr>
                         <th>Statistic</th>
@@ -114,16 +114,16 @@
                     </tr>
                     <tr>
                         <td>AC</td>
-                        <td class="formula">10 + armor + shield + DEX mod + size mod + natural armor + deflection +
+                        <td class="formula">10 + armor + shield + DEX bonus<sup>1</sup> + size mod + natural armor + deflection +
                             other</td>
                     </tr>
                     <tr>
                         <td>Touch AC</td>
-                        <td class="formula">Ignore armor, shield and natural armor bonuses</td>
+                        <td class="formula">AC − armor − shield − natural armor</td>
                     </tr>
                     <tr>
                         <td>Flat-footed AC</td>
-                        <td class="formula">Lose (positive) DEX bonus and dodge bonuses</td>
+                        <td class="formula">AC − (positive) DEX bonus<sup>1</sup> − dodge bonuses</td>
                     </tr>
                     <tr>
                         <td>Saving throw</td>
@@ -144,7 +144,7 @@
                         <td class="formula">DEX mod + MISC mod</td>
                     </tr>
                 </table>
-                <p class="small">Armor may cap the positive DEX bonus.</p>
+                <p class="small"><sup>1</sup> Armor may cap the positive DEX bonus.</p>
             </div>
             <div>
                 <h2>Attack-roll modifiers</h2>
@@ -205,12 +205,12 @@
                         <th>vs ranged</th>
                     </tr>
                     <tr>
-                        <td>Behind cover</td>
-                        <td colspan="2">+4</td>
-                    </tr>
-                    <tr>
                         <td>Blinded</td>
                         <td colspan="2">−2; lose DEX</td>
+                    </tr>
+                    <tr>
+                        <td>Cover ( / Partial / Improved<sup>1</sup>)</td>
+                        <td colspan="2">+4 / +2 / +8</td>
                     </tr>
                     <tr>
                         <td>Concealed / invisible</td>
@@ -229,7 +229,7 @@
                         <td colspan="2">Lose DEX</td>
                     </tr>
                     <tr>
-                        <td>Grappling<sup>1</sup></td>
+                        <td>Grappling<sup>2</sup></td>
                         <td colspan="2">Lose DEX</td>
                     </tr>
                     <tr>
@@ -261,7 +261,8 @@
                         <td colspan="2">−2; lose DEX</td>
                     </tr>
                 </table>
-                <p class="small"><sup>1</sup> Against attackers outside the grapple.</p>
+                <p class="small"><sup>1</sup> For example target behind an arrowslit.</p>
+                <p class="small"><sup>2</sup> Against attackers outside the grapple.</p>
 
                 <h2>Size modifiers</h2>
                 <table class="modifier-matrix">
@@ -721,11 +722,6 @@
                             an attack.</td>
                     </tr>
                     <tr>
-                        <td>Cover / soft cover</td>
-                        <td>Cover grants +4 AC and +2 Reflex against attacks crossing it; creatures give soft cover (+4
-                            AC, no Reflex bonus). Cover may block attacks of opportunity.</td>
-                    </tr>
-                    <tr>
                         <td>Critical hits</td>
                         <td><b class="accent">★ House rule:</b> Critical threats that hit apply immediately;
                             natural 1 fumbles also apply immediately. No confirmation roll. Draw from the table’s
@@ -751,10 +747,26 @@
                             than allies; none if 3+ categories larger or with Precise Shot.</td>
                     </tr>
                     <tr>
+                        <td>Soft cover</td>
+                        <td>Soft cover grants +4 AC, but no Reflex bonus.</td>
+                    </tr>
+                    <tr>
                         <td>Total defense</td>
                         <td>Standard action; +4 dodge AC (+6 with 3+ Acrobatics ranks); cannot attack or make AoOs.</td>
                     </tr>
                 </table>
+
+                <h2>Cover vs. concealment</h2>
+                <div class="box">
+                    <p>
+                        <b>Cover</b> is a physical obstruction in the attack’s path and normally gives
+                        +4 AC and +2 Reflex.</p>
+                    <p>
+                        <b>Concealment</b> is obscured sight and gives a 20% miss chance after a hit.
+                        Total cover blocks line of effect; total concealment blocks sight, but you may attack a guessed
+                        square with a 50% miss chance. They can coexist.
+                    </p>
+                </div>
             </div>
             <div>
                 <div class="box"><b>Coup de grace:</b> full-round action against a helpless foe; automatic critical hit.
@@ -787,11 +799,42 @@
                 </table>
                 <p class="small">Rest starts natural recovery once stabilized; a dying character first needs to become
                     stable. Nonlethal damage heals on a different schedule.</p>
-                <h2>Cover vs. concealment</h2>
-                <div class="box call"><b>Cover</b> is a physical obstruction in the attack’s path and normally gives
-                    +4 AC and +2 Reflex. <b>Concealment</b> is obscured sight and gives a 20% miss chance after a hit.
-                    Total cover blocks line of effect; total concealment blocks sight, but you may attack a guessed
-                    square with a 50% miss chance. They can coexist.</div>
+
+                <h2>Saving throw modifiers</h2>
+                <table>
+                    <tr>
+                        <th>Situation</th>
+                        <th>Modifier</th>
+                    </tr>
+                    <tr>
+                        <td>Cover</td>
+                        <td>+2 Reflex vs attacks/effects originating or bursting from the other side.</td>
+                    </tr>
+                    <tr>
+                        <td>Partial cover</td>
+                        <td>+1 Reflex.</td>
+                    </tr>
+                    <tr>
+                        <td>Improved cover</td>
+                        <td>+4 Reflex.</td>
+                    </tr>
+                    <tr>
+                        <td>Soft cover</td>
+                        <td>No Reflex bonus.</td>
+                    </tr>
+                    <tr>
+                        <td>Shaken / frightened / panicked</td>
+                        <td>−2 on all saves.</td>
+                    </tr>
+                    <tr>
+                        <td>Sickened</td>
+                        <td>−2 on all saves.</td>
+                    </tr>
+                    <tr>
+                        <td>Ability penalties</td>
+                        <td>CON affects Fortitude; DEX affects Reflex; WIS affects Will.</td>
+                    </tr>
+                </table>
             </div>
         </div>
         <footer><span></span><span>Page 4</span></footer>
