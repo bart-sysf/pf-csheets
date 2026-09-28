@@ -7,313 +7,11 @@
     <title>Pathfinder 1e · Table Reference</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Roboto+Slab:wght@400;500;600;700&amp;display=swap" rel="stylesheet">
-    <style>
-        :root {
-            --ink: #302a24;
-            --muted: #695f53;
-            --line: #cbbfa9;
-            --accent: #704637;
-            --pale: #f4eee2
-        }
-
-        * {
-            box-sizing: border-box
-        }
-
-        body {
-            margin: 0;
-            background: #e9e3d8;
-            color: var(--ink);
-            font: 13px/1.34 "Roboto Slab", Rockwell, "Bookman Old Style", serif
-        }
-
-        .toolbar {
-            display: flex;
-            max-width: 210mm;
-            margin: 12px auto;
-            justify-content: space-between;
-            align-items: center;
-            gap: 16px
-        }
-
-        .toolbar button {
-            font: inherit;
-            border: 0;
-            background: var(--accent);
-            color: white;
-            padding: 9px 15px;
-            border-radius: 5px;
-            cursor: pointer
-        }
-
-        .sheet {
-            display: flex;
-            flex-direction: column;
-            width: 210mm;
-            min-height: 297mm;
-            margin: 0 auto 15px;
-            background: #fffdf8;
-            padding: 12mm 13mm;
-            box-shadow: 0 3px 16px #0002;
-            break-after: page
-        }
-
-        header {
-            display: flex;
-            border-bottom: 3px double var(--accent);
-            padding-bottom: 6px;
-            margin-bottom: 10px;
-            justify-content: space-between;
-            align-items: end
-        }
-
-        h1 {
-            font-family: "Roboto Slab", Rockwell, "Bookman Old Style", serif;
-            font-size: 26px;
-            line-height: 1;
-            letter-spacing: .02em;
-            margin: 0
-        }
-
-        h2 {
-            font-family: "Roboto Slab", Rockwell, "Bookman Old Style", serif;
-            font-size: 15px;
-            color: var(--accent);
-            margin: 12px 0 5px;
-            border-bottom: 1px solid var(--line);
-            padding-bottom: 2px
-        }
-
-        h3 {
-            font-family: "Roboto Slab", Rockwell, "Bookman Old Style", serif;
-            font-size: 12px;
-            margin: 12px 0 3px
-        }
-
-        p {
-            margin: 4px 0 7px
-        }
-
-        .sub {
-            font-size: 11px;
-            color: var(--muted)
-        }
-
-        .grid,
-        .effect-grid {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 0 13px
-        }
-
-        .wide {
-            grid-column: 1/-1
-        }
-
-        .grid > div:not(.wide) > h2:first-child,
-        .grid > div:not(.wide) > h3:first-child {
-            margin-top: 0
-        }
-
-        .sheet:nth-of-type(3) {
-            font-size: 12px;
-            line-height: 1.25
-        }
-
-        .sheet:nth-of-type(3) h2 {
-            margin: 12px 0 3px
-        }
-
-        .sheet:nth-of-type(3) p {
-            margin: 3px 0 5px
-        }
-
-        .sheet:nth-of-type(3) .box {
-            padding: 5px 7px;
-            margin: 4px 0
-        }
-
-        .box {
-            border: 1px solid var(--line);
-            border-radius: 4px;
-            padding: 7px 9px;
-            margin: 7px 0;
-            background: #fffdf8
-        }
-
-        .call {
-            background: var(--pale);
-            border-left: 3px solid var(--accent)
-        }
-
-        .house {
-            border-left: 3px solid #9d7239;
-            background: #faf3e3
-        }
-
-        .house-inline b {
-            color: #765029
-        }
-
-        table {
-            width: 100%;
-            border-collapse: collapse;
-            font-size: 11px;
-            line-height: 1.22
-        }
-
-        th,
-        td {
-            padding: 2px 4px;
-            border-bottom: 1px solid var(--line);
-            vertical-align: top;
-            text-align: left
-        }
-
-        th {
-            background: var(--pale);
-            font-weight: 700
-        }
-
-        ul {
-            margin: 3px 0 7px;
-            padding-left: 17px
-        }
-
-        li {
-            margin-bottom: 2px
-        }
-
-        .small {
-            font-size: 11px
-        }
-
-        .formula {
-            font-weight: 700;
-            color: #613d30
-        }
-
-        .condition-table td:first-child {
-            width: 25%
-        }
-
-        .modifier-matrix th,
-        .modifier-matrix td {
-            text-align: center;
-            vertical-align: middle
-        }
-
-        .modifier-matrix th:first-child,
-        .modifier-matrix td:first-child {
-            font-family: "Roboto Slab", Rockwell, "Bookman Old Style", serif;
-            text-align: left
-        }
-
-        .ability-calculation {
-            color: #613d30
-        }
-
-        .ability-calculation .equation {
-            font-size: 12px;
-            font-weight: 600;
-            margin-bottom: 5px
-        }
-
-        .ability-calculation .example {
-            font-size: 10px;
-            line-height: 1.45
-        }
-
-        .modifier-table {
-            table-layout: fixed;
-            margin-top: 6px;
-            font-weight: 500
-        }
-
-        .modifier-table th,
-        .modifier-table td {
-            text-align: center;
-            vertical-align: middle
-        }
-
-        .modifier-table th:first-child {
-            width: 38px;
-            text-align: left
-        }
-
-        .tag {
-            font-family: "Roboto Slab", Rockwell, "Bookman Old Style", serif;
-            font-size: 10px;
-            color: #805b44;
-            text-transform: uppercase;
-            letter-spacing: .06em
-        }
-
-        footer {
-            display: flex;
-            margin-top: auto;
-            padding-top: 5px;
-            border-top: 1px solid var(--line);
-            color: var(--muted);
-            font-size: 10px;
-            justify-content: space-between
-        }
-
-        .sources a {
-            color: #704637;
-            overflow-wrap: anywhere
-        }
-
-        @media print {
-            @page {
-                size: A4;
-                margin: 0
-            }
-
-            body {
-                background: white;
-                -webkit-print-color-adjust: exact;
-                print-color-adjust: exact
-            }
-
-            .toolbar {
-                display: none
-            }
-
-            .sheet {
-                margin: 0;
-                box-shadow: none;
-                width: 210mm;
-                min-height: 297mm;
-                break-after: page
-            }
-
-            .sheet:last-child {
-                break-after: auto
-            }
-
-            .grid {
-                grid-template-columns: 1fr 1fr
-            }
-        }
-
-        @media screen and (max-width:800px) {
-            .sheet {
-                width: auto;
-                min-height: 0;
-                padding: 18px
-            }
-
-            .grid {
-                grid-template-columns: 1fr
-            }
-
-            .toolbar {
-                margin: 12px 18px
-            }
-        }
-    </style>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto+Slab:wght@400;500;600;700&amp;display=swap"
+        rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600;700&amp;display=swap"
+        rel="stylesheet">
+    <link href="./style.css" rel="stylesheet">
 </head>
 
 <body>
@@ -329,119 +27,252 @@
         </header>
         <div class="grid">
             <div>
-                <h2>Rolls &amp; ability modifiers</h2>
+                <h2>Abilities and their influences</h2>
                 <table>
                     <tr>
                         <th>Ability</th>
                         <th>What its modifier normally affects</th>
                     </tr>
                     <tr>
-                        <td><b>STR</b></td>
-                        <td>Melee attacks and damage, thrown damage, CMB/CMD, carrying capacity; Climb and Swim.</td>
+                        <td>STR</td>
+                        <td>Melee attacks and damage, thrown damage, CMB/CMD, carrying capacity; Climb, Swim and
+                            Strength checks.</td>
                     </tr>
                     <tr>
-                        <td><b>DEX</b></td>
-                        <td>Ranged attacks, AC, Reflex, initiative and CMD; Acrobatics, Stealth and other agility skills.</td>
+                        <td>DEX</td>
+                        <td>Ranged attacks and spells, AC, Reflex saves, initiative and CMD; Acrobatics, Disable Device,
+                            Escape Artist, Fly, Ride, Sleight of Hand and Stealth checks.</td>
                     </tr>
                     <tr>
-                        <td><b>CON</b></td>
-                        <td>HP per Hit Die and Fortitude. No associated skills; Change affects HP directly.</td>
+                        <td>CON</td>
+                        <td>Additional HP on level-up and Fortitude saves. HP increases or decreases when CON is
+                            modified.</td>
                     </tr>
                     <tr>
-                        <td><b>INT</b></td>
-                        <td>Skill ranks and bonus languages; Appraise, Craft, Knowledge, Linguistics and Spellcraft; Wizard spellcasting.</td>
+                        <td>INT</td>
+                        <td>Skill points per level and bonus languages; Appraise, Craft, Knowledge, Linguistics and
+                            Spellcraft checks; Wizard spellcasting.</td>
                     </tr>
                     <tr>
-                        <td><b>WIS</b></td>
-                        <td>Will; Heal, Perception, Profession, Sense Motive and Survival; Cleric/Druid/Ranger spellcasting.</td>
+                        <td>WIS</td>
+                        <td>Will saves; Heal, Perception, Profession, Sense Motive and Survival checks;
+                            Cleric/Druid/Ranger spellcasting.</td>
                     </tr>
                     <tr>
-                        <td><b>CHA</b></td>
-                        <td>Social and performance skills and checks, handling checks, channel energy DCs; Bard/Paladin/Sorcerer spellcasting.</td>
+                        <td>CHA</td>
+                        <td>Bluff, Diplomacy, Disguise, Handle Animal, Intimidate, Perform and Use Magic Device checks;
+                            Channel energy DCs; Bard/Paladin/Sorcerer spellcasting.</td>
                     </tr>
                 </table>
                 <p class="small">Class features, feats and special abilities can replace these defaults.</p>
-                <div class="box call ability-calculation">
-                    <div class="equation">modifier = floor((score − 10) ÷ 2)</div>
-                    <div class="example">score 15 → floor(5 ÷ 2) = floor(2.5) = +2</div>
-                    <div class="example">score 9 → floor(−1 ÷ 2) = floor(−0.5) = −1</div>
+                <div class="box call">
+                    <div class="title">How to calculate ability modifiers?</div>
+                    <div class="formula center">modifier = floor((score − 10) ÷ 2)</div>
                     <table class="modifier-table">
-                        <tr><th>Score</th><th>8–9</th><th>10–11</th><th>12–13</th><th>14–15</th><th>16–17</th><th>18–19</th><th>20–21</th></tr>
-                        <tr><th>Mod.</th><td>−1</td><td>+0</td><td>+1</td><td>+2</td><td>+3</td><td>+4</td><td>+5</td></tr>
+                        <tr>
+                            <th>Score</th>
+                            <th>8–9</th>
+                            <th>10–11</th>
+                            <th>12–13</th>
+                            <th>14–15</th>
+                            <th>16–17</th>
+                            <th>18–19</th>
+                            <th>20–21</th>
+                        </tr>
+                        <tr>
+                            <th>Mod.</th>
+                            <td>−1</td>
+                            <td>+0</td>
+                            <td>+1</td>
+                            <td>+2</td>
+                            <td>+3</td>
+                            <td>+4</td>
+                            <td>+5</td>
+                        </tr>
                     </table>
                 </div>
-                <div class="box"><span class="formula"><b>Core checks:</b> d20 + relevant modifiers ≥ DC / AC / CMD.</span> Natural 20 and natural 1
-                    automatically hit and miss on <em>attack rolls</em>; saving throws also auto succeed/fail. Ability
-                    and skill checks have no general automatic 20/1 rule.</div>
-                <h2>Quick combat math</h2>
-                <table >
+                <div class="box">
+                    <div class="title">Basic check logic</div>
+                    <div class="formula center">d20 + relevant modifiers ≥ DC / AC / CMD</div>
+                    Natural 20 and natural 1 automatically hit and miss on <em>attack rolls</em> and also trigger
+                    critical hits or fumbles; saving throws also auto succeed/fail. Ability and skill checks have no
+                    general automatic 20/1 rule.
+                </div>
+                <h2>Important common combat formulas</h2>
+                <table>
                     <tr>
                         <th>Statistic</th>
                         <th>Default calculation</th>
                     </tr>
                     <tr>
                         <td>Melee attack</td>
-                        <td>d20 + BAB + STR mod + size + other bonuses</td>
+                        <td class="formula">d20 + BAB + STR mod + size mod + other bonuses</td>
                     </tr>
                     <tr>
                         <td>Ranged attack</td>
-                        <td>d20 + BAB + DEX mod + size + other bonuses</td>
+                        <td class="formula">d20 + BAB + DEX mod + size mod + other bonuses</td>
                     </tr>
                     <tr>
                         <td>AC</td>
-                        <td>10 + armor + shield + DEX mod + size + natural armor + deflection + other</td>
+                        <td class="formula">10 + armor + shield + DEX mod + size mod + natural armor + deflection + other</td>
                     </tr>
                     <tr>
                         <td>Touch AC</td>
-                        <td>Ignore armor, shield and natural armor bonuses</td>
+                        <td class="formula">Ignore armor, shield and natural armor bonuses</td>
                     </tr>
                     <tr>
                         <td>Flat-footed AC</td>
-                        <td>Lose DEX bonus (if any) and dodge bonuses</td>
+                        <td class="formula">Lose (positive) DEX bonus and dodge bonuses</td>
                     </tr>
                     <tr>
                         <td>Saving throw</td>
-                        <td>d20 + base save + ability mod + other bonuses; Fort / Ref / Will = CON / DEX / WIS</td>
+                        <td><span class="formula">d20 + base save + ability mod + other bonuses</span>
+                            <br/>Fortitude / Reflex / Will = CON / DEX / WIS</td>
+                    </tr>
+                    <tr>
+                        <td>CMB</td>
+                        <td class="formula">BAB + STR mod + special size mod</td>
+                    </tr>
+                    <tr>
+                        <td>CMB</td>
+                        <td class="formula">10 + BAB + STR mod + DEX mod + special size mod</td>
+                    </tr>
+                    <tr>
+                        <td>Initiative</td>
+                        <td class="formula">DEX mod + MISC mod</td>
                     </tr>
                 </table>
-                <p class="small">A negative DEX modifier still applies to flat-footed AC. Armor may cap the positive DEX
-                    bonus.</p>
+                <p class="small">Armor may cap the positive DEX bonus.</p>
             </div>
             <div>
                 <h2>Attack-roll modifiers</h2>
                 <table class="modifier-matrix">
-                    <tr><th>Attacker is / has</th><th>Melee</th><th>Ranged</th></tr>
-                    <tr><td>Dazzled</td><td colspan="2">−1</td></tr>
-                    <tr><td>Entangled</td><td colspan="2">−2</td></tr>
-                    <tr><td>Flanking defender</td><td>+2</td><td>—</td></tr>
-                    <tr><td>Invisible</td><td colspan="2">+2; deny DEX</td></tr>
-                    <tr><td>Higher ground</td><td>+1</td><td>+0</td></tr>
-                    <tr><td>Prone</td><td>−4</td><td>—*</td></tr>
-                    <tr><td>Shaken / frightened</td><td colspan="2">−2</td></tr>
-                    <tr><td>Squeezing</td><td colspan="2">−4</td></tr>
+                    <tr>
+                        <th>Attacker is / has</th>
+                        <th>Melee</th>
+                        <th>Ranged</th>
+                    </tr>
+                    <tr>
+                        <td>Dazzled</td>
+                        <td colspan="2">−1</td>
+                    </tr>
+                    <tr>
+                        <td>Entangled</td>
+                        <td>−2</td>
+                        <td>−4<sup>1</sup></td>
+                    </tr>
+                    <tr>
+                        <td>Flanking defender</td>
+                        <td>+2</td>
+                        <td>—</td>
+                    </tr>
+                    <tr>
+                        <td>Invisible</td>
+                        <td colspan="2">+2; deny DEX<sup>2</sup></td>
+                    </tr>
+                    <tr>
+                        <td>Higher ground</td>
+                        <td>+1</td>
+                        <td>—</td>
+                    </tr>
+                    <tr>
+                        <td>Prone</td>
+                        <td>−4</td>
+                        <td>—<sup>3</sup></td>
+                    </tr>
+                    <tr>
+                        <td>Shaken / frightened</td>
+                        <td colspan="2">−2</td>
+                    </tr>
+                    <tr>
+                        <td>Squeezing</td>
+                        <td colspan="2">−4</td>
+                    </tr>
                 </table>
-                <p class="small">* While prone, a creature can use a crossbow or shuriken. “Deny DEX” means the defender
-                    loses any positive DEX bonus to AC against that attack.</p>
+                <p class="small"><sup>1</sup> Entangled characters take a -4 penalty to DEX leading to DEX mod -2 on ranged attacks.</p>
+                <p class="small"><sup>2</sup> Defender loses any positive DEX bonus to AC against that attack.</p>
+                <p class="small"><sup>3</sup> While prone, a character can use a crossbow or shuriken, most other ranged weapons cannot be used at all.</p>
 
                 <h2>Armor Class modifiers</h2>
                 <table class="modifier-matrix">
-                    <tr><th>Defender is / has</th><th>vs melee</th><th>vs ranged</th></tr>
-                    <tr><td>Cover</td><td colspan="2">+4</td></tr>
-                    <tr><td>Blinded</td><td colspan="2">−2; lose DEX</td></tr>
-                    <tr><td>Concealed / invisible</td><td colspan="2">Miss chance; see page 4</td></tr>
-                    <tr><td>Cowering</td><td colspan="2">−2; lose DEX</td></tr>
-                    <tr><td>Entangled</td><td colspan="2">+0; DEX −4</td></tr>
-                    <tr><td>Flat-footed</td><td colspan="2">Lose DEX</td></tr>
-                    <tr><td>Grappling*</td><td colspan="2">Lose DEX</td></tr>
-                    <tr><td>Helpless</td><td>−4; lose DEX</td><td>+0; lose DEX</td></tr>
-                    <tr><td>Kneeling / sitting</td><td>−2</td><td>+2</td></tr>
-                    <tr><td>Pinned</td><td>−4; lose DEX</td><td>+0; lose DEX</td></tr>
-                    <tr><td>Prone</td><td>−4</td><td>+4</td></tr>
-                    <tr><td>Squeezing</td><td>−4</td><td>−4</td></tr>
-                    <tr><td>Stunned</td><td colspan="2">−2; lose DEX</td></tr>
+                    <tr>
+                        <th>Defender is / has</th>
+                        <th>vs melee</th>
+                        <th>vs ranged</th>
+                    </tr>
+                    <tr>
+                        <td>Behind cover</td>
+                        <td colspan="2">+4</td>
+                    </tr>
+                    <tr>
+                        <td>Blinded</td>
+                        <td colspan="2">−2; lose DEX</td>
+                    </tr>
+                    <tr>
+                        <td>Concealed / invisible</td>
+                        <td colspan="2">Miss chance; see page 4</td>
+                    </tr>
+                    <tr>
+                        <td>Cowering</td>
+                        <td colspan="2">−2; lose DEX</td>
+                    </tr>
+                    <tr>
+                        <td>Entangled</td>
+                        <td colspan="2">DEX −4 (= −2)</td>
+                    </tr>
+                    <tr>
+                        <td>Flat-footed</td>
+                        <td colspan="2">Lose DEX</td>
+                    </tr>
+                    <tr>
+                        <td>Grappling<sup>1</sup></td>
+                        <td colspan="2">Lose DEX</td>
+                    </tr>
+                    <tr>
+                        <td>Helpless</td>
+                        <td>−4; lose DEX</td>
+                        <td>+0; lose DEX</td>
+                    </tr>
+                    <tr>
+                        <td>Kneeling / sitting</td>
+                        <td>−2</td>
+                        <td>+2</td>
+                    </tr>
+                    <tr>
+                        <td>Pinned</td>
+                        <td>−4; lose DEX</td>
+                        <td>lose DEX</td>
+                    </tr>
+                    <tr>
+                        <td>Prone</td>
+                        <td>−4</td>
+                        <td>+4</td>
+                    </tr>
+                    <tr>
+                        <td>Squeezing</td>
+                        <td colspan="2">−4</td>
+                    </tr>
+                    <tr>
+                        <td>Stunned</td>
+                        <td colspan="2">−2; lose DEX</td>
+                    </tr>
                 </table>
-                <p class="small">* Against attackers outside the grapple. These tables reproduce the core common combat
-                    modifier tables; named conditions have fuller rules on page 2.</p>
+                <p class="small"><sup>1</sup> Against attackers outside the grapple.</p>
+
+                <h2>Size modifiers for AC and attack rolls</h2>
+                <table>
+                    <tr><th>Size</th><th>AC / attack modifier</th></tr>
+                    <tr><td>Fine</td><td>+8</td></tr>
+                    <tr><td>Diminutive</td><td>+4</td></tr>
+                    <tr><td>Tiny</td><td>+2</td></tr>
+                    <tr><td>Small</td><td>+1</td></tr>
+                    <tr><td>Medium</td><td>0</td></tr>
+                    <tr><td>Large</td><td>−1</td></tr>
+                    <tr><td>Huge</td><td>−2</td></tr>
+                    <tr><td>Gargantuan</td><td>−4</td></tr>
+                    <tr><td>Colossal</td><td>−8</td></tr>
+                </table>
+                <p class="small">These size modifiers apply to both AC and attack rolls.</p>
             </div>
         </div>
         <footer><span></span><span>Page 1</span></footer>
@@ -458,66 +289,222 @@
         <div class="grid">
             <div>
                 <table class="condition-table">
-                    <tr><th>Condition</th><th>At-a-glance effect</th></tr>
-                    <tr><td><b>Bleed</b></td><td>Take listed damage at start of turn. DC 15 Heal or any hp healing stops it; same-type bleed does not stack.</td></tr>
-                    <tr><td><b>Blinded</b></td><td>−2 AC; lose DEX to AC; −4 most STR/DEX skills; foes have total concealment. Half speed or DC 10 Acrobatics.</td></tr>
-                    <tr><td><b>Broken</b></td><td>Weapon −2 attack/damage and 20/×2 crit; armor/shield half AC bonus; armor doubles ACP; wand/staff uses double charges.</td></tr>
-                    <tr><td><b>Confused</b></td><td>Each turn d%: 01–25 normal; 26–50 babble; 51–75 self-hit for 1d8 + STR; 76–100 attack nearest.</td></tr>
-                    <tr><td><b>Cowering</b></td><td>No actions; −2 AC and lose DEX to AC.</td></tr>
-                    <tr><td><b>Dazed</b></td><td>No actions; no AC penalty.</td></tr>
-                    <tr><td><b>Dazzled</b></td><td>−1 attacks and sight-based Perception.</td></tr>
-                    <tr><td><b>Dead</b></td><td>Usually at −CON hp or CON 0. Ordinary healing cannot help; life-restoring magic is required.</td></tr>
-                    <tr><td><b>Deafened</b></td><td>−4 initiative; fail sound Perception; −4 opposed Perception; 20% failure for verbal spells.</td></tr>
-                    <tr><td><b>Disabled</b></td><td>At 0 hp, or stable and conscious below 0: one standard or move; half speed. Strenuous standard action causes 1 damage.</td></tr>
-                    <tr><td><b>Dying</b></td><td>Below 0 hp and unstable: unconscious. Each turn DC 10 CON − negative hp; failure loses 1 hp. Dead at −CON.</td></tr>
-                    <tr><td><b>Energy drained</b></td><td>Gain negative levels. If negative levels equal or exceed Hit Dice, die.</td></tr>
-                    <tr><td><b>Entangled</b></td><td>Half speed; no run/charge; −2 attacks, −4 DEX. Casting: concentration DC 15 + spell level.</td></tr>
-                    <tr><td><b>Exhausted</b></td><td>Half speed; no run/charge; −6 STR/DEX. One hour of complete rest reduces this to fatigued.</td></tr>
-                    <tr><td><b>Fascinated</b></td><td>No actions except attend; −4 reaction skills. Potential threat grants new save; obvious threat breaks effect.</td></tr>
-                    <tr><td><b>Fatigued</b></td><td>No run/charge; −2 STR/DEX. Eight hours of complete rest removes it.</td></tr>
-                    <tr><td><b>Flat-footed</b></td><td>Lose positive DEX bonus to AC and cannot make AoOs unless an ability says otherwise.</td></tr>
-                    <tr><td><b>Frightened</b></td><td>As shaken, and flee the source if possible.</td></tr>
+                    <tr>
+                        <th>Condition</th>
+                        <th>At-a-glance effect</th>
+                    </tr>
+                    <tr>
+                        <td>Bleed</td>
+                        <td>Take listed damage at start of turn. DC 15 Heal or any hp healing stops it; same-type bleed
+                            does not stack.</td>
+                    </tr>
+                    <tr>
+                        <td>Blinded</td>
+                        <td>−2 AC; lose DEX to AC; −4 most STR/DEX skills; foes have total concealment. Half speed or DC
+                            10 Acrobatics.</td>
+                    </tr>
+                    <tr>
+                        <td>Broken</td>
+                        <td>Weapon −2 attack/damage and 20/×2 crit; armor/shield half AC bonus; armor doubles ACP;
+                            wand/staff uses double charges.</td>
+                    </tr>
+                    <tr>
+                        <td>Confused</td>
+                        <td>Each turn d%: 01–25 normal; 26–50 babble; 51–75 self-hit for 1d8 + STR; 76–100 attack
+                            nearest.</td>
+                    </tr>
+                    <tr>
+                        <td>Cowering</td>
+                        <td>No actions; −2 AC and lose DEX to AC.</td>
+                    </tr>
+                    <tr>
+                        <td>Dazed</td>
+                        <td>No actions; no AC penalty.</td>
+                    </tr>
+                    <tr>
+                        <td>Dazzled</td>
+                        <td>−1 attacks and sight-based Perception.</td>
+                    </tr>
+                    <tr>
+                        <td>Dead</td>
+                        <td>Usually at −CON hp or CON 0. Ordinary healing cannot help; life-restoring magic is required.
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>Deafened</td>
+                        <td>−4 initiative; fail sound Perception; −4 opposed Perception; 20% failure for verbal spells.
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>Disabled</td>
+                        <td>At 0 hp, or stable and conscious below 0: one standard or move; half speed. Strenuous
+                            standard action causes 1 damage.</td>
+                    </tr>
+                    <tr>
+                        <td>Dying</td>
+                        <td>Below 0 hp and unstable: unconscious. Each turn DC 10 CON − negative hp; failure loses 1 hp.
+                            Dead at −CON.</td>
+                    </tr>
+                    <tr>
+                        <td>Energy drained</td>
+                        <td>Gain negative levels. If negative levels equal or exceed Hit Dice, die.</td>
+                    </tr>
+                    <tr>
+                        <td>Entangled</td>
+                        <td>Half speed; no run/charge; −2 attacks, −4 DEX. Casting: concentration DC 15 + spell level.
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>Exhausted</td>
+                        <td>Half speed; no run/charge; −6 STR/DEX. One hour of complete rest reduces this to fatigued.
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>Fascinated</td>
+                        <td>No actions except attend; −4 reaction skills. Potential threat grants new save; obvious
+                            threat breaks effect.</td>
+                    </tr>
+                    <tr>
+                        <td>Fatigued</td>
+                        <td>No run/charge; −2 STR/DEX. Eight hours of complete rest removes it.</td>
+                    </tr>
+                    <tr>
+                        <td>Flat-footed</td>
+                        <td>Lose positive DEX bonus to AC and cannot make AoOs unless an ability says otherwise.</td>
+                    </tr>
+                    <tr>
+                        <td>Frightened</td>
+                        <td>As shaken, and flee the source if possible.</td>
+                    </tr>
                 </table>
             </div>
             <div>
                 <table class="condition-table">
-                    <tr><th>Condition</th><th>At-a-glance effect</th></tr>
-                    <tr><td><b>Grappled</b></td><td>No movement/AoOs; −4 DEX; −2 attacks/CMB except grapple or escape; no two-hand actions. Casting needs concentration.</td></tr>
-                    <tr><td><b>Helpless</b></td><td>DEX 0 (−5); melee attackers +4; vulnerable to coup de grace.</td></tr>
-                    <tr><td><b>Incorporeal</b></td><td>Immune to nonmagical attacks; usually half damage from magic weapons/spells, but full from force and incorporeal sources.</td></tr>
-                    <tr><td><b>Invisible</b></td><td>+2 attacks against sighted foes; they lose DEX to AC; total concealment against sighted attackers.</td></tr>
-                    <tr><td><b>Nauseated</b></td><td>Only a move action; no attacks, spells, concentration, or other attention-demanding actions.</td></tr>
-                    <tr><td><b>Panicked</b></td><td>Drop held items and flee at top speed; −2 saves, skills, and ability checks. Cower if cornered.</td></tr>
-                    <tr><td><b>Paralyzed</b></td><td>Cannot move or physically act; STR/DEX 0 and helpless. Purely mental actions remain possible.</td></tr>
-                    <tr><td><b>Petrified</b></td><td>Unconscious stone. Missing pieces cause permanent harm if restored without them.</td></tr>
-                    <tr><td><b>Pinned</b></td><td>Immobile; denied DEX; −4 AC. Can try to escape and take verbal/mental actions; no S/M spells; casting needs concentration.</td></tr>
-                    <tr><td><b>Prone</b></td><td>−4 melee attacks; only crossbow/shuriken ranged; AC −4 vs melee, +4 vs ranged. Standing provokes.</td></tr>
-                    <tr><td><b>Shaken</b></td><td>−2 attacks, saves, skills, and ability checks.</td></tr>
-                    <tr><td><b>Sickened</b></td><td>−2 attacks, weapon damage, saves, skills, and ability checks.</td></tr>
-                    <tr><td><b>Squeezing</b></td><td>Half speed; −4 attacks and AC.</td></tr>
-                    <tr><td><b>Stable</b></td><td>Below 0 hp but not losing hp. Each hour, DC 10 CON − negative hp to become conscious and disabled.</td></tr>
-                    <tr><td><b>Staggered</b></td><td>One standard or move action, plus swift/free actions; no full-round actions.</td></tr>
-                    <tr><td><b>Stunned</b></td><td>No actions; drop held items; −2 AC and lose DEX to AC.</td></tr>
-                    <tr><td><b>Unconscious</b></td><td>Helpless; usually from negative hp or nonlethal damage exceeding current hp.</td></tr>
+                    <tr>
+                        <th>Condition</th>
+                        <th>At-a-glance effect</th>
+                    </tr>
+                    <tr>
+                        <td>Grappled</td>
+                        <td>No movement/AoOs; −4 DEX; −2 attacks/CMB except grapple or escape; no two-hand actions.
+                            Casting needs concentration.</td>
+                    </tr>
+                    <tr>
+                        <td>Helpless</td>
+                        <td>DEX 0 (−5); melee attackers +4; vulnerable to coup de grace.</td>
+                    </tr>
+                    <tr>
+                        <td>Incorporeal</td>
+                        <td>Immune to nonmagical attacks; usually half damage from magic weapons/spells, but full from
+                            force and incorporeal sources.</td>
+                    </tr>
+                    <tr>
+                        <td>Invisible</td>
+                        <td>+2 attacks against sighted foes; they lose DEX to AC; total concealment against sighted
+                            attackers.</td>
+                    </tr>
+                    <tr>
+                        <td>Nauseated</td>
+                        <td>Only a move action; no attacks, spells, concentration, or other attention-demanding actions.
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>Panicked</td>
+                        <td>Drop held items and flee at top speed; −2 saves, skills, and ability checks. Cower if
+                            cornered.</td>
+                    </tr>
+                    <tr>
+                        <td>Paralyzed</td>
+                        <td>Cannot move or physically act; STR/DEX 0 and helpless. Purely mental actions remain
+                            possible.</td>
+                    </tr>
+                    <tr>
+                        <td>Petrified</td>
+                        <td>Unconscious stone. Missing pieces cause permanent harm if restored without them.</td>
+                    </tr>
+                    <tr>
+                        <td>Pinned</td>
+                        <td>Immobile; denied DEX; −4 AC. Can try to escape and take verbal/mental actions; no S/M
+                            spells; casting needs concentration.</td>
+                    </tr>
+                    <tr>
+                        <td>Prone</td>
+                        <td>−4 melee attacks; only crossbow/shuriken ranged; AC −4 vs melee, +4 vs ranged. Standing
+                            provokes.</td>
+                    </tr>
+                    <tr>
+                        <td>Shaken</td>
+                        <td>−2 attacks, saves, skills, and ability checks.</td>
+                    </tr>
+                    <tr>
+                        <td>Sickened</td>
+                        <td>−2 attacks, weapon damage, saves, skills, and ability checks.</td>
+                    </tr>
+                    <tr>
+                        <td>Squeezing</td>
+                        <td>Half speed; −4 attacks and AC.</td>
+                    </tr>
+                    <tr>
+                        <td>Stable</td>
+                        <td>Below 0 hp but not losing hp. Each hour, DC 10 CON − negative hp to become conscious and
+                            disabled.</td>
+                    </tr>
+                    <tr>
+                        <td>Staggered</td>
+                        <td>One standard or move action, plus swift/free actions; no full-round actions.</td>
+                    </tr>
+                    <tr>
+                        <td>Stunned</td>
+                        <td>No actions; drop held items; −2 AC and lose DEX to AC.</td>
+                    </tr>
+                    <tr>
+                        <td>Unconscious</td>
+                        <td>Helpless; usually from negative hp or nonlethal damage exceeding current hp.</td>
+                    </tr>
                 </table>
             </div>
             <div class="wide">
                 <h2>Common beneficial effects <span class="sub">— not official conditions</span></h2>
                 <div class="effect-grid">
-                    <table class="compact-table">
-                        <tr><th>Effect</th><th>At-a-glance benefit</th></tr>
-                        <tr><td><b>Aid</b></td><td>Bless effect plus 1d8 + CL temp hp, max +10.</td></tr>
-                        <tr><td><b>Bless</b></td><td>+1 morale attacks and saves vs fear.</td></tr>
-                        <tr><td><b>Guidance</b></td><td>+1 competence on one attack, save, or skill check.</td></tr>
+                    <table>
+                        <tr>
+                            <th>Effect</th>
+                            <th>At-a-glance benefit</th>
+                        </tr>
+                        <tr>
+                            <td>Aid</td>
+                            <td>Bless effect plus 1d8 + CL temp hp, max +10.</td>
+                        </tr>
+                        <tr>
+                            <td>Bless</td>
+                            <td>+1 morale attacks and saves vs fear.</td>
+                        </tr>
+                        <tr>
+                            <td>Guidance</td>
+                            <td>+1 competence on one attack, save, or skill check.</td>
+                        </tr>
                     </table>
-                    <table class="compact-table">
-                        <tr><th>Effect</th><th>At-a-glance benefit</th></tr>
-                        <tr><td><b>Heroism</b></td><td>+2 morale attacks, saves, and skills.</td></tr>
-                        <tr><td><b>Inspire courage</b></td><td>+1 competence attacks/weapon damage; +1 morale saves vs charm/fear. Scales.</td></tr>
-                        <tr><td><b>Shield of faith</b></td><td>+2 deflection AC; +1 per 6 CL, max +5.</td></tr>
+                    <table>
+                        <tr>
+                            <th>Effect</th>
+                            <th>At-a-glance benefit</th>
+                        </tr>
+                        <tr>
+                            <td>Heroism</td>
+                            <td>+2 morale attacks, saves, and skills.</td>
+                        </tr>
+                        <tr>
+                            <td>Inspire courage</td>
+                            <td>+1 competence attacks/weapon damage; +1 morale saves vs charm/fear. Scales.</td>
+                        </tr>
+                        <tr>
+                            <td>Shield of faith</td>
+                            <td>+2 deflection AC; +1 per 6 CL, max +5.</td>
+                        </tr>
                     </table>
                 </div>
-                <p class="small">Bonuses of the same type usually do not stack. Use the highest unless a rule says otherwise.</p>
+                <p class="small">Bonuses of the same type usually do not stack. Use the highest unless a rule says
+                    otherwise.</p>
             </div>
         </div>
         <footer><span></span><span>Page 2</span></footer>
@@ -585,7 +572,10 @@
                     combatants do not act. Everyone is flat-footed until their first turn unless an ability says
                     otherwise. If everyone or no one is aware, skip the surprise round.</div>
                 <h2>Common free actions</h2>
-                <p><b>On your turn:</b> cease concentrating on a spell; drop an item; drop prone; prepare ordinary spell components or a focus; speak briefly. Drawing ammunition is part of the attack, not a separate action. Free actions generally do not provoke, and the GM may limit how many are reasonable. Speaking can occur outside your turn.</p>
+                <p><b>On your turn:</b> cease concentrating on a spell; drop an item; drop prone; prepare ordinary spell
+                    components or a focus; speak briefly. Drawing ammunition is part of the attack, not a separate
+                    action. Free actions generally do not provoke, and the GM may limit how many are reasonable.
+                    Speaking can occur outside your turn.</p>
             </div>
             <div>
                 <h2>Combat maneuvers</h2>
@@ -599,46 +589,46 @@
                         <th>Use / common action</th>
                     </tr>
                     <tr>
-                        <td><b>Trip</b></td>
+                        <td>Trip</td>
                         <td>Knock target prone; replaces a melee attack. Target must be at most one size category larger
                             (unless an ability changes this). Fail by ≥10: you fall prone.</td>
                     </tr>
                     <tr>
-                        <td><b>Disarm</b></td>
+                        <td>Disarm</td>
                         <td>Make target drop a held item; replaces a melee attack. Fail by ≥10: drop your weapon.</td>
                     </tr>
                     <tr>
-                        <td><b>Sunder</b></td>
+                        <td>Sunder</td>
                         <td>Damage a held/carried object; replaces a melee attack.</td>
                     </tr>
                     <tr>
-                        <td><b>Bull rush</b></td>
+                        <td>Bull rush</td>
                         <td>Push target 5 ft, +5 ft for each 5 by which you exceed CMD; standard action or part of a
                             charge.</td>
                     </tr>
                     <tr>
-                        <td><b>Drag</b></td>
+                        <td>Drag</td>
                         <td>Pull target 5 ft, +5 ft for each 5 by which you exceed CMD; standard action.</td>
                     </tr>
                     <tr>
-                        <td><b>Overrun</b></td>
+                        <td>Overrun</td>
                         <td>Move through target; exceed CMD by 5 to knock it prone.</td>
                     </tr>
                     <tr>
-                        <td><b>Grapple</b></td>
+                        <td>Grapple</td>
                         <td>Grab target as a standard action; grapple actions on later rounds follow their own rules.
                         </td>
                     </tr>
                     <tr>
-                        <td><b>Dirty trick</b></td>
+                        <td>Dirty trick</td>
                         <td>Impose a brief condition (such as blinded or shaken); standard action.</td>
                     </tr>
                     <tr>
-                        <td><b>Reposition</b></td>
+                        <td>Reposition</td>
                         <td>Move a foe to another square in your reach; standard action.</td>
                     </tr>
                     <tr>
-                        <td><b>Steal</b></td>
+                        <td>Steal</td>
                         <td>Take an item that is not held; standard action.</td>
                     </tr>
                 </table>
@@ -646,6 +636,20 @@
                     Improved feat or specific ability often removes this. If the target's AoO hits, subtract the damage
                     dealt from your maneuver check. Individual maneuvers have limits and exceptions; check their text.
                 </p>
+                <h2>Combat maneuver size modifiers</h2>
+                <table>
+                    <tr><th>Size</th><th>Special CMB/CMD modifier</th></tr>
+                    <tr><td>Fine</td><td>−8</td></tr>
+                    <tr><td>Diminutive</td><td>−4</td></tr>
+                    <tr><td>Tiny</td><td>−2</td></tr>
+                    <tr><td>Small</td><td>−1</td></tr>
+                    <tr><td>Medium</td><td>0</td></tr>
+                    <tr><td>Large</td><td>+1</td></tr>
+                    <tr><td>Huge</td><td>+2</td></tr>
+                    <tr><td>Gargantuan</td><td>+4</td></tr>
+                    <tr><td>Colossal</td><td>+8</td></tr>
+                </table>
+                <p class="small">This special modifier differs from the ordinary size modifier to AC and attack rolls.</p>
             </div>
         </div>
         <footer><span></span><span>Page 3</span></footer>
@@ -662,60 +666,63 @@
             <div>
                 <h2>Attack rules and modifiers</h2>
                 <table>
-                    <tr><th>Situation</th><th>Quick rule</th></tr>
                     <tr>
-                        <td><b>Aid another</b></td>
+                        <th>Situation</th>
+                        <th>Quick rule</th>
+                    </tr>
+                    <tr>
+                        <td>Aid another</td>
                         <td>Combat: standard action, melee attack vs AC 10 → ally +2 on next attack against that foe or
                             +2 AC vs that foe’s next attack. Skills: DC 10 skill check → +2 on ally’s check where aiding
                             is possible.</td>
                     </tr>
                     <tr>
-                        <td><b>Ammunition</b></td>
-                        <td><span class="house-inline"><b>★ House rule:</b> Ordinary arrows and bolts are unlimited and
-                                need not be purchased.</span></td>
+                        <td>Ammunition</td>
+                        <td><b class="accent">★ House rule:</b> Ordinary arrows and bolts are unlimited and
+                                need not be purchased.</td>
                     </tr>
                     <tr>
-                        <td><b>Charge</b></td>
+                        <td>Charge</td>
                         <td>+2 melee attack; −2 AC until start of next turn.</td>
                     </tr>
                     <tr>
-                        <td><b>Concealment</b></td>
+                        <td>Concealment</td>
                         <td>After a successful attack roll, roll d100: 21–100 hits with 20% concealment; 51–100 with
                             total concealment (50%). Total concealment also prevents directly targeting a creature with
                             an attack.</td>
                     </tr>
                     <tr>
-                        <td><b>Cover / soft cover</b></td>
+                        <td>Cover / soft cover</td>
                         <td>Cover grants +4 AC and +2 Reflex against attacks crossing it; creatures give soft cover (+4
                             AC, no Reflex bonus). Cover may block attacks of opportunity.</td>
                     </tr>
                     <tr>
-                        <td><b>Critical hits</b></td>
-                        <td><span class="house-inline"><b>★ House rule:</b> Critical threats that hit apply immediately;
+                        <td>Critical hits</td>
+                        <td><b class="accent">★ House rule:</b> Critical threats that hit apply immediately;
                                 natural 1 fumbles also apply immediately. No confirmation roll. Draw from the table’s
                                 online card deck. Roll weapon damage with a multiplier one step lower (×2 → ×1; ×3 →
-                                ×2), then apply the card effect.</span></td>
+                                ×2), then apply the card effect.</td>
                     </tr>
                     <tr>
-                        <td><b>DR / resistance</b></td>
+                        <td>DR / resistance</td>
                         <td>DR subtracts from qualifying weapon/physical attack damage unless bypassed; energy
                             resistance subtracts from matching energy damage per attack.</td>
                     </tr>
                     <tr>
-                        <td><b>Fighting defensively</b></td>
+                        <td>Fighting defensively</td>
                         <td>−4 attacks; +2 dodge AC (+3 with 3+ Acrobatics ranks).</td>
                     </tr>
                     <tr>
-                        <td><b>Flanking</b></td>
+                        <td>Flanking</td>
                         <td>+2 melee attack when you and a threatening ally are on opposite sides/corners.</td>
                     </tr>
                     <tr>
-                        <td><b>Ranged into melee</b></td>
+                        <td>Ranged into melee</td>
                         <td>−4 attack when target is in melee with an ally; −2 if target is 2 size categories larger
                             than allies; none if 3+ categories larger or with Precise Shot.</td>
                     </tr>
                     <tr>
-                        <td><b>Total defense</b></td>
+                        <td>Total defense</td>
                         <td>Standard action; +4 dodge AC (+6 with 3+ Acrobatics ranks); cannot attack or make AoOs.</td>
                     </tr>
                 </table>
@@ -730,7 +737,7 @@
                     negative hp total (e.g. −3 hp → check modifier −3; effectively DC 13 before CON modifier). Natural
                     20 succeeds. A successful <b>DC 15 Heal check</b> or any hp healing can stabilize you.</p>
                 <h2>Rest and long-term care</h2>
-                <table >
+                <table>
                     <tr>
                         <th>Rest</th>
                         <th>Natural recovery</th>
@@ -760,7 +767,7 @@
         </div>
         <footer><span></span><span>Page 4</span></footer>
     </section>
-      <section class="sheet">
+    <section class="sheet">
         <header>
             <div>
                 <div class="tag">Pathfinder first edition · Table reference</div>
@@ -775,7 +782,7 @@
                         bonuses ≥ DC</span><br>Usually INT for wizard; WIS for cleric/druid/ranger; CHA for
                     bard/paladin/sorcerer. Use your class feature for other casters. <b>Constitution is not the
                         default.</b></div>
-                <table >
+                <table>
                     <tr>
                         <th>When casting...</th>
                         <th>DC</th>
@@ -850,51 +857,98 @@
         <div class="grid">
             <div>
                 <h2>Leveling up</h2>
-                <div class="box house"><b>★ House rule · Hit points</b><br>Both the player and GM roll the character’s Hit Die. Use the higher result, then add the CON modifier for HP gained that level (minimum 1 HP).</div>
+                <div class="box call"><b>★ House rule · Hit points</b><br>Both the player and GM roll the character’s
+                    Hit Die. Use the higher result, then add the CON modifier for HP gained that level (minimum 1 HP).
+                </div>
                 <h3>Update checklist</h3>
                 <ul>
                     <li>Add the new class level, Hit Die, BAB, base saves, class features, and spell progression.</li>
                     <li>Add skill ranks; check class-skill bonuses and maximum ranks.</li>
                     <li>Apply feats and ability-score increases when the new level grants them.</li>
-                    <li>Recalculate HP, AC, attacks, CMB/CMD, saves, initiative, skills, spell DCs, and uses per day.</li>
+                    <li>Recalculate HP, AC, attacks, CMB/CMD, saves, initiative, skills, spell DCs, and uses per day.
+                    </li>
                     <li>Review new spells, prepared spells, equipment, carrying capacity, and prerequisites.</li>
                 </ul>
                 <h2>Coins</h2>
-                <div class="box call"><b>10 cp = 1 sp · 10 sp = 1 gp · 10 gp = 1 pp</b><br>Therefore 1 gp = 100 cp; 1 pp = 100 sp = 1,000 cp. Standard coins weigh 1 lb per 50 coins.</div>
+                <div class="box call"><b>10 cp = 1 sp · 10 sp = 1 gp · 10 gp = 1 pp</b><br>Therefore 1 gp = 100 cp; 1 pp
+                    = 100 sp = 1,000 cp. Standard coins weigh 1 lb per 50 coins.</div>
                 <h2>Typical skill DCs</h2>
-                <table class="compact-table">
-                    <tr><th>Check</th><th>Typical DC / modifier</th></tr>
-                    <tr><td>Acrobatics</td><td>Move through threatened area: CMD; through enemy’s square: CMD +5.</td></tr>
-                    <tr><td>Climb</td><td>Knotted rope by wall 0; rope by wall or knotted rope 5; unknotted rope/tree 15; rough rock/brick 25.</td></tr>
-                    <tr><td>Swim</td><td>Calm 10; rough 15; stormy 20. Normally move at quarter speed.</td></tr>
-                    <tr><td>Heal</td><td>First aid or stop bleed 15; treat deadly wounds 20; poison/disease uses its save DC.</td></tr>
-                    <tr><td>Knowledge</td><td>Identify a creature’s abilities or weaknesses: 10 + its CR.</td></tr>
-                    <tr><td>Spellcraft</td><td>Identify spell being cast: 15 + spell level; magic item with <em>detect magic</em>: 15 + CL.</td></tr>
-                    <tr><td>Perception</td><td>+1 DC per 10 ft; closed door +5; wall +10/ft; invisible creature +20.</td></tr>
+                <table>
+                    <tr>
+                        <th>Check</th>
+                        <th>Typical DC / modifier</th>
+                    </tr>
+                    <tr>
+                        <td>Acrobatics</td>
+                        <td>Move through threatened area: CMD; through enemy’s square: CMD +5.</td>
+                    </tr>
+                    <tr>
+                        <td>Climb</td>
+                        <td>Knotted rope by wall 0; rope by wall or knotted rope 5; unknotted rope/tree 15; rough
+                            rock/brick 25.</td>
+                    </tr>
+                    <tr>
+                        <td>Swim</td>
+                        <td>Calm 10; rough 15; stormy 20. Normally move at quarter speed.</td>
+                    </tr>
+                    <tr>
+                        <td>Heal</td>
+                        <td>First aid or stop bleed 15; treat deadly wounds 20; poison/disease uses its save DC.</td>
+                    </tr>
+                    <tr>
+                        <td>Knowledge</td>
+                        <td>Identify a creature’s abilities or weaknesses: 10 + its CR.</td>
+                    </tr>
+                    <tr>
+                        <td>Spellcraft</td>
+                        <td>Identify spell being cast: 15 + spell level; magic item with <em>detect magic</em>: 15 + CL.
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>Perception</td>
+                        <td>+1 DC per 10 ft; closed door +5; wall +10/ft; invisible creature +20.</td>
+                    </tr>
                 </table>
                 <p class="small">These are common benchmarks; circumstances and the GM can change the DC.</p>
             </div>
             <div>
                 <h2>Bonus stacking</h2>
-                <p>Different bonus <em>types</em> usually stack. Same-type bonuses usually do not: use the highest. Dodge bonuses and most circumstance bonuses stack; untyped bonuses generally stack unless from the same source. Penalties usually stack unless stated otherwise.</p>
-                <div class="box"><b>Fast check:</b> write the bonus type beside temporary effects. If two effects share a type, keep only the larger value unless the rule explicitly says they stack.</div>
+                <p>Different bonus <em>types</em> usually stack. Same-type bonuses usually do not: use the highest.
+                    Dodge bonuses and most circumstance bonuses stack; untyped bonuses generally stack unless from the
+                    same source. Penalties usually stack unless stated otherwise.</p>
+                <div class="box"><b>Fast check:</b> write the bonus type beside temporary effects. If two effects share
+                    a type, keep only the larger value unless the rule explicitly says they stack.</div>
                 <h2>Short reminders</h2>
                 <table>
                     <tr>
                         <th>Term</th>
                         <th>Meaning</th>
                     </tr>
-                    <tr><td>BAB</td><td>Base attack bonus from class levels</td></tr>
-                    <tr><td>CL</td><td>Caster level; not necessarily character level</td></tr>
-                    <tr><td>Spell level</td><td>Level of the spell (e.g. fireball is 3), not CL</td></tr>
-                    <tr><td>DC</td><td>Difficulty class; meet or exceed it</td></tr>
-                    <tr><td>AoO</td><td>Attack of opportunity, normally one melee attack</td></tr>
-                    <tr><td>CMB / CMD</td><td>Combat Maneuver Bonus / Defense</td></tr>
+                    <tr>
+                        <td>BAB</td>
+                        <td>Base attack bonus from class levels</td>
+                    </tr>
+                    <tr>
+                        <td>CL</td>
+                        <td>Caster level; not necessarily character level</td>
+                    </tr>
+                    <tr>
+                        <td>Spell level</td>
+                        <td>Level of the spell (e.g. fireball is 3), not CL</td>
+                    </tr>
+                    <tr>
+                        <td>DC</td>
+                        <td>Difficulty class; meet or exceed it</td>
+                    </tr>
+                    <tr>
+                        <td>AoO</td>
+                        <td>Attack of opportunity, normally one melee attack</td>
+                    </tr>
+                    <tr>
+                        <td>CMB / CMD</td>
+                        <td>Combat Maneuver Bonus / Defense</td>
+                    </tr>
                 </table>
-                <h2>Combat maneuver size</h2>
-                <p ><b>Special size modifier:</b> Fine −8 · Diminutive −4 · Tiny −2 · Small −1 · Medium 0 · Large +1 ·
-                    Huge +2 · Gargantuan +4 · Colossal +8. This differs from the ordinary size modifier to AC and
-                    attack rolls.</p>
             </div>
         </div>
         <footer><span></span><span>Page 6</span></footer>
