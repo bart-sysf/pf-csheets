@@ -80,7 +80,7 @@
             font-family: "Roboto Slab", Rockwell, "Bookman Old Style", serif;
             font-size: 15px;
             color: var(--accent);
-            margin: 10px 0 5px;
+            margin: 12px 0 5px;
             border-bottom: 1px solid var(--line);
             padding-bottom: 2px
         }
@@ -88,7 +88,7 @@
         h3 {
             font-family: "Roboto Slab", Rockwell, "Bookman Old Style", serif;
             font-size: 12px;
-            margin: 8px 0 3px
+            margin: 12px 0 3px
         }
 
         p {
@@ -100,7 +100,8 @@
             color: var(--muted)
         }
 
-        .grid {
+        .grid,
+        .effect-grid {
             display: grid;
             grid-template-columns: 1fr 1fr;
             gap: 0 13px
@@ -110,22 +111,22 @@
             grid-column: 1/-1
         }
 
+        .grid > div:not(.wide) > h2:first-child,
+        .grid > div:not(.wide) > h3:first-child {
+            margin-top: 0
+        }
+
         .sheet:nth-of-type(3) {
             font-size: 12px;
             line-height: 1.25
         }
 
         .sheet:nth-of-type(3) h2 {
-            margin: 5px 0 3px
+            margin: 12px 0 3px
         }
 
         .sheet:nth-of-type(3) p {
             margin: 3px 0 5px
-        }
-
-        .sheet:nth-of-type(3) table {
-            font-size: 10.5px;
-            line-height: 1.22
         }
 
         .sheet:nth-of-type(3) .box {
@@ -158,21 +159,13 @@
         table {
             width: 100%;
             border-collapse: collapse;
-            font-size: 11.5px
-        }
-
-        .compact-table {
-            font-size: 10.5px
-        }
-
-        .compact-table th,
-        .compact-table td {
-            padding: 2px 4px
+            font-size: 11px;
+            line-height: 1.22
         }
 
         th,
         td {
-            padding: 3px 5px;
+            padding: 2px 4px;
             border-bottom: 1px solid var(--line);
             vertical-align: top;
             text-align: left
@@ -201,27 +194,12 @@
             color: #613d30
         }
 
-        .condition-table {
-            font-size: 9.25px;
-            line-height: 1.2
-        }
-
-        .condition-table th,
-        .condition-table td {
-            padding: 2px 3px
-        }
-
         .condition-table td:first-child {
             width: 25%
         }
 
-        .modifier-matrix {
-            font: 500 9.5px/1.2 "Roboto Slab", Rockwell, "Bookman Old Style", serif
-        }
-
         .modifier-matrix th,
         .modifier-matrix td {
-            padding: 2px 3px;
             text-align: center;
             vertical-align: middle
         }
@@ -250,12 +228,11 @@
         .modifier-table {
             table-layout: fixed;
             margin-top: 6px;
-            font: 500 9.5px/1.2 "Roboto Slab", Rockwell, "Bookman Old Style", serif
+            font-weight: 500
         }
 
         .modifier-table th,
         .modifier-table td {
-            padding: 2px 1px;
             text-align: center;
             vertical-align: middle
         }
@@ -434,14 +411,14 @@
                 <h2>Attack-roll modifiers</h2>
                 <table class="modifier-matrix">
                     <tr><th>Attacker is / has</th><th>Melee</th><th>Ranged</th></tr>
-                    <tr><td>Dazzled</td><td>−1</td><td>−1</td></tr>
-                    <tr><td>Entangled</td><td>−2</td><td>−2</td></tr>
+                    <tr><td>Dazzled</td><td colspan="2">−1</td></tr>
+                    <tr><td>Entangled</td><td colspan="2">−2</td></tr>
                     <tr><td>Flanking defender</td><td>+2</td><td>—</td></tr>
-                    <tr><td>Invisible</td><td>+2; deny DEX</td><td>+2; deny DEX</td></tr>
+                    <tr><td>Invisible</td><td colspan="2">+2; deny DEX</td></tr>
                     <tr><td>Higher ground</td><td>+1</td><td>+0</td></tr>
                     <tr><td>Prone</td><td>−4</td><td>—*</td></tr>
-                    <tr><td>Shaken / frightened</td><td>−2</td><td>−2</td></tr>
-                    <tr><td>Squeezing</td><td>−4</td><td>−4</td></tr>
+                    <tr><td>Shaken / frightened</td><td colspan="2">−2</td></tr>
+                    <tr><td>Squeezing</td><td colspan="2">−4</td></tr>
                 </table>
                 <p class="small">* While prone, a creature can use a crossbow or shuriken. “Deny DEX” means the defender
                     loses any positive DEX bonus to AC against that attack.</p>
@@ -449,19 +426,19 @@
                 <h2>Armor Class modifiers</h2>
                 <table class="modifier-matrix">
                     <tr><th>Defender is / has</th><th>vs melee</th><th>vs ranged</th></tr>
-                    <tr><td>Cover</td><td>+4</td><td>+4</td></tr>
-                    <tr><td>Blinded</td><td>−2; lose DEX</td><td>−2; lose DEX</td></tr>
+                    <tr><td>Cover</td><td colspan="2">+4</td></tr>
+                    <tr><td>Blinded</td><td colspan="2">−2; lose DEX</td></tr>
                     <tr><td>Concealed / invisible</td><td colspan="2">Miss chance; see page 4</td></tr>
-                    <tr><td>Cowering</td><td>−2; lose DEX</td><td>−2; lose DEX</td></tr>
-                    <tr><td>Entangled</td><td>+0; DEX −4</td><td>+0; DEX −4</td></tr>
-                    <tr><td>Flat-footed</td><td>Lose DEX</td><td>Lose DEX</td></tr>
-                    <tr><td>Grappling*</td><td>Lose DEX</td><td>Lose DEX</td></tr>
+                    <tr><td>Cowering</td><td colspan="2">−2; lose DEX</td></tr>
+                    <tr><td>Entangled</td><td colspan="2">+0; DEX −4</td></tr>
+                    <tr><td>Flat-footed</td><td colspan="2">Lose DEX</td></tr>
+                    <tr><td>Grappling*</td><td colspan="2">Lose DEX</td></tr>
                     <tr><td>Helpless</td><td>−4; lose DEX</td><td>+0; lose DEX</td></tr>
                     <tr><td>Kneeling / sitting</td><td>−2</td><td>+2</td></tr>
                     <tr><td>Pinned</td><td>−4; lose DEX</td><td>+0; lose DEX</td></tr>
                     <tr><td>Prone</td><td>−4</td><td>+4</td></tr>
                     <tr><td>Squeezing</td><td>−4</td><td>−4</td></tr>
-                    <tr><td>Stunned</td><td>−2; lose DEX</td><td>−2; lose DEX</td></tr>
+                    <tr><td>Stunned</td><td colspan="2">−2; lose DEX</td></tr>
                 </table>
                 <p class="small">* Against attackers outside the grapple. These tables reproduce the core common combat
                     modifier tables; named conditions have fuller rules on page 2.</p>
@@ -517,6 +494,7 @@
                     <tr><td><b>Prone</b></td><td>−4 melee attacks; only crossbow/shuriken ranged; AC −4 vs melee, +4 vs ranged. Standing provokes.</td></tr>
                     <tr><td><b>Shaken</b></td><td>−2 attacks, saves, skills, and ability checks.</td></tr>
                     <tr><td><b>Sickened</b></td><td>−2 attacks, weapon damage, saves, skills, and ability checks.</td></tr>
+                    <tr><td><b>Squeezing</b></td><td>Half speed; −4 attacks and AC.</td></tr>
                     <tr><td><b>Stable</b></td><td>Below 0 hp but not losing hp. Each hour, DC 10 CON − negative hp to become conscious and disabled.</td></tr>
                     <tr><td><b>Staggered</b></td><td>One standard or move action, plus swift/free actions; no full-round actions.</td></tr>
                     <tr><td><b>Stunned</b></td><td>No actions; drop held items; −2 AC and lose DEX to AC.</td></tr>
@@ -524,14 +502,21 @@
                 </table>
             </div>
             <div class="wide">
-                <p class="small"><b>Squeezing:</b> <span >Half speed; −4 attacks and AC.</span> <span class="sub">Combat state, not a condition-glossary entry.</span></p>
                 <h2>Common beneficial effects <span class="sub">— not official conditions</span></h2>
-                <table class="compact-table">
-                    <tr><th>Effect</th><th>At-a-glance benefit</th><th>Effect</th><th>At-a-glance benefit</th></tr>
-                    <tr><td><b>Bless</b></td><td>+1 morale attacks and saves vs fear.</td><td><b>Inspire courage</b></td><td>+1 competence attacks/weapon damage; +1 morale saves vs charm/fear. Scales.</td></tr>
-                    <tr><td><b>Guidance</b></td><td>+1 competence on one attack, save, or skill check.</td><td><b>Heroism</b></td><td>+2 morale attacks, saves, and skills.</td></tr>
-                    <tr><td><b>Aid</b></td><td>Bless effect plus 1d8 + CL temp hp, max +10.</td><td><b>Shield of faith</b></td><td>+2 deflection AC; +1 per 6 CL, max +5.</td></tr>
-                </table>
+                <div class="effect-grid">
+                    <table class="compact-table">
+                        <tr><th>Effect</th><th>At-a-glance benefit</th></tr>
+                        <tr><td><b>Aid</b></td><td>Bless effect plus 1d8 + CL temp hp, max +10.</td></tr>
+                        <tr><td><b>Bless</b></td><td>+1 morale attacks and saves vs fear.</td></tr>
+                        <tr><td><b>Guidance</b></td><td>+1 competence on one attack, save, or skill check.</td></tr>
+                    </table>
+                    <table class="compact-table">
+                        <tr><th>Effect</th><th>At-a-glance benefit</th></tr>
+                        <tr><td><b>Heroism</b></td><td>+2 morale attacks, saves, and skills.</td></tr>
+                        <tr><td><b>Inspire courage</b></td><td>+1 competence attacks/weapon damage; +1 morale saves vs charm/fear. Scales.</td></tr>
+                        <tr><td><b>Shield of faith</b></td><td>+2 deflection AC; +1 per 6 CL, max +5.</td></tr>
+                    </table>
+                </div>
                 <p class="small">Bonuses of the same type usually do not stack. Use the highest unless a rule says otherwise.</p>
             </div>
         </div>
@@ -676,15 +661,8 @@
         <div class="grid">
             <div>
                 <h2>Attack rules and modifiers</h2>
-                <table >
-                    <tr>
-                        <th>Situation</th>
-                        <th>Quick rule</th>
-                    </tr>
-                    <tr>
-                        <td><b>Flanking</b></td>
-                        <td>+2 melee attack when you and a threatening ally are on opposite sides/corners.</td>
-                    </tr>
+                <table>
+                    <tr><th>Situation</th><th>Quick rule</th></tr>
                     <tr>
                         <td><b>Aid another</b></td>
                         <td>Combat: standard action, melee attack vs AC 10 → ally +2 on next attack against that foe or
@@ -692,20 +670,24 @@
                             is possible.</td>
                     </tr>
                     <tr>
-                        <td><b>Ranged into melee</b></td>
-                        <td>−4 attack when target is in melee with an ally; −2 if target is 2 size categories larger
-                            than allies; none if 3+ categories larger or with Precise Shot.</td>
-                    </tr>
-                    <tr>
-                        <td>Ammunition</td>
+                        <td><b>Ammunition</b></td>
                         <td><span class="house-inline"><b>★ House rule:</b> Ordinary arrows and bolts are unlimited and
                                 need not be purchased.</span></td>
+                    </tr>
+                    <tr>
+                        <td><b>Charge</b></td>
+                        <td>+2 melee attack; −2 AC until start of next turn.</td>
                     </tr>
                     <tr>
                         <td><b>Concealment</b></td>
                         <td>After a successful attack roll, roll d100: 21–100 hits with 20% concealment; 51–100 with
                             total concealment (50%). Total concealment also prevents directly targeting a creature with
                             an attack.</td>
+                    </tr>
+                    <tr>
+                        <td><b>Cover / soft cover</b></td>
+                        <td>Cover grants +4 AC and +2 Reflex against attacks crossing it; creatures give soft cover (+4
+                            AC, no Reflex bonus). Cover may block attacks of opportunity.</td>
                     </tr>
                     <tr>
                         <td><b>Critical hits</b></td>
@@ -720,21 +702,21 @@
                             resistance subtracts from matching energy damage per attack.</td>
                     </tr>
                     <tr>
-                        <td>Fighting defensively</td>
+                        <td><b>Fighting defensively</b></td>
                         <td>−4 attacks; +2 dodge AC (+3 with 3+ Acrobatics ranks).</td>
                     </tr>
                     <tr>
-                        <td>Total defense</td>
+                        <td><b>Flanking</b></td>
+                        <td>+2 melee attack when you and a threatening ally are on opposite sides/corners.</td>
+                    </tr>
+                    <tr>
+                        <td><b>Ranged into melee</b></td>
+                        <td>−4 attack when target is in melee with an ally; −2 if target is 2 size categories larger
+                            than allies; none if 3+ categories larger or with Precise Shot.</td>
+                    </tr>
+                    <tr>
+                        <td><b>Total defense</b></td>
                         <td>Standard action; +4 dodge AC (+6 with 3+ Acrobatics ranks); cannot attack or make AoOs.</td>
-                    </tr>
-                    <tr>
-                        <td>Charge</td>
-                        <td>+2 melee attack; −2 AC until start of next turn.</td>
-                    </tr>
-                    <tr>
-                        <td>Cover / soft cover</td>
-                        <td>Cover grants +4 AC and +2 Reflex against attacks crossing it; creatures give soft cover (+4
-                            AC, no Reflex bonus). Cover may block attacks of opportunity.</td>
                     </tr>
                 </table>
             </div>
