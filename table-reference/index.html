@@ -114,7 +114,8 @@
                     </tr>
                     <tr>
                         <td>AC</td>
-                        <td class="formula">10 + armor + shield + DEX bonus<sup>1</sup> + size mod + natural armor + deflection +
+                        <td class="formula">10 + armor + shield + DEX bonus<sup>1</sup> + size mod + natural armor +
+                            deflection +
                             other</td>
                     </tr>
                     <tr>
@@ -344,18 +345,18 @@
                     </tr>
                     <tr>
                         <td>Blinded</td>
-                        <td>−2 AC; lose DEX to AC; −4 most STR/DEX skills; foes have total concealment. Half speed or DC
-                            10 Acrobatics.</td>
+                        <td>−2 AC; lose DEX to AC; −4 most STR/DEX skills (= −2 STR/DEX mod); foes have total
+                            concealment. Half speed or DC 10 Acrobatics. Fail = Prone.</td>
                     </tr>
                     <tr>
                         <td>Broken</td>
                         <td>Weapon −2 attack/damage and 20/×2 crit; armor/shield half AC bonus; armor doubles ACP;
-                            wand/staff uses double charges.</td>
+                            wand/staff uses double charges. Skill checks −2. Worth = 75% of normal value.</td>
                     </tr>
                     <tr>
                         <td>Confused</td>
                         <td>Each turn d%: 01–25 normal; 26–50 babble; 51–75 self-hit for 1d8 + STR; 76–100 attack
-                            nearest.</td>
+                            nearest (excl. familiar).</td>
                     </tr>
                     <tr>
                         <td>Cowering</td>
@@ -381,13 +382,13 @@
                     </tr>
                     <tr>
                         <td>Disabled</td>
-                        <td>At 0 hp, or stable and conscious below 0: one standard or move; half speed. Strenuous
-                            standard action causes 1 damage.</td>
+                        <td>At 0 hp, or stable and conscious below 0: one standard or move action; can take swift,
+                            immediate and free; half speed. Strenuous standard action causes 1 damage.</td>
                     </tr>
                     <tr>
                         <td>Dying</td>
-                        <td>Below 0 hp and unstable: unconscious. Each turn DC 10 CON − negative hp; failure loses 1 hp.
-                            Dead at −CON.</td>
+                        <td>Below 0 hp and unstable: unconscious. Each turn DC 10 CON - negative hp; failure
+                            loses 1 hp. Dead at −CON.</td>
                     </tr>
                     <tr>
                         <td>Energy drained</td>
@@ -395,12 +396,14 @@
                     </tr>
                     <tr>
                         <td>Entangled</td>
-                        <td>Half speed; no run/charge; −2 attacks, −4 DEX. Casting: concentration DC 15 + spell level.
+                        <td>Half speed; no run/charge; −2 attacks, −4 DEX (= −2 DEX mod). Casting: concentration DC 15 +
+                            spell level.
                         </td>
                     </tr>
                     <tr>
                         <td>Exhausted</td>
-                        <td>Half speed; no run/charge; −6 STR/DEX. One hour of complete rest reduces this to fatigued.
+                        <td>Half speed; no run/charge; −6 STR/DEX (= −3 STR/DEX mod). One hour of complete rest reduces
+                            this to fatigued.
                         </td>
                     </tr>
                     <tr>
@@ -410,7 +413,7 @@
                     </tr>
                     <tr>
                         <td>Fatigued</td>
-                        <td>No run/charge; −2 STR/DEX. Eight hours of complete rest removes it.</td>
+                        <td>No run/charge; −2 STR/DEX (= −1 STR/DEX mod). Eight hours of complete rest removes it.</td>
                     </tr>
                     <tr>
                         <td>Flat-footed</td>
@@ -430,12 +433,13 @@
                     </tr>
                     <tr>
                         <td>Grappled</td>
-                        <td>No movement/AoOs; −4 DEX; −2 attacks/CMB except grapple or escape; no two-hand actions.
-                            Casting needs concentration.</td>
+                        <td>No movement/AoOs; −4 DEX (= −2 DEX mod); −2 attacks/CMB except grapple or escape; no
+                            two-hand actions. No stealth. Casting needs concentration (DC 10 + grappler CMB + spell
+                            level).</td>
                     </tr>
                     <tr>
                         <td>Helpless</td>
-                        <td>DEX 0 (−5); melee attackers +4; vulnerable to coup de grace.</td>
+                        <td>DEX 0 (-5 total DEX mod); melee attackers +4; vulnerable to coup de grace.</td>
                     </tr>
                     <tr>
                         <td>Incorporeal</td>
@@ -449,7 +453,8 @@
                     </tr>
                     <tr>
                         <td>Nauseated</td>
-                        <td>Only a move action; no attacks, spells, concentration, or other attention-demanding actions.
+                        <td>Only a single move action; no attacks, spells, concentration, or other attention-demanding
+                            actions.
                         </td>
                     </tr>
                     <tr>
@@ -459,8 +464,8 @@
                     </tr>
                     <tr>
                         <td>Paralyzed</td>
-                        <td>Cannot move or physically act; STR/DEX 0 and helpless. Purely mental actions remain
-                            possible.</td>
+                        <td>Cannot move or physically act; STR/DEX 0 (−5 total STR/DEX mod) and helpless. Purely mental
+                            actions remain possible.</td>
                     </tr>
                     <tr>
                         <td>Petrified</td>
@@ -469,12 +474,12 @@
                     <tr>
                         <td>Pinned</td>
                         <td>Immobile; denied DEX; −4 AC. Can try to escape and take verbal/mental actions; no S/M
-                            spells; casting needs concentration.</td>
+                            spells; casting needs concentration (DC 10 + grappler CMB + spell level).</td>
                     </tr>
                     <tr>
                         <td>Prone</td>
                         <td>−4 melee attacks; only crossbow/shuriken ranged; AC −4 vs melee, +4 vs ranged. Standing
-                            provokes.</td>
+                            (move action) provokes.</td>
                     </tr>
                     <tr>
                         <td>Shaken</td>
@@ -507,6 +512,7 @@
                     </tr>
                 </table>
             </div>
+
             <div class="wide">
                 <h2>Common beneficial effects <span class="sub">— not official conditions</span></h2>
                 <div class="effect-grid">
@@ -517,7 +523,7 @@
                         </tr>
                         <tr>
                             <td>Aid</td>
-                            <td>Bless effect plus 1d8 + CL temp hp, max +10.</td>
+                            <td>Bless effect plus 1d8 + CL (max. +10) temp hp.</td>
                         </tr>
                         <tr>
                             <td>Bless</td>
@@ -525,7 +531,7 @@
                         </tr>
                         <tr>
                             <td>Guidance</td>
-                            <td>+1 competence on one attack, save, or skill check.</td>
+                            <td>+1 competence bonus on one attack, save, or skill check.</td>
                         </tr>
                     </table>
                     <table>
@@ -760,7 +766,8 @@
                 <div class="box">
                     <p>
                         <b>Cover</b> is a physical obstruction in the attack’s path and normally gives
-                        +4 AC and +2 Reflex.</p>
+                        +4 AC and +2 Reflex.
+                    </p>
                     <p>
                         <b>Concealment</b> is obscured sight and gives a 20% miss chance after a hit.
                         Total cover blocks line of effect; total concealment blocks sight, but you may attack a guessed
@@ -770,7 +777,9 @@
             </div>
             <div>
                 <div class="box"><b>Coup de grace:</b> full-round action against a helpless foe; automatic critical hit.
-                    Survivor makes Fortitude save DC 10 + damage dealt or dies. Provokes AoOs.</div>
+                    If defender survives, they make a Fortitude save DC 10 + damage dealt or die anyway. Provokes AoOs.
+                </div>
+
                 <h2>Dying and stabilizing</h2>
                 <div class="box call"><b>At 0 hp:</b> disabled. <b>At −1 to −(CON score − 1):</b> unconscious and dying;
                     lose 1 hp per round until stable. <b>At −CON score:</b> dead.</div>
