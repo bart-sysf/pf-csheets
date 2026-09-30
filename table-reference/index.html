@@ -556,13 +556,23 @@
         </header>
         <div class="grid">
             <div>
+                <h2>Turn basics</h2>
+                <p><b>Regular turn:</b> standard + move or full-round, plus swift/free actions. A standard can become a
+                    move. A 5-foot step forbids other movement, but does not provoke. An immediate action uses your next
+                    swift and is unavailable while flat-footed.</p>
+
+                <div class="box"><b>Surprise round:</b> occurs only when some, but not all, combatants are aware. Roll
+                    initiative; aware combatants take one standard <em>or</em> move action, plus free actions. Unaware
+                    combatants do not act. Everyone is flat-footed until their first turn unless an ability says
+                    otherwise. If everyone or no one is aware, skip the surprise round.</div>
+
+                <h2>Common free actions</h2>
+                <p>Cease concentrating on a spell; drop an item; drop prone; prepare ordinary spell
+                    components or a focus; speak briefly; release a grapple. Drawing ammunition is part of the attack,
+                    not a separate action. Free actions generally do not provoke, and the GM may limit how many are
+                    reasonable. Speaking can occur outside your turn.</p>
+
                 <h2>Attacks of opportunity (AoOs)</h2>
-                <div class="box call"><b>Check in order:</b> Does the enemy threaten your square with a melee attack?
-                    Does your action provoke? Can they make an AoO now? If yes, resolve one melee attack <em>before</em>
-                    the provoking action finishes.</div>
-                <p><b>Threatened area:</b> usually adjacent squares, including diagonals. A typical reach weapon
-                    threatens 10 ft but not adjacent squares. Unarmed creatures generally do not threaten unless an
-                    ability says otherwise.</p>
                 <table class="action-list">
                     <tr>
                         <th>Usually provokes</th>
@@ -570,7 +580,7 @@
                     </tr>
                     <tr>
                         <td>Leave a threatened square, including moving within threatened area</td>
-                        <td>Enter a threatened square; take a 5-foot step (if allowed)</td>
+                        <td>Enter a threatened square; 5-foot step</td>
                     </tr>
                     <tr>
                         <td>Cast a spell normally; use a spell-like ability</td>
@@ -586,33 +596,28 @@
                     </tr>
                     <tr>
                         <td>Stand from prone; reload many ranged weapons</td>
-                        <td>Withdraw from the <em>starting square</em> only; other squares may provoke</td>
+                        <td>Withdraw from the <em>starting square</em>; other squares may provoke</td>
                     </tr>
                     <tr>
-                        <td>Most maneuvers against their target without relevant Improved feat</td>
-                        <td>5-foot step; many maneuvers with relevant Improved feat</td>
+                        <td>Most maneuvers against their target</td>
+                        <td>Maneuvers with relevant Improved feat</td>
                     </tr>
                 </table>
+                <p class="small"><b>Threatened area:</b> adjacent squares, including diagonals. A typical reach weapon
+                    threatens 10 ft but not adjacent squares. Unarmed creatures generally do not threaten unless an
+                    ability says otherwise.</p>
+
                 <p class="small"><b>Movement exceptions:</b> Acrobatics can avoid movement AoOs (check against opponent
-                    CMD, modifiers may apply). A 5-foot step requires movement no more than 5 ft in the round and
-                    suitable terrain. Withdraw protects only the starting square; cannot withdraw when blinded.</p>
-                <p class="small"><b>Limit:</b> normally 1 AoO per round, even with many triggers. Combat Reflexes allows
-                    1 + DEX bonus (minimum 1); only one AoO per opportunity, and movement from multiple threatened
-                    squares by one opponent is one opportunity. Flat-footed creatures normally cannot make AoOs; Combat
-                    Reflexes is an exception.</p>
-                <h2>Turn &amp; surprise basics</h2>
-                <p><b>Regular turn:</b> standard + move or full-round, plus swift/free actions. A standard can become a
-                    move. A 5-foot step forbids other movement. An immediate action uses your next swift and is
-                    unavailable while flat-footed.</p>
-                <div class="box"><b>Surprise round:</b> occurs only when some, but not all, combatants are aware. Roll
-                    initiative; aware combatants take one standard <em>or</em> move action, plus free actions. Unaware
-                    combatants do not act. Everyone is flat-footed until their first turn unless an ability says
-                    otherwise. If everyone or no one is aware, skip the surprise round.</div>
-                <h2>Common free actions</h2>
-                <p><b>On your turn:</b> cease concentrating on a spell; drop an item; drop prone; prepare ordinary spell
-                    components or a focus; speak briefly. Drawing ammunition is part of the attack, not a separate
-                    action. Free actions generally do not provoke, and the GM may limit how many are reasonable.
-                    Speaking can occur outside your turn.</p>
+                    CMD). A 5-foot step allows no other movement in the round and requires suitable terrain. Withdraw
+                    protects only the starting square; cannot withdraw when blinded.</p>
+
+                <p class="small"><b>Limit:</b> 1 AoO per round, even with many triggers. Only one AoO per
+                    opportunity, and movement from multiple threatened squares by one opponent is one opportunity.
+                    Flat-footed creatures cannot make AoOs.</p>
+
+                <div class="box call"><b>Check in order:</b> Does the enemy threaten your square with a melee attack?
+                    Does your action provoke? Can they make an AoO now? If yes, resolve one melee attack <em>before</em>
+                    the provoking action finishes.</div>
             </div>
 
             <div>
@@ -638,37 +643,55 @@
                             item for target to drop. Succeed by ≥10: target drops items in both hands. Fail by ≥10: drop
                             your weapon.</td>
                     </tr>
-
-                    <!-- below needs to be checked -->
                     <tr>
                         <td>Drag</td>
-                        <td>Pull target 5 ft, +5 ft for each 5 by which you exceed CMD; standard action.</td>
+                        <td>Pull target 5 ft, +5 ft for each 5 by which you exceed CMD; standard action. Max. 1 size
+                            larger.</td>
                     </tr>
                     <tr>
                         <td>Grapple</td>
                         <td>Grab target as a standard action; grapple actions on later rounds follow their own rules.
+                            Humanoid take −4 penalty on attempt if no free hands. +5 to maintain the grapple if target
+                            does not break it. Escaping with own CMB or Escape Artist ≥ grappler CMD. Both target and
+                            grappler gain the grappled condition.
                         </td>
                     </tr>
                     <tr>
                         <td>Overrun</td>
-                        <td>Move through target; exceed CMD by 5 to knock it prone.</td>
+                        <td>Move through target; exceed CMD by 5 to knock it prone. Max. 1 size larger. Add +2 to DC for
+                            each leg the target has above 2.</td>
                     </tr>
                     <tr>
                         <td>Reposition</td>
-                        <td>Move a foe to another square in your reach; standard action.</td>
+                        <td>Move a foe 5 ft within your reach, +5 ft for each 5 by which you exceed CMD; standard
+                            action. Max. 1 size larger.</td>
                     </tr>
                     <tr>
                         <td>Steal</td>
-                        <td>Take an item that is not held; standard action.</td>
+                        <td>Take an item that is not held, closely worn (like armor or rings) nor hidden in a bag or
+                            pack; standard action. You must have 1 hand free. Fastened items (like cloaks or sheathed
+                            weapons) give a +5 bonus to opponent CMD.
+                        </td>
                     </tr>
                     <tr>
                         <td>Sunder</td>
-                        <td>Damage a held/carried object; replaces a melee attack.</td>
+                        <td>Damage a held/carried object; replaces a melee attack. Reducing to less than 0: you can
+                            choose to destroy the item or leave broken with 1 hp.</td>
                     </tr>
                     <tr>
                         <td>Trip</td>
-                        <td>Knock target prone; replaces a melee attack. Target must be at most one size category larger
-                            (unless an ability changes this). Fail by ≥10: you fall prone.</td>
+                        <td>Knock target prone; replaces a melee attack. Max. 1 size larger. Fail by ≥10: you fall
+                            prone. Add +2 to DC for each leg the target has above 2.</td>
+                    </tr>
+                    <tr>
+                        <td>Tie Up</td>
+                        <td>Bind an already grappled target with a rope. Requires CMB check with a −10 penalty. DC to
+                            escape is 20 + grappler <em>CMB</em>.</td>
+                    </tr>
+                    <tr>
+                        <td>Pin</td>
+                        <td>Pin an already grappled target. You keep the grappled condition and lose DEX bonus to AC.
+                        </td>
                     </tr>
                 </table>
 
@@ -809,8 +832,8 @@
                         <td>Helpless; can also result when nonlethal damage exceeds current hp.</td>
                     </tr>
                 </table>
-                <div class="box call"><b>Stabilize while dying:</b> Each turn, make a <span class="formula">DC 10 CON
-                        check</span> with a penalty equal to current negative hp (at −3 hp, apply −3). A natural 20
+                <div class="box call"><b>Stabilize while dying:</b> Each turn, make a <b>DC 10 CON
+                        check</b> with a penalty equal to current negative hp (at −3 hp, apply −3). A natural 20
                     succeeds automatically. A successful <b>DC 15 Heal check</b> or any hp healing also stabilizes you.
                 </div>
 
@@ -834,8 +857,6 @@
                             rest: 4 hp/level and 4 points. Healer provides 8 hours’ light activity.</td>
                     </tr>
                 </table>
-                <p class="small">Rest starts natural recovery once stabilized; a dying character first needs to become
-                    stable. Nonlethal damage heals on a different schedule.</p>
 
                 <h2>Saving throw modifiers</h2>
                 <table>
