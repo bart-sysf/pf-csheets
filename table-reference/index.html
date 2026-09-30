@@ -17,13 +17,14 @@
 <body>
     <div class="toolbar"><span>Pathfinder 1e · Core rules quick reference · 6 A4 pages</span><button
             onclick="window.print()">Print / Save PDF</button></div>
+
+    <!-- Abilities & Combat modifiers -->
     <section class="sheet">
         <header>
             <div>
-                <div class="tag">Pathfinder first edition · Table reference</div>
-                <h1>At the Table</h1>
+                <h1>Abilities &amp; Combat modifiers</h1>
             </div>
-            <div class="sub">1 / 6 · Numbers &amp; modifiers</div>
+            <div class="tag">Pathfinder first edition · Table reference</div>
         </header>
 
         <div class="grid">
@@ -67,8 +68,8 @@
                 </table>
 
                 <div class="box">
-                    <div class="title">How to calculate ability modifiers?</div>
-                    <div class="formula center">modifier = floor((score − 10) ÷ 2)</div>
+                    <h3>How to calculate ability modifiers?</h3>
+                    <div class="formula">modifier = floor((score − 10) ÷ 2)</div>
                     <table class="modifier-table">
                         <tr>
                             <th>Score</th>
@@ -94,11 +95,17 @@
                 </div>
 
                 <div class="box">
-                    <div class="title">Basic check logic</div>
-                    <div class="formula center">d20 + relevant modifiers ≥ DC / AC / CMD</div>
+                    <h3>Basic check logic</h3>
+                    <div class="formula">d20 + relevant modifiers ≥ DC / AC / CMD</div>
                     Nat 20 and nat 1 auto hit and miss on attack rolls, trigger critical hits or fumbles; auto
                     succeed/fail saving throws and CMB checks, except for escaping. Ability and skill checks have no
                     general automatic 20/1 rule.
+                </div>
+
+                <div class="box call wide">
+                    <h3>Beware the feats (and the GM)</h3>
+                    Almost anything in this reference is subject to influence of character feats, traits, special
+                    abilities, etc. Those (and your GM) should take precedence.
                 </div>
 
                 <h2>Common combat formulas</h2>
@@ -325,23 +332,18 @@
                     </tr>
                 </table>
             </div>
-            <div class="box call wide small">
-                <div class="title brown">Beware the feats (and the GM)</div>
-                Almost anything in this reference is subject to influence of character feats, traits, special
-                abilities, etc. Those (and your GM) should take precedence.
-            </div>
         </div>
 
-        <footer><span></span><span>Page 1</span></footer>
+        <footer><span></span><span>Page 1 / 6</span></footer>
     </section>
 
+    <!-- Conditions & Effects -->
     <section class="sheet">
         <header>
             <div>
-                <div class="tag">Pathfinder first edition · Table reference</div>
-                <h1>Conditions &amp; effects</h1>
+                <h1>Conditions &amp; Effects</h1>
             </div>
-            <div class="sub">2 / 6 · Official conditions &amp; common benefits</div>
+            <div class="tag">Pathfinder first edition · Table reference</div>
         </header>
 
         <h2 style="margin-top: 0;">Common negative conditions and effects</h2>
@@ -543,20 +545,20 @@
                         </tr>
                     </table>
                 </div>
-                <p class="small">Bonuses of the same type usually do not stack. Use the highest unless a rule says
+                <p class="">Bonuses of the same type usually do not stack. Use the highest unless a rule says
                     otherwise.</p>
             </div>
         </div>
-        <footer><span></span><span>Page 2</span></footer>
+        <footer><span></span><span>Page 2 / 6</span></footer>
     </section>
 
+    <!-- Combat & Movement -->
     <section class="sheet">
         <header>
             <div>
-                <div class="tag">Pathfinder first edition · Table reference</div>
-                <h1>Combat &amp; movement</h1>
+                <h1>Combat &amp; Movement</h1>
             </div>
-            <div class="sub">3 / 6 · AoOs, actions &amp; maneuvers</div>
+            <div class="tag">Pathfinder first edition · Table reference</div>
         </header>
         <div class="grid">
             <div>
@@ -607,15 +609,15 @@
                         <td>Maneuvers with relevant Improved feat</td>
                     </tr>
                 </table>
-                <p class="small"><b>Threatened area:</b> adjacent squares, including diagonals. A typical reach weapon
+                <p class=""><b>Threatened area:</b> adjacent squares, including diagonals. A typical reach weapon
                     threatens 10 ft but not adjacent squares. Unarmed creatures generally do not threaten unless an
                     ability says otherwise.</p>
 
-                <p class="small"><b>Movement exceptions:</b> Acrobatics can avoid movement AoOs (check against opponent
+                <p class=""><b>Movement exceptions:</b> Acrobatics can avoid movement AoOs (check against opponent
                     CMD). A 5-foot step allows no other movement in the round and requires suitable terrain. Withdraw
                     protects only the starting square; cannot withdraw when blinded.</p>
 
-                <p class="small"><b>Limit:</b> 1 AoO per round, even with many triggers. Only one AoO per
+                <p class=""><b>Limit:</b> 1 AoO per round, even with many triggers. Only one AoO per
                     opportunity, and movement from multiple threatened squares by one opponent is one opportunity.
                     Flat-footed creatures cannot make AoOs.</p>
 
@@ -700,28 +702,28 @@
                 </table>
 
                 <div class="box call">
-                    <div class="title brown">Provocation</div>
+                    <h3>Provocation</h3>
                     A maneuver provokes from its <em>target</em>. If the target's AoO hits, subtract the damage dealt
                     from your maneuver check. Individual maneuvers have limits and exceptions; check their text.
                 </div>
 
                 <div class="box">
-                    <div class="title brown">How to roll for maneuvers?</div>
-                    <div class="formula center">d20 + CMB ≥ target CMD</div>
+                    <h3>How to roll for maneuvers?</h3>
+                    <div class="formula">d20 + CMB ≥ target CMD</div>
                     Bonuses to attack rolls generally apply to CMB.
                 </div>
             </div>
         </div>
-        <footer><span></span><span>Page 3</span></footer>
+        <footer><span></span><span>Page 3 / 6</span></footer>
     </section>
 
+    <!-- Attacks & Recovery -->
     <section class="sheet">
         <header>
             <div>
-                <div class="tag">Pathfinder first edition · Table reference</div>
                 <h1>Attacks &amp; recovery</h1>
             </div>
-            <div class="sub">4 / 6 · Attacks &amp; recovery</div>
+            <div class="tag">Pathfinder first edition · Table reference</div>
         </header>
         <div class="grid">
             <div>
@@ -803,8 +805,6 @@
                     <b>Concealment</b> is obscured <em>sight</em> and gives a 20% miss chance after a hit.
                     Total concealment blocks sight, but you may attack a guessed square with a 50% miss chance.
                 </p>
-
-
             </div>
 
             <div>
@@ -902,115 +902,297 @@
                 </table>
             </div>
         </div>
-        <footer><span></span><span>Page 4</span></footer>
+        <footer><span></span><span>Page 4 / 6</span></footer>
     </section>
 
+    <!-- Spellcasting -->
     <section class="sheet">
         <header>
             <div>
-                <div class="tag">Pathfinder first edition · Table reference</div>
                 <h1>Spellcasting</h1>
             </div>
-            <div class="sub">5 / 6 · Concentration &amp; casting</div>
+            <div class="tag">Pathfinder first edition · Table reference</div>
         </header>
         <div class="grid">
             <div>
                 <h2>Concentration checks</h2>
-                <div class="box call"><span class="formula">d20 + caster level + casting ability modifier + other
-                        bonuses ≥ DC</span><br>Usually INT for wizard; WIS for cleric/druid/ranger; CHA for
-                    bard/paladin/sorcerer. Use your class feature for other casters. <b>Constitution is not the
-                        default.</b></div>
+                <div class="box">
+                    <h3>Check logic</h3>
+                    <div class="formula">
+                        d20 + caster level + casting ability modifier + other bonuses ≥ DC
+                    </div>
+                    <p class="">
+                        Use the ability that grants bonus spells for that class (typically INT, WIS, or CHA). Failure
+                        loses the spell.
+                    </p>
+                </div>
+
+                <div class="box">
+                    <h3>When to roll concentration?</h3>
+                    <p>Usually roll only when you choose defensive casting or something disrupts the spell.
+                        Spell-created weather uses its own rules.
+                    </p>
+                    <p>While falling, spellcasting is normally possible only for a fall over 500 ft. or an
+                        immediate-action spell.
+                    </p>
+                    <p>Fire spells underwater also need a caster-level check (DC 20 + spell level).</p>
+                </div>
+
                 <table>
                     <tr>
-                        <th>When casting...</th>
-                        <th>DC</th>
+                        <th>Situation while casting</th>
+                        <th>Concentration DC</th>
                     </tr>
                     <tr>
                         <td>Defensively (avoid casting AoO)</td>
                         <td>15 + 2 × spell level</td>
                     </tr>
                     <tr>
-                        <td>Hit/damaged during casting</td>
-                        <td>10 + damage taken + spell level</td>
+                        <td>Damaged / injured</td>
+                        <td>10 + damage dealt + spell level</td>
                     </tr>
                     <tr>
                         <td>Continuous damage</td>
-                        <td>10 + half last damage + spell level</td>
+                        <td>10 + &half; the continuous damage taken last round + spell level</td>
                     </tr>
                     <tr>
                         <td>Grappled or pinned</td>
-                        <td>10 + grappler's CMB + spell level</td>
+                        <td>10 + grappler’s CMB + spell level</td>
                     </tr>
                     <tr>
-                        <td>Entangled (net/tanglefoot/similar)</td>
+                        <td>Entangled</td>
                         <td>15 + spell level</td>
                     </tr>
                     <tr>
-                        <td>Affected by nondamaging spell</td>
-                        <td>That spell's save DC + your spell level</td>
+                        <td>Distracted by nondamaging spell</td>
+                        <td>Disrupting spell’s save DC (or 10 + its level + its caster ability mod if no save) + level
+                            being cast</td>
                     </tr>
                     <tr>
                         <td>Vigorous / violent / extreme motion</td>
-                        <td>10 / 15 / 20 + spell level</td>
+                        <td>Vigorous 10; violent 15; extreme 20 + spell level</td>
+                    </tr>
+                    <tr>
+                        <td>Wind with rain or sleet</td>
+                        <td>5 + spell level</td>
+                    </tr>
+                    <tr>
+                        <td>Wind with hail, dust, or debris</td>
+                        <td>10 + spell level</td>
+                    </tr>
+                    <tr>
+                        <td>Underwater (cannot breathe water)</td>
+                        <td>15 + spell level</td>
+                    </tr>
+                    <tr>
+                        <td>While falling (when casting is possible)</td>
+                        <td>20 + spell level</td>
                     </tr>
                 </table>
-                <h3>When do you actually roll?</h3>
-                <ul>
-                    <li><b>Normally no check:</b> ordinary spellcasting with no disruption. However, casting while
-                        threatened usually provokes an AoO; if it hits and deals damage, check concentration.</li>
-                    <li><b>Choose defensive casting:</b> make the check even if nobody hits you. Success prevents the
-                        casting AoO; failure loses the spell.</li>
-                    <li><b>Actual disruption:</b> damage during casting, grapple, entanglement or other listed
-                        interference calls for its check even without an AoO.</li>
-                    <li><b>Already completed spell:</b> later damage does not retroactively interrupt it. A spell
-                        requiring ongoing concentration has separate duration/maintenance rules.</li>
-                </ul>
-                <div class="box"><b>Example:</b> level 5 wizard, INT 18 (+4), casts a 3rd-level spell defensively: roll
-                    d20 + 9 vs DC 21, so 12+ succeeds. If instead hit for 8 damage while casting it, DC 21 also (10 + 8
-                    + 3). If the AoO misses, there is no damage-based check.</div>
+                <div class="box"><b>Example:</b> Level 5 wizard (INT 18) casting a 3rd-level spell defensively: <span
+                        class="formula">d20 + 5 + 4 vs. DC 21</span>; a roll of 12 or higher succeeds. If hit for 8
+                    damage while casting it, the DC is also 21.</div>
+
+                <h2>Counterspells</h2>
+                <table>
+                    <tr>
+                        <th>Method</th>
+                        <th>Quick rule</th>
+                    </tr>
+                    <tr>
+                        <td>Match the spell</td>
+                        <td>Ready a standard action for when the target starts casting. Spellcraft (free action, DC 15 +
+                            spell level) identifies it; if identified and you can cast that same spell, cast it as the
+                            readied action to automatically counter it (if in range). Arcane and divine versions work;
+                            metamagic does not matter.</td>
+                    </tr>
+                    <tr>
+                        <td>Dispel magic (spell)</td>
+                        <td>Ready it to counter without identifying the spell; succeed at a caster-level check <span
+                                class="formula">d20 + CL ≥ 11 + enemy CL</span>.</td>
+                    </tr>
+                </table>
             </div>
+
             <div>
-                <h2>Spellcasting and AoOs</h2>
-                <p>Casting while threatened generally provokes (see page 3). A successful defensive cast avoids the
-                    casting AoO (DC on this page). Delivering a held melee touch spell does not itself provoke; a ranged
-                    touch attack usually does.</p>
-                <p><b>Spell-like abilities</b> usually provoke and may be used defensively. <b>Supernatural
-                        abilities</b> generally do not provoke and cannot be disrupted; follow the specific ability
-                    text.</p>
-                <p><b>Timing matters:</b> a spell with a casting time of 1 round or longer remains vulnerable to
-                    interruption until completion. If casting defensively and also subject to a separate disruption,
-                    resolve applicable checks separately.</p>
+                <h2>Casting &amp; attacks of opportunity</h2>
+                <table>
+                    <tr>
+                        <th>Situation</th>
+                        <th>Quick rule</th>
+                    </tr>
+                    <tr>
+                        <td>Casting while threatened</td>
+                        <td>Usually provokes an AoO. If it hits and damages you, or otherwise disrupts the spell, check
+                            concentration.</td>
+                    </tr>
+                    <tr>
+                        <td>Cast defensively</td>
+                        <td>Choose before casting; success avoids the casting AoO, failure loses the spell.</td>
+                    </tr>
+                    <tr>
+                        <td>Touch spell</td>
+                        <td>Casting the spell provokes; delivering a held melee touch spell does not. A ranged touch
+                            attack provokes as a ranged attack.</td>
+                    </tr>
+                    <tr>
+                        <td>Spell-like ability</td>
+                        <td>Usually provokes and can be used defensively; use its effective spell level for the check.
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>Supernatural ability</td>
+                        <td>Usually does not provoke and is not disrupted like a spell; check the ability text.</td>
+                    </tr>
+                </table>
+
+                <h2>Casting time &amp; interruption</h2>
+                <table>
+                    <tr>
+                        <th>Spell timing</th>
+                        <th>What to remember</th>
+                    </tr>
+                    <tr>
+                        <td>1 standard action</td>
+                        <td>Usually resolves during your turn; later damage cannot interrupt a completed spell.</td>
+                    </tr>
+                    <tr>
+                        <td>1 round</td>
+                        <td>Full-round casting; completes just before your next turn. Keep concentrating until then.
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>Longer than 1 round</td>
+                        <td>Requires continued casting/concentration; interruption can lose the spell. Often 1 minute (=
+                            10 rounds of full-round concentration).</td>
+                    </tr>
+                    <tr>
+                        <td>1 swift action</td>
+                        <td>Only once per round, but does not count against 1 spell per round limit.</td>
+                    </tr>
+                </table>
+
+                <h2>Spell resistance</h2>
+                <div class="box call">
+                    <div class="formula">d20 + caster level + bonuses ≥ SR</div>
+                    Roll only if the spell lists <b>SR: yes</b>; meeting or exceeding the target’s SR lets the spell
+                    affect it.
+                </div>
+
+                <h2>Spellcasting terms</h2>
+                <table>
+                    <tr>
+                        <th>Term</th>
+                        <th>Quick explanation</th>
+                    </tr>
+                    <tr>
+                        <td>Spell level</td>
+                        <td>Sets spell-slot level and contributes to save DC; use the level for your class.</td>
+                    </tr>
+                    <tr>
+                        <td>Caster level (CL)</td>
+                        <td>Usually class level; often sets range, duration, damage, and checks against spell resistance
+                            / dispel.</td>
+                    </tr>
+                    <tr>
+                        <td>Save DC</td>
+                        <td><span class="formula">10 + spell level + casting ability modifier</span></td>
+                    </tr>
+                    <tr>
+                        <td>Components</td>
+                        <td>V = spoken; S = precise gesture; M = material (usually consumed); F = reusable focus; DF =
+                            divine focus.</td>
+                    </tr>
+                    <tr>
+                        <td>Touch attack</td>
+                        <td>Use your normal melee / ranged attack bonus against touch AC.</td>
+                    </tr>
+                    <tr>
+                        <td>Prepared / spontaneous</td>
+                        <td>Prepared spells are expended when cast; spontaneous casters spend a slot but keep the spell
+                            known. Class features can differ.</td>
+                    </tr>
+                </table>
             </div>
         </div>
-        <footer><span></span><span>Page 5</span></footer>
+        <footer><span></span><span>Page 5 / 6</span></footer>
     </section>
 
+    <!-- Generic -->
     <section class="sheet">
         <header>
             <div>
-                <div class="tag">Pathfinder first edition · Table reference</div>
                 <h1>Generic</h1>
             </div>
-            <div class="sub">6 / 6 · Advancement &amp; references</div>
+            <div class="tag">Pathfinder first edition · Table reference</div>
         </header>
         <div class="grid">
             <div>
-                <h2>Leveling up</h2>
-                <div class="box call"><b>★ House rule · Hit points</b><br>Both the player and GM roll the character’s
-                    Hit Die. Use the higher result, then add the CON modifier for HP gained that level (minimum 1 HP).
-                </div>
-                <h3>Update checklist</h3>
-                <ul>
-                    <li>Add the new class level, Hit Die, BAB, base saves, class features, and spell progression.</li>
-                    <li>Add skill ranks; check class-skill bonuses and maximum ranks.</li>
-                    <li>Apply feats and ability-score increases when the new level grants them.</li>
-                    <li>Recalculate HP, AC, attacks, CMB/CMD, saves, initiative, skills, spell DCs, and uses per day.
-                    </li>
-                    <li>Review new spells, prepared spells, equipment, carrying capacity, and prerequisites.</li>
-                </ul>
+                <h2>Bonus stacking</h2>
+                <table>
+                    <tr>
+                        <th>Bonus / penalty</th>
+                        <th>Stacking rule</th>
+                    </tr>
+                    <tr>
+                        <td>Different types</td>
+                        <td>Usually stack.</td>
+                    </tr>
+                    <tr>
+                        <td>Same type</td>
+                        <td>Usually use only the highest bonus.</td>
+                    </tr>
+                    <tr>
+                        <td>Exceptions</td>
+                        <td>Dodge and most circumstance bonuses stack; untyped bonuses usually stack unless from the
+                            same source. Penalties usually stack.</td>
+                    </tr>
+                </table>
+
+                <h2>Damage reduction (DR)</h2>
+                <table>
+                    <tr>
+                        <th>Notation / rule</th>
+                        <th>Quick reminder</th>
+                    </tr>
+                    <tr>
+                        <td>DR 5/magic</td>
+                        <td>Subtract 5 from each qualifying physical hit unless the weapon is magic (+1 or better).</td>
+                    </tr>
+                    <tr>
+                        <td>DR X/—</td>
+                        <td>Subtract X from physical attacks; no bypass type is listed.</td>
+                    </tr>
+                    <tr>
+                        <td>What bypasses DR?</td>
+                        <td>Follow the slash: material, alignment, weapon type, or magic. Spells and energy damage
+                            ignore DR; if multiple DR values apply, use the best one.</td>
+                    </tr>
+                </table>
+
                 <h2>Coins</h2>
-                <div class="box call"><b>10 cp = 1 sp · 10 sp = 1 gp · 10 gp = 1 pp</b><br>Therefore 1 gp = 100 cp; 1 pp
-                    = 100 sp = 1,000 cp. Standard coins weigh 1 lb per 50 coins.</div>
+                <table>
+                    <tr>
+                        <th>Coin</th>
+                        <th>Conversion</th>
+                    </tr>
+                    <tr>
+                        <td>10 cp</td>
+                        <td>1 sp</td>
+                    </tr>
+                    <tr>
+                        <td>10 sp</td>
+                        <td>1 gp</td>
+                    </tr>
+                    <tr>
+                        <td>10 gp</td>
+                        <td>1 pp</td>
+                    </tr>
+                    <tr>
+                        <td colspan="2" style="font-weight: normal;" class="">50 coins weigh 1 lb.</td>
+                    </tr>
+                </table>
+
                 <h2>Typical skill DCs</h2>
                 <table>
                     <tr>
@@ -1023,8 +1205,8 @@
                     </tr>
                     <tr>
                         <td>Climb</td>
-                        <td>Knotted rope by wall 0; rope by wall or knotted rope 5; unknotted rope/tree 15; rough
-                            rock/brick 25.</td>
+                        <td>Knotted rope by wall 0; rope by wall or knotted rope 5; unknotted rope / tree 15; rough rock
+                            / brick 25.</td>
                     </tr>
                     <tr>
                         <td>Swim</td>
@@ -1032,7 +1214,7 @@
                     </tr>
                     <tr>
                         <td>Heal</td>
-                        <td>First aid or stop bleed 15; treat deadly wounds 20; poison/disease uses its save DC.</td>
+                        <td>First aid / stop bleed 15; treat deadly wounds 20; poison / disease use their save DC.</td>
                     </tr>
                     <tr>
                         <td>Knowledge</td>
@@ -1040,57 +1222,87 @@
                     </tr>
                     <tr>
                         <td>Spellcraft</td>
-                        <td>Identify spell being cast: 15 + spell level; magic item with <em>detect magic</em>: 15 + CL.
-                        </td>
+                        <td>Identify spell being cast: 15 + spell level; identify magic item with <i>detect magic</i>:
+                            15 + CL.</td>
                     </tr>
                     <tr>
                         <td>Perception</td>
-                        <td>+1 DC per 10 ft; closed door +5; wall +10/ft; invisible creature +20.</td>
+                        <td>Distance +1 DC per 10 ft.; closed door +5; wall +10 per ft.; invisible creature +20.</td>
                     </tr>
                 </table>
-                <p class="small">These are common benchmarks; circumstances and the GM can change the DC.</p>
+                <p class="small">Common benchmarks only; circumstances and the GM can change DCs.</p>
+
+                <h2>Leveling up</h2>
+                <div class="box call"><b>★ House rule · Hit points:</b> Player and GM each roll the character’s Hit Die;
+                    use the higher roll, then add CON bonus.</div>
             </div>
+
             <div>
-                <h2>Bonus stacking</h2>
-                <p>Different bonus <em>types</em> usually stack. Same-type bonuses usually do not: use the highest.
-                    Dodge bonuses and most circumstance bonuses stack; untyped bonuses generally stack unless from the
-                    same source. Penalties usually stack unless stated otherwise.</p>
-                <div class="box"><b>Fast check:</b> write the bonus type beside temporary effects. If two effects share
-                    a type, keep only the larger value unless the rule explicitly says they stack.</div>
-                <h2>Short reminders</h2>
+                <h2>Channel energy</h2>
                 <table>
                     <tr>
-                        <th>Term</th>
-                        <th>Meaning</th>
+                        <th>Energy</th>
+                        <th>Living</th>
+                        <th>Undead</th>
                     </tr>
                     <tr>
-                        <td>BAB</td>
-                        <td>Base attack bonus from class levels</td>
+                        <td>Positive</td>
+                        <td>Heal</td>
+                        <td>Damage; Will half</td>
                     </tr>
                     <tr>
-                        <td>CL</td>
-                        <td>Caster level; not necessarily character level</td>
+                        <td>Negative</td>
+                        <td>Damage; Will half</td>
+                        <td>Heal</td>
+                    </tr>
+                </table>
+
+                <h2>Fear progression</h2>
+                <table>
+                    <tr>
+                        <th>Stage</th>
+                        <th>Effect</th>
                     </tr>
                     <tr>
-                        <td>Spell level</td>
-                        <td>Level of the spell (e.g. fireball is 3), not CL</td>
+                        <td>Shaken</td>
+                        <td>−2 on attacks, saves, skill checks, and ability checks.</td>
                     </tr>
                     <tr>
-                        <td>DC</td>
-                        <td>Difficulty class; meet or exceed it</td>
+                        <td>Frightened</td>
+                        <td>Shaken; flee from the source if possible. If unable to flee, can fight.</td>
                     </tr>
                     <tr>
-                        <td>AoO</td>
-                        <td>Attack of opportunity, normally one melee attack</td>
+                        <td>Panicked</td>
+                        <td>Shaken; drop held items and flee at top speed along a random path, away from all dangers. No
+                            other actions except abilities needed to escape; cower if trapped.</td>
                     </tr>
                     <tr>
-                        <td>CMB / CMD</td>
-                        <td>Combat Maneuver Bonus / Defense</td>
+                        <td>Cowering</td>
+                        <td>Cornered: frozen in fear, no actions, −2 AC, and lose DEX bonus.</td>
+                    </tr>
+                </table>
+                <p class="">Fear escalates: shaken + shaken → frightened; shaken + frightened or frightened +
+                    shaken / frightened → panicked.</p>
+
+                <h2>Taking 10 or 20</h2>
+                <table>
+                    <tr>
+                        <th>Option</th>
+                        <th>When / result</th>
+                    </tr>
+                    <tr>
+                        <td>Take 10</td>
+                        <td>Assume a d20 result of 10 when not threatened or distracted.</td>
+                    </tr>
+                    <tr>
+                        <td>Take 20</td>
+                        <td>Assume 20 after spending 20× as long, when not threatened or distracted; retries must be
+                            possible and failure must have no harmful consequence.</td>
                     </tr>
                 </table>
             </div>
         </div>
-        <footer><span></span><span>Page 6</span></footer>
+        <footer><span></span><span>Page 6 / 6</span></footer>
     </section>
 </body>
 

@@ -16,7 +16,7 @@
      margin: 0;
      background: #e9e3d8;
      color: var(--ink);
-     font: 13px/1.34 "Roboto Slab", Rockwell, "Bookman Old Style", serif
+     font: 12px "Roboto Slab", Rockwell, "Bookman Old Style", serif
  }
 
  .toolbar {
@@ -71,24 +71,22 @@
      font-family: "Roboto Slab", Rockwell, "Bookman Old Style", serif;
      font-size: 15px;
      color: var(--accent);
-     margin: 12px 0 5px;
+     margin: 8px 0 4px;
      border-bottom: 1px solid var(--line);
      padding-bottom: 2px
  }
 
  h3 {
      font-family: "Roboto Slab", Rockwell, "Bookman Old Style", serif;
-     font-size: 12px;
-     margin: 12px 0 3px
+     color: #613d30;
+     font-size: 13px;
+     font-weight: bold;
+     padding-bottom: 2px;
+     margin: 0;
  }
 
  p {
      margin: 2px 0 4px
- }
-
- .sub {
-     font-size: 11px;
-     color: var(--muted)
  }
 
  .grid,
@@ -102,27 +100,8 @@
      grid-column: 1/-1
  }
 
- .grid>div:not(.wide)>h2:first-child,
- .grid>div:not(.wide)>h3:first-child {
+ .grid>div:not(.wide)>h2:first-child {
      margin-top: 0
- }
-
- .sheet:nth-of-type(3) {
-     font-size: 12px;
-     line-height: 1.25
- }
-
- .sheet:nth-of-type(3) h2 {
-     margin: 12px 0 3px
- }
-
- .sheet:nth-of-type(3) p {
-     margin: 3px 0 5px
- }
-
- .sheet:nth-of-type(3) .box {
-     padding: 5px 7px;
-     margin: 4px 0
  }
 
  .box {
@@ -131,14 +110,6 @@
      padding: 7px 9px;
      margin: 7px 0;
      background: var(--white);
- }
-
- .box .title {
-     font-family: "Roboto Slab", Rockwell, "Bookman Old Style", serif;
-     color: #613d30;
-     font-size: 14px;
-     font-weight: bold;
-     padding-bottom: 2px;
  }
 
  .call {
@@ -198,10 +169,11 @@
  .formula {
      font-weight: 700;
      font-family: "IBM Plex Mono", 'Courier New', Courier, monospace;
+     text-align: center;
  }
 
- .center {
-     text-align: center;
+ td.formula {
+     text-align: left;
  }
 
  .condition-table td:first-child {
