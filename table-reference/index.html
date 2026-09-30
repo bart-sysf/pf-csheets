@@ -212,8 +212,12 @@
                         <td colspan="2">−2; lose DEX</td>
                     </tr>
                     <tr>
-                        <td>Cover ( / Partial / Improved<sup>1</sup>)</td>
-                        <td colspan="2">+4 / +2 / +8</td>
+                        <td>(Soft) Cover</td>
+                        <td colspan="2">+4</td>
+                    </tr>
+                    <tr>
+                        <td>Partial / Improved<sup>1</sup> Cover</td>
+                        <td colspan="2">+2 / +8</td>
                     </tr>
                     <tr>
                         <td>Concealed / invisible</td>
@@ -740,13 +744,25 @@
                     </tr>
                     <tr>
                         <td>Charge</td>
-                        <td>+2 melee attack; −2 AC until start of next turn.</td>
+                        <td>Full-round action: move at least 10 ft. and up to 2× speed, then make one melee attack (+2
+                            attack; −2 AC until your next turn). Move directly toward the target along a clear path; no
+                            difficult terrain, obstacles, or creatures in the way (helpless creatures don’t block). You
+                            need line of sight at the start and must end in the nearest space from which you can attack.
+                            No 5-ft. step that round. If restricted to one standard action, you may charge up to your
+                            speed instead. Draw a weapon during the charge only if you move no farther than your speed
+                            and have BAB +1 (or Quick Draw on a standard-action charge). A charge bull rush gets +2 CMB.
+                        </td>
                     </tr>
                     <tr>
                         <td>Concealment</td>
                         <td>After a successful attack roll, roll d100: 21–100 hits with 20% concealment; 51–100 with
                             total concealment (50%). Total concealment also prevents directly targeting a creature with
                             an attack.</td>
+                    </tr>
+                    <tr>
+                        <td>Coup de grace</td>
+                        <td>Full-round action against a helpless foe; automatic critical hit. If defender survives, they
+                            make a Fortitude save DC 10 + damage dealt or die anyway. Provokes AoOs.</td>
                     </tr>
                     <tr>
                         <td>Critical hits</td>
@@ -774,32 +790,59 @@
                             than allies; none if 3+ categories larger or with Precise Shot.</td>
                     </tr>
                     <tr>
-                        <td>Soft cover</td>
-                        <td>Soft cover grants +4 AC, but no Reflex bonus.</td>
-                    </tr>
-                    <tr>
                         <td>Total defense</td>
                         <td>Standard action; +4 dodge AC (+6 with 3+ Acrobatics ranks); cannot attack or make AoOs.</td>
                     </tr>
                 </table>
 
                 <h2>Cover vs. concealment</h2>
-                <div class="box">
-                    <p>
-                        <b>Cover</b> is a physical obstruction in the attack’s path and normally gives
-                        +4 AC and +2 Reflex.
-                    </p>
-                    <p>
-                        <b>Concealment</b> is obscured sight and gives a 20% miss chance after a hit.
-                        Total cover blocks line of effect; total concealment blocks sight, but you may attack a guessed
-                        square with a 50% miss chance. They can coexist.
-                    </p>
-                </div>
+                <p>
+                    <b>Cover</b> is a <em>physical</em> obstruction in the attack’s path.
+                </p>
+                <p>
+                    <b>Concealment</b> is obscured <em>sight</em> and gives a 20% miss chance after a hit.
+                    Total concealment blocks sight, but you may attack a guessed square with a 50% miss chance.
+                </p>
+
+
             </div>
+
             <div>
-                <div class="box"><b>Coup de grace:</b> full-round action against a helpless foe; automatic critical hit.
-                    If defender survives, they make a Fortitude save DC 10 + damage dealt or die anyway. Provokes AoOs.
-                </div>
+                <h2>Saving throw modifiers</h2>
+                <table>
+                    <tr>
+                        <th>Situation</th>
+                        <th>Modifier</th>
+                    </tr>
+                    <tr>
+                        <td>Cover</td>
+                        <td>+2 Reflex vs attacks/effects originating or bursting from the other side</td>
+                    </tr>
+                    <tr>
+                        <td>Partial cover</td>
+                        <td>+1 Reflex</td>
+                    </tr>
+                    <tr>
+                        <td>Improved cover</td>
+                        <td>+4 Reflex</td>
+                    </tr>
+                    <tr>
+                        <td>Soft cover</td>
+                        <td>No Reflex bonus</td>
+                    </tr>
+                    <tr>
+                        <td>Shaken / frightened / panicked</td>
+                        <td>−2 on all saves</td>
+                    </tr>
+                    <tr>
+                        <td>Sickened</td>
+                        <td>−2 on all saves</td>
+                    </tr>
+                    <tr>
+                        <td>Ability penalties</td>
+                        <td>CON affects Fortitude; DEX affects Reflex; WIS affects Will</td>
+                    </tr>
+                </table>
 
                 <h2>Death &amp; dying</h2>
                 <table class="death-table">
@@ -809,18 +852,22 @@
                     </tr>
                     <tr>
                         <td>0 hp · Disabled</td>
-                        <td>One standard or move action per round, plus swift/immediate/free actions; half speed. Any
-                            standard or other strenuous action deals 1 damage afterward.</td>
+                        <td>Choose one move or standard action per round (not both); swift, immediate, and free actions
+                            are allowed. Half speed. A standard or other strenuous action deals 1 hp damage after it
+                            resolves.</td>
                     </tr>
                     <tr>
                         <td>Negative hp above −CON score · Dying</td>
-                        <td>Unconscious; lose 1 hp each round until stable or dead. Attempt a DC 10 CON check each turn
-                            to stabilize.</td>
+                        <td>Unconscious. Starting on your next turn and each turn after, attempt a DC 10 Constitution
+                            check to stabilize, with a penalty equal to your negative hp. On a failed check, lose 1 hp;
+                            at −CON score, you die. You can also be stabilized by (healing) spells or a DC 15 Heal check
+                            from another.</td>
                     </tr>
                     <tr>
                         <td>Stable below 0</td>
-                        <td>Unconscious, not losing hp. Each hour, DC 10 CON check with the negative-hp penalty to wake
-                            as disabled; if stable unaided, failure costs 1 hp.</td>
+                        <td>Unconscious and no longer losing hp. Each hour, attempt a DC 10 Constitution check (penalty
+                            equal to negative hp) to wake as disabled. If you stabilized without aid, a failed check
+                            costs 1 hp.</td>
                     </tr>
                     <tr>
                         <td>−CON hp or CON 0 · Dead</td>
@@ -832,10 +879,6 @@
                         <td>Helpless; can also result when nonlethal damage exceeds current hp.</td>
                     </tr>
                 </table>
-                <div class="box call"><b>Stabilize while dying:</b> Each turn, make a <b>DC 10 CON
-                        check</b> with a penalty equal to current negative hp (at −3 hp, apply −3). A natural 20
-                    succeeds automatically. A successful <b>DC 15 Heal check</b> or any hp healing also stabilizes you.
-                </div>
 
                 <h2>Rest and long-term care</h2>
                 <table>
@@ -855,42 +898,6 @@
                         <td>Successful long-term care (Heal DC 15)</td>
                         <td>With 8 hours’ rest: 2 hp/level and 2 ability points per affected score. With 24 hours’ bed
                             rest: 4 hp/level and 4 points. Healer provides 8 hours’ light activity.</td>
-                    </tr>
-                </table>
-
-                <h2>Saving throw modifiers</h2>
-                <table>
-                    <tr>
-                        <th>Situation</th>
-                        <th>Modifier</th>
-                    </tr>
-                    <tr>
-                        <td>Cover</td>
-                        <td>+2 Reflex vs attacks/effects originating or bursting from the other side.</td>
-                    </tr>
-                    <tr>
-                        <td>Partial cover</td>
-                        <td>+1 Reflex.</td>
-                    </tr>
-                    <tr>
-                        <td>Improved cover</td>
-                        <td>+4 Reflex.</td>
-                    </tr>
-                    <tr>
-                        <td>Soft cover</td>
-                        <td>No Reflex bonus.</td>
-                    </tr>
-                    <tr>
-                        <td>Shaken / frightened / panicked</td>
-                        <td>−2 on all saves.</td>
-                    </tr>
-                    <tr>
-                        <td>Sickened</td>
-                        <td>−2 on all saves.</td>
-                    </tr>
-                    <tr>
-                        <td>Ability penalties</td>
-                        <td>CON affects Fortitude; DEX affects Reflex; WIS affects Will.</td>
                     </tr>
                 </table>
             </div>
