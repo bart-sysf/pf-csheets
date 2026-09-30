@@ -22,7 +22,7 @@
     <section class="sheet">
         <header>
             <div>
-                <h1>Abilities &amp; Combat modifiers</h1>
+                <h1>Abilities &amp; Combat Modifiers</h1>
             </div>
             <div class="tag">Pathfinder first edition · Table reference</div>
         </header>
@@ -42,17 +42,18 @@
                     </tr>
                     <tr>
                         <td>DEX</td>
-                        <td>Ranged attacks and spells, AC, Reflex saves, initiative and CMD; Acrobatics, Disable Device,
-                            Escape Artist, Fly, Ride, Sleight of Hand and Stealth checks.</td>
+                        <td>Ranged attacks (including ranged spell attacks), AC, Reflex saves, initiative and CMD;
+                            Acrobatics, Disable Device, Escape Artist, Fly, Ride, Sleight of Hand and Stealth checks.
+                        </td>
                     </tr>
                     <tr>
                         <td>CON</td>
-                        <td>Additional HP on level-up and Fortitude saves. HP increases or decreases when CON is
-                            modified.</td>
+                        <td>Bonus hit points per Hit Die and Fortitude saves. Maximum hp changes when CON
+                            changes.</td>
                     </tr>
                     <tr>
                         <td>INT</td>
-                        <td>Skill points per level and bonus languages; Appraise, Craft, Knowledge, Linguistics and
+                        <td>Skill ranks per level and bonus languages; Appraise, Craft, Knowledge, Linguistics and
                             Spellcraft checks; Wizard spellcasting.</td>
                     </tr>
                     <tr>
@@ -97,15 +98,10 @@
                 <div class="box">
                     <h3>Basic check logic</h3>
                     <div class="formula">d20 + relevant modifiers ≥ DC / AC / CMD</div>
-                    Nat 20 and nat 1 auto hit and miss on attack rolls, trigger critical hits or fumbles; auto
-                    succeed/fail saving throws and CMB checks, except for escaping. Ability and skill checks have no
-                    general automatic 20/1 rule.
-                </div>
-
-                <div class="box call wide">
-                    <h3>Beware the feats (and the GM)</h3>
-                    Almost anything in this reference is subject to influence of character feats, traits, special
-                    abilities, etc. Those (and your GM) should take precedence.
+                    On attacks, natural 20 hits and threatens a critical; natural 1 misses (critical and fumble house
+                    rule on page 4). On saves,
+                    natural 20 succeeds and natural 1 fails. The same applies to combat maneuvers, except a natural 20
+                    does not automatically escape bonds. Ability and skill checks have no general automatic 20/1 rule.
                 </div>
 
                 <h2>Common combat formulas</h2>
@@ -124,7 +120,7 @@
                     </tr>
                     <tr>
                         <td>AC</td>
-                        <td class="formula">10 + armor + shield + DEX bonus<sup>1</sup> + size mod + natural armor +
+                        <td class="formula">10 + armor + shield + DEX mod<sup>1</sup> + size mod + natural armor +
                             deflection + other bonuses</td>
                     </tr>
                     <tr>
@@ -143,10 +139,10 @@
                     </tr>
                     <tr>
                         <td>CMB</td>
-                        <td class="formula">BAB + STR mod + special size mod</td>
+                        <td class="formula">BAB + STR mod + special size mod + other bonuses</td>
                     </tr>
                     <tr>
-                        <td>CMB</td>
+                        <td>CMD</td>
                         <td class="formula">10 + BAB + STR mod + DEX mod + special size mod + other bonuses</td>
                     </tr>
                     <tr>
@@ -170,8 +166,7 @@
                     </tr>
                     <tr>
                         <td>Entangled</td>
-                        <td>−2</td>
-                        <td>−4<sup>1</sup></td>
+                        <td colspan="2">−2<sup>1</sup></td>
                     </tr>
                     <tr>
                         <td>Flanking defender</td>
@@ -179,13 +174,17 @@
                         <td>—</td>
                     </tr>
                     <tr>
-                        <td>Invisible</td>
-                        <td colspan="2">+2; deny DEX<sup>2</sup></td>
+                        <td>Grappled</td>
+                        <td colspan="2">−2</td>
                     </tr>
                     <tr>
                         <td>Higher ground</td>
                         <td>+1</td>
                         <td>—</td>
+                    </tr>
+                    <tr>
+                        <td>Invisible</td>
+                        <td colspan="2">+2; deny DEX<sup>2</sup></td>
                     </tr>
                     <tr>
                         <td>Prone</td>
@@ -201,8 +200,8 @@
                         <td colspan="2">−4</td>
                     </tr>
                 </table>
-                <p class="small"><sup>1</sup> Entangled characters take a -4 penalty to DEX leading to DEX mod -2 on
-                    ranged attacks.</p>
+                <p class="small"><sup>1</sup> Entangled also gives −4 DEX, usually a further −2 on DEX-based ranged
+                    attacks.</p>
                 <p class="small"><sup>2</sup> Defender loses any positive DEX bonus to AC against that attack.</p>
                 <p class="small"><sup>3</sup> While prone, a character can use a crossbow or shuriken, most other ranged
                     weapons cannot be used at all.</p>
@@ -243,8 +242,8 @@
                         <td colspan="2">Lose DEX</td>
                     </tr>
                     <tr>
-                        <td>Grappling<sup>2</sup></td>
-                        <td colspan="2">Lose DEX</td>
+                        <td>Grappled</td>
+                        <td colspan="2">DEX −4 (= −2)</td>
                     </tr>
                     <tr>
                         <td>Helpless</td>
@@ -276,7 +275,6 @@
                     </tr>
                 </table>
                 <p class="small"><sup>1</sup> For example target behind an arrowslit.</p>
-                <p class="small"><sup>2</sup> Against attackers outside the grapple.</p>
 
                 <h2>Size modifiers</h2>
                 <table class="modifier-matrix">
@@ -331,6 +329,12 @@
                         <td>+8</td>
                     </tr>
                 </table>
+
+                <div class="box call wide">
+                    <h3>Beware the feats (and the GM)</h3>
+                    Almost anything in this reference is subject to influence of character feats, traits, special
+                    abilities, etc. Those (and your GM) should take precedence.
+                </div>
             </div>
         </div>
 
@@ -346,7 +350,7 @@
             <div class="tag">Pathfinder first edition · Table reference</div>
         </header>
 
-        <h2 style="margin-top: 0;">Common negative conditions and effects</h2>
+        <h2>Common negative conditions and effects</h2>
         <div class="grid">
             <div>
                 <table class="condition-table">
@@ -356,18 +360,19 @@
                     </tr>
                     <tr>
                         <td>Bleed</td>
-                        <td>Take listed damage at start of turn. DC 15 Heal or any hp healing stops it; same-type bleed
-                            does not stack.</td>
+                        <td>Take listed damage at start of turn. DC 15 Heal or an hp-healing spell stops it; only bleeds
+                            dealing different kinds of damage stack.</td>
                     </tr>
                     <tr>
                         <td>Blinded</td>
-                        <td>−2 AC; lose DEX to AC; −4 most STR/DEX skills (= −2 STR/DEX mod); foes have total
+                        <td>−2 AC; lose DEX to AC; −4 most STR/DEX skills; foes have total
                             concealment. Half speed or DC 10 Acrobatics. Fail = Prone.</td>
                     </tr>
                     <tr>
                         <td>Broken</td>
                         <td>Weapon −2 attack/damage and 20/×2 crit; armor/shield half AC bonus; armor doubles ACP;
-                            wand/staff uses double charges. Skill checks −2. Worth = 75% of normal value.</td>
+                            wand/staff uses double charges. Broken tools give −2 on checks made with them. Worth 75%
+                            of normal value.</td>
                     </tr>
                     <tr>
                         <td>Confused</td>
@@ -435,8 +440,8 @@
                     <tr>
                         <td>Grappled</td>
                         <td>No movement/AoOs; −4 DEX (= −2 DEX mod); −2 attacks/CMB except grapple or escape; no
-                            two-hand actions. No stealth. Casting needs concentration (DC 10 + grappler CMB + spell
-                            level).</td>
+                            two-hand actions. Cannot hide from grappler. Casting needs concentration (DC 10 + grappler
+                            CMB + spell level).</td>
                     </tr>
                     <tr>
                         <td>Helpless</td>
@@ -545,8 +550,7 @@
                         </tr>
                     </table>
                 </div>
-                <p class="">Bonuses of the same type usually do not stack. Use the highest unless a rule says
-                    otherwise.</p>
+                <p>Bonuses of the same type usually do not stack. Use the highest unless a rule says otherwise.</p>
             </div>
         </div>
         <footer><span></span><span>Page 2 / 6</span></footer>
@@ -574,7 +578,8 @@
 
                 <h2>Common free actions</h2>
                 <p>Cease concentrating on a spell; drop an item; drop prone; prepare ordinary spell
-                    components or a focus; speak briefly; release a grapple. Drawing ammunition is part of the attack,
+                    components or a focus; speak briefly; release a grapple you control. Drawing ammunition is part of
+                    the attack,
                     not a separate action. Free actions generally do not provoke, and the GM may limit how many are
                     reasonable. Speaking can occur outside your turn.</p>
 
@@ -609,17 +614,18 @@
                         <td>Maneuvers with relevant Improved feat</td>
                     </tr>
                 </table>
-                <p class=""><b>Threatened area:</b> adjacent squares, including diagonals. A typical reach weapon
+
+                <p><b>Threatened area:</b> adjacent squares, including diagonals. A typical reach weapon
                     threatens 10 ft but not adjacent squares. Unarmed creatures generally do not threaten unless an
                     ability says otherwise.</p>
 
-                <p class=""><b>Movement exceptions:</b> Acrobatics can avoid movement AoOs (check against opponent
+                <p><b>Movement exceptions:</b> Acrobatics can avoid movement AoOs (check against opponent
                     CMD). A 5-foot step allows no other movement in the round and requires suitable terrain. Withdraw
                     protects only the starting square; cannot withdraw when blinded.</p>
 
-                <p class=""><b>Limit:</b> 1 AoO per round, even with many triggers. Only one AoO per
+                <p><b>Limit:</b> 1 AoO per round (more with Combat Reflexes), even with many triggers. Only one AoO per
                     opportunity, and movement from multiple threatened squares by one opponent is one opportunity.
-                    Flat-footed creatures cannot make AoOs.</p>
+                    Flat-footed creatures normally cannot make AoOs.</p>
 
                 <div class="box call"><b>Check in order:</b> Does the enemy threaten your square with a melee attack?
                     Does your action provoke? Can they make an AoO now? If yes, resolve one melee attack <em>before</em>
@@ -657,15 +663,20 @@
                     <tr>
                         <td>Grapple</td>
                         <td>Grab target as a standard action; grapple actions on later rounds follow their own rules.
-                            Humanoid take −4 penalty on attempt if no free hands. +5 to maintain the grapple if target
-                            does not break it. Escaping with own CMB or Escape Artist ≥ grappler CMD. Both target and
-                            grappler gain the grappled condition.
+                            Humanoids take −4 on the attempt with fewer than two free hands. +5 to maintain the grapple
+                            if target does not break it. Escaping with own CMB or Escape Artist ≥ grappler CMD. Both
+                            target and grappler gain the grappled condition.
                         </td>
                     </tr>
                     <tr>
                         <td>Overrun</td>
-                        <td>Move through target; exceed CMD by 5 to knock it prone. Max. 1 size larger. Add +2 to DC for
-                            each leg the target has above 2.</td>
+                        <td>Move through target; it may let you pass. If it resists, exceed CMD by 5 to knock it prone.
+                            Max. 1 size larger. Add +2 to DC for each leg above 2.</td>
+                    </tr>
+                    <tr>
+                        <td>Pin</td>
+                        <td>Pin an already grappled target. You keep the grappled condition and lose DEX bonus to AC.
+                        </td>
                     </tr>
                     <tr>
                         <td>Reposition</td>
@@ -685,19 +696,14 @@
                             choose to destroy the item or leave broken with 1 hp.</td>
                     </tr>
                     <tr>
+                        <td>Tie Up</td>
+                        <td>Bind a pinned, restrained, or unconscious target; while only grappling, make a CMB check at
+                            −10. Escape DC = 20 + grappler CMB.</td>
+                    </tr>
+                    <tr>
                         <td>Trip</td>
                         <td>Knock target prone; replaces a melee attack. Max. 1 size larger. Fail by ≥10: you fall
                             prone. Add +2 to DC for each leg the target has above 2.</td>
-                    </tr>
-                    <tr>
-                        <td>Tie Up</td>
-                        <td>Bind an already grappled target with a rope. Requires CMB check with a −10 penalty. DC to
-                            escape is 20 + grappler <em>CMB</em>.</td>
-                    </tr>
-                    <tr>
-                        <td>Pin</td>
-                        <td>Pin an already grappled target. You keep the grappled condition and lose DEX bonus to AC.
-                        </td>
                     </tr>
                 </table>
 
@@ -721,7 +727,7 @@
     <section class="sheet">
         <header>
             <div>
-                <h1>Attacks &amp; recovery</h1>
+                <h1>Attacks &amp; Recovery</h1>
             </div>
             <div class="tag">Pathfinder first edition · Table reference</div>
         </header>
@@ -859,9 +865,10 @@
                     <tr>
                         <td>Negative hp above −CON score · Dying</td>
                         <td>Unconscious. Starting on your next turn and each turn after, attempt a DC 10 Constitution
-                            check to stabilize, with a penalty equal to your negative hp. On a failed check, lose 1 hp;
-                            at −CON score, you die. You can also be stabilized by (healing) spells or a DC 15 Heal check
-                            from another.</td>
+                            check to stabilize, with a penalty equal to your negative hp. A natural 20 stabilizes
+                            automatically. On a failed check, lose 1 hp; at −CON score, you die. You can also be
+                            stabilized by (healing) spells or a DC 15 Heal check from another.
+                        </td>
                     </tr>
                     <tr>
                         <td>Stable below 0</td>
@@ -921,7 +928,7 @@
                     <div class="formula">
                         d20 + caster level + casting ability modifier + other bonuses ≥ DC
                     </div>
-                    <p class="">
+                    <p>
                         Use the ability that grants bonus spells for that class (typically INT, WIS, or CHA). Failure
                         loses the spell.
                     </p>
@@ -970,7 +977,7 @@
                     </tr>
                     <tr>
                         <td>Vigorous / violent / extreme motion</td>
-                        <td>Vigorous 10; violent 15; extreme 20 + spell level</td>
+                        <td>Vigorous 10; violent 15; extreme 20, each + spell level</td>
                     </tr>
                     <tr>
                         <td>Wind with rain or sleet</td>
@@ -1032,7 +1039,7 @@
                     </tr>
                     <tr>
                         <td>Touch spell</td>
-                        <td>Casting the spell provokes; delivering a held melee touch spell does not. A ranged touch
+                        <td>Casting usually provokes; delivering a held melee touch spell does not. A ranged touch
                             attack provokes as a ranged attack.</td>
                     </tr>
                     <tr>
@@ -1113,22 +1120,6 @@
                             known. Class features can differ.</td>
                     </tr>
                 </table>
-
-                <h2>Spellcraft</h2>
-                <table>
-                    <tr>
-                        <th>Check</th>
-                        <th>DC</th>
-                    </tr>
-                    <tr>
-                        <td>Spellcraft · identify spell being cast</td>
-                        <td>15 + spell level</td>
-                    </tr>
-                    <tr>
-                        <td>Spellcraft · identify magic item with <i>detect magic</i></td>
-                        <td>15 + caster level</td>
-                    </tr>
-                </table>
             </div>
         </div>
         <footer><span></span><span>Page 5 / 6</span></footer>
@@ -1187,20 +1178,13 @@
                 </table>
 
                 <h2>Coins</h2>
-                <p>
-                    The default coin type is <b>gold pieces</b> (gp). The more valuable type is <b>platinum pieces</b>
-                    (pp), they are worth 10 gp. Less valuable types are <b>silver pieces</b> (sp), worth 1/10 of a gp
-                    and one step lesser is <b>copper pieces</b> (cp), worth 1/10 of an <em>sp</em>.
-                </p>
-                <p>
-                    50 coins, regardsless of type, weigh 1 lb.
-                </p>
+                <p><b>1 pp = 10 gp; 1 gp = 10 sp; 1 sp = 10 cp.</b><br />Any 50 coins weigh 1 lb.</p>
 
                 <h2>Typical skill DCs</h2>
                 <table>
                     <tr>
                         <th>Check</th>
-                        <th>DC / benchmark</th>
+                        <th>DC</th>
                     </tr>
                     <tr>
                         <td>Climb · knotted rope by wall</td>
@@ -1237,10 +1221,25 @@
                     across it. Applies to poor visibility as well. Obstacles might require an additional skill check.
                 </p>
 
-                <h2>Leveling up</h2>
-                <div class="box call"><b class="accent">★ House rule</b> Player and GM each roll the character’s Hit
-                    Die;
-                    use the higher roll, then add CON bonus.</div>
+                <h2>Taking 10 or 20</h2>
+                <table>
+                    <tr>
+                        <th>Option</th>
+                        <th>When / result</th>
+                    </tr>
+                    <tr>
+                        <td>Take 10</td>
+                        <td>Assume a d20 result of 10 when not threatened or distracted.</td>
+                    </tr>
+                    <tr>
+                        <td>Take 20</td>
+                        <td>Assume 20 after spending 20× as long, when not threatened or distracted; retries must be
+                            possible and failure must have no harmful consequence.</td>
+                    </tr>
+                </table>
+
+                <h2>Leveling up ★ House rule</h2>
+                <p>Player and GM each roll the character’s Hit Die; use the higher roll, then add the CON modifier.</p>
             </div>
 
             <div>
@@ -1287,25 +1286,8 @@
                         <td>Cornered: frozen in fear, no actions, −2 AC, and lose DEX bonus.</td>
                     </tr>
                 </table>
-                <p class="">Fear escalates: shaken + shaken → frightened; shaken + frightened or frightened +
+                <p>Fear escalates: shaken + shaken → frightened; shaken + frightened or frightened +
                     shaken / frightened → panicked.</p>
-
-                <h2>Taking 10 or 20</h2>
-                <table>
-                    <tr>
-                        <th>Option</th>
-                        <th>When / result</th>
-                    </tr>
-                    <tr>
-                        <td>Take 10</td>
-                        <td>Assume a d20 result of 10 when not threatened or distracted.</td>
-                    </tr>
-                    <tr>
-                        <td>Take 20</td>
-                        <td>Assume 20 after spending 20× as long, when not threatened or distracted; retries must be
-                            possible and failure must have no harmful consequence.</td>
-                    </tr>
-                </table>
 
                 <h2>Falling</h2>
                 <p><b>Falling:</b> 1d6 damage per 10 ft., maximum 20d6; a fall causing lethal damage leaves you prone.
@@ -1343,8 +1325,9 @@
                         <td>10d6</td>
                     </tr>
                 </table>
-                <p class="">If it falls less than 30 ft., halve the damage; over 150 ft., double it. An aware
-                    target can make a DC 15 Reflex save to halve it.</p>
+                <p>For dense objects (such as stone); lighter objects may deal less. Falling less than 30 ft. halves
+                    damage; falling more than 150 ft. doubles it. Dropping one on a creature requires a ranged touch
+                    attack; an aware target can make a DC 15 Reflex save for half damage.</p>
 
                 <h2>Nonlethal damage</h2>
                 <table>
@@ -1362,7 +1345,8 @@
                     </tr>
                     <tr>
                         <td>Healing</td>
-                        <td>Recovers at 1 hp per level per hour; hp healing removes an equal amount of nonlethal damage.
+                        <td>Heals 1 point per character level per hour; hp healing removes the same amount of nonlethal
+                            damage.
                         </td>
                     </tr>
                 </table>
