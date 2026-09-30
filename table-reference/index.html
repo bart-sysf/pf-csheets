@@ -1113,6 +1113,22 @@
                             known. Class features can differ.</td>
                     </tr>
                 </table>
+
+                <h2>Spellcraft</h2>
+                <table>
+                    <tr>
+                        <th>Check</th>
+                        <th>DC</th>
+                    </tr>
+                    <tr>
+                        <td>Spellcraft · identify spell being cast</td>
+                        <td>15 + spell level</td>
+                    </tr>
+                    <tr>
+                        <td>Spellcraft · identify magic item with <i>detect magic</i></td>
+                        <td>15 + caster level</td>
+                    </tr>
+                </table>
             </div>
         </div>
         <footer><span></span><span>Page 5 / 6</span></footer>
@@ -1171,69 +1187,59 @@
                 </table>
 
                 <h2>Coins</h2>
-                <table>
-                    <tr>
-                        <th>Coin</th>
-                        <th>Conversion</th>
-                    </tr>
-                    <tr>
-                        <td>10 cp</td>
-                        <td>1 sp</td>
-                    </tr>
-                    <tr>
-                        <td>10 sp</td>
-                        <td>1 gp</td>
-                    </tr>
-                    <tr>
-                        <td>10 gp</td>
-                        <td>1 pp</td>
-                    </tr>
-                    <tr>
-                        <td colspan="2" style="font-weight: normal;" class="">50 coins weigh 1 lb.</td>
-                    </tr>
-                </table>
+                <p>
+                    The default coin type is <b>gold pieces</b> (gp). The more valuable type is <b>platinum pieces</b>
+                    (pp), they are worth 10 gp. Less valuable types are <b>silver pieces</b> (sp), worth 1/10 of a gp
+                    and one step lesser is <b>copper pieces</b> (cp), worth 1/10 of an <em>sp</em>.
+                </p>
+                <p>
+                    50 coins, regardsless of type, weigh 1 lb.
+                </p>
 
                 <h2>Typical skill DCs</h2>
                 <table>
                     <tr>
                         <th>Check</th>
-                        <th>Typical DC / modifier</th>
+                        <th>DC / benchmark</th>
                     </tr>
                     <tr>
-                        <td>Acrobatics</td>
-                        <td>Move through threatened area: CMD; through enemy’s square: CMD +5.</td>
+                        <td>Climb · knotted rope by wall</td>
+                        <td>0</td>
                     </tr>
                     <tr>
-                        <td>Climb</td>
-                        <td>Knotted rope by wall 0; rope by wall or knotted rope 5; unknotted rope / tree 15; rough rock
-                            / brick 25.</td>
+                        <td>Climb · rope by wall / knotted rope without wall</td>
+                        <td>5</td>
                     </tr>
                     <tr>
-                        <td>Swim</td>
-                        <td>Calm 10; rough 15; stormy 20. Normally move at quarter speed.</td>
+                        <td>Climb · unknotted rope / tree</td>
+                        <td>15</td>
                     </tr>
                     <tr>
-                        <td>Heal</td>
-                        <td>First aid / stop bleed 15; treat deadly wounds 20; poison / disease use their save DC.</td>
+                        <td>Climb · rough rock / brick</td>
+                        <td>25</td>
                     </tr>
                     <tr>
-                        <td>Knowledge</td>
-                        <td>Identify a creature’s abilities or weaknesses: 10 + its CR.</td>
+                        <td>Swim · calm water</td>
+                        <td>10</td>
                     </tr>
                     <tr>
-                        <td>Spellcraft</td>
-                        <td>Identify spell being cast: 15 + spell level; identify magic item with <i>detect magic</i>:
-                            15 + CL.</td>
+                        <td>Swim · rough water</td>
+                        <td>15</td>
                     </tr>
                     <tr>
-                        <td>Perception</td>
-                        <td>Distance +1 DC per 10 ft.; closed door +5; wall +10 per ft.; invisible creature +20.</td>
+                        <td>Swim · stormy water</td>
+                        <td>20</td>
                     </tr>
                 </table>
-                <p class="small">Common benchmarks only; circumstances and the GM can change DCs.</p>
+
+                <h2>Difficult terrain &amp; hampered movement</h2>
+                <p>Each square costs 2 squares of movement (3 for a diagonal move into it). You can’t run or charge
+                    across it. Applies to poor visibility as well. Obstacles might require an additional skill check.
+                </p>
 
                 <h2>Leveling up</h2>
-                <div class="box call"><b>★ House rule · Hit points:</b> Player and GM each roll the character’s Hit Die;
+                <div class="box call"><b class="accent">★ House rule</b> Player and GM each roll the character’s Hit
+                    Die;
                     use the higher roll, then add CON bonus.</div>
             </div>
 
@@ -1298,6 +1304,66 @@
                         <td>Take 20</td>
                         <td>Assume 20 after spending 20× as long, when not threatened or distracted; retries must be
                             possible and failure must have no harmful consequence.</td>
+                    </tr>
+                </table>
+
+                <h2>Falling</h2>
+                <p><b>Falling:</b> 1d6 damage per 10 ft., maximum 20d6; a fall causing lethal damage leaves you prone.
+                    Deliberate jump: first 1d6 is nonlethal. DC 15 Acrobatics avoids damage from the first 10 ft. and
+                    makes the next 10 ft. nonlethal.</p>
+
+                <h3>Falling objects</h3>
+                <table>
+                    <tr>
+                        <th>Object size</th>
+                        <th>Damage</th>
+                    </tr>
+                    <tr>
+                        <td>Small</td>
+                        <td>2d6</td>
+                    </tr>
+                    <tr>
+                        <td>Medium</td>
+                        <td>3d6</td>
+                    </tr>
+                    <tr>
+                        <td>Large</td>
+                        <td>4d6</td>
+                    </tr>
+                    <tr>
+                        <td>Huge</td>
+                        <td>6d6</td>
+                    </tr>
+                    <tr>
+                        <td>Gargantuan</td>
+                        <td>8d6</td>
+                    </tr>
+                    <tr>
+                        <td>Colossal</td>
+                        <td>10d6</td>
+                    </tr>
+                </table>
+                <p class="">If it falls less than 30 ft., halve the damage; over 150 ft., double it. An aware
+                    target can make a DC 15 Reflex save to halve it.</p>
+
+                <h2>Nonlethal damage</h2>
+                <table>
+                    <tr>
+                        <th>Amount / recovery</th>
+                        <th>Effect</th>
+                    </tr>
+                    <tr>
+                        <td>Equals current hp</td>
+                        <td>Staggered.</td>
+                    </tr>
+                    <tr>
+                        <td>Exceeds current hp</td>
+                        <td>Unconscious and helpless.</td>
+                    </tr>
+                    <tr>
+                        <td>Healing</td>
+                        <td>Recovers at 1 hp per level per hour; hp healing removes an equal amount of nonlethal damage.
+                        </td>
                     </tr>
                 </table>
             </div>
