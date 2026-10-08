@@ -1,6 +1,6 @@
 # Pathfinder Character Sheets for PCGen
 
-Custom PCGen output sheets for Pathfinder 1e. Includes standard and compact prepared-spells character sheets rendered as clean HTML files from your PCGen character data.
+Custom PCGen output sheets for Pathfinder 1e. Includes standard and compact prepared-spells and known-spells character sheets rendered as clean HTML files from your PCGen character data.
 
 ## What this repository is
 
@@ -8,7 +8,7 @@ Custom PCGen output sheets for Pathfinder 1e. Includes standard and compact prep
 - The sheets are drop-in replacements or additions for the standard PCGen output-sheet folder.
 - `templates/d20/fantasy/htmlxml/` — source sheet templates using component placeholders.
 - `components/` — reusable sheet blocks (skills, feats, weapons, inventory, spellbook, prepared spells, quick view, common conditions, biography, and more).
-- `components/compact/` — independent, denser component copies used only by the compact sheet.
+- `components/compact/` — independent, denser component copies shared by the compact sheets.
 - `OutputSheets/d20/fantasy/htmlxml/` — compiled output sheets ready to copy into PCGen.
 
 If you want to change how the sheet looks or what it shows, edit files in `templates/` and `components/`, then compile to `OutputSheets/`. The templates use PCGen's `${pcstring(...)}` and `<#...>` directives to pull character data at export time.
@@ -53,17 +53,20 @@ PCGen looks for output sheets inside its own `outputsheets` folder. The director
    ```
    <pcgen data>/outputsheets/d20/fantasy/htmlxml/csheet_prepared_spells.htm.ftl
    <pcgen data>/outputsheets/d20/fantasy/htmlxml/csheet_prepared_spells_compact.htm.ftl
+   <pcgen data>/outputsheets/d20/fantasy/htmlxml/csheet_known_spells.htm.ftl
+   <pcgen data>/outputsheets/d20/fantasy/htmlxml/csheet_known_spells_compact.htm.ftl
    ```
 3. Open PCGen, load your character, and choose **Export**.
-4. Under the **d20/fantasy/htmlxml** output-sheet group, select **csheet_prepared_spells_compact** for the denser layout (or **csheet_prepared_spells** for the original) and export to HTML.
+4. Under the **d20/fantasy/htmlxml** output-sheet group, select **csheet_prepared_spells_compact** for the denser prepared-spells layout, or **csheet_known_spells_compact** for the same layout with the full spellbook and prepared spells. Choose **csheet_prepared_spells** or **csheet_known_spells** for the original layouts, then export to HTML.
 
 ## Where the important pieces live
 
 - `templates/d20/fantasy/htmlxml/csheet_prepared_spells.htm.ftl` — prepared-spells source template
 - `templates/d20/fantasy/htmlxml/csheet_prepared_spells_compact.htm.ftl` — compact prepared-spells source template
 - `templates/d20/fantasy/htmlxml/csheet_known_spells.htm.ftl` — known+prepared spells source template
+- `templates/d20/fantasy/htmlxml/csheet_known_spells_compact.htm.ftl` — compact known+prepared spells source template
 - `components/*.ftl` — reusable sheet blocks inserted during build (including quick view, common conditions, biography, rules references, and combat sections)
-- `components/compact/*.ftl` — compact sheet component copies; edit these without affecting the original sheets
+- `components/compact/*.ftl` — shared compact sheet component copies; edit these without affecting the original sheets
 - `scripts/build_sheets.py` — local compiler for templates/components into `OutputSheets/`
 - `.github/workflows/build-sheets.yml` — CI workflow that rebuilds and auto-commits `OutputSheets/`
 
