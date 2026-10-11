@@ -144,6 +144,7 @@
 {{ component:prepared_spells }}
 {{ component:concentration_reference }}
 {{ component:inventory }}
+{{ component:proficiencies }}
 {{ component:quick_view }}
 {{ component:biography }}
 {{ component:portrait }}

@@ -19,7 +19,7 @@
 <#assign eqDesc = pcstring('EQ.Not.Coin.NOT.Gem.${eq}.DESC') />
 <#assign hasDetail = (eqSprop != "" || eqDesc != "") />
     <tr>
-      <td class="border" style="font-size:8pt;">${pcstring('EQ.Not.Coin.NOT.Gem.${eq}.NAME.MAGIC~<b>~</b>')}</td>
+      <td class="border" style="font-size:8pt;"><b>${pcstring('EQ.Not.Coin.NOT.Gem.${eq}.NAME')}</b><#if eqType?split(".")?seq_contains("magic")>*</#if></td>
       <td class="border" align="center" style="font-size:8pt;">${pcstring('EQ.Not.Coin.NOT.Gem.${eq}.LOCATION')}</td>
       <td class="border" align="center">${pcstring('EQ.Not.Coin.NOT.Gem.${eq}.QTY')}</td>
       <td class="border" align="center">${pcstring('EQ.Not.Coin.NOT.Gem.${eq}.WT')}</td>

@@ -1,7 +1,4 @@
 <h2 style="">Prepared Spells</h2>
-<div class="help-text" style="margin-bottom:2px;">
-  Spell descriptions shown here come from PCGen's built-in effect summary. For the full text of any spell, refer to the source book listed in brackets &mdash; or search the spell name on the Archives of Nethys (aonprd.com) for free online access to the complete Pathfinder rules text.
-</div>
 <@loop from=2 to=pcvar('COUNT[SPELLBOOKS]-1') ; spellbook , spellbook_has_next>
 <@loop from=pcvar('COUNT[SPELLRACE]') to=pcvar('COUNT[SPELLRACE]+COUNT[CLASSES]-1') ; class , class_has_next>
 <#if (pcstring("SPELLLISTCLASS.${class}") != '')>

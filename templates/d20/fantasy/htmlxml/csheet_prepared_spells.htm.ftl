@@ -142,6 +142,7 @@
 {{ component:armor_shields }}
 {{ component:prepared_spells }}
 {{ component:inventory }}
+{{ component:proficiencies }}
 {{ component:quick_view }}
 {{ component:biography }}
 {{ component:portrait }}

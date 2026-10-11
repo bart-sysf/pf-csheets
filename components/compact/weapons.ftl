@@ -98,17 +98,7 @@
     </tr>
   </table>
   <div class="help-text">
-    <b>1H-P</b> = one-handed primary &nbsp;
-    <b>2H</b> = two-handed, adds 1.5&times; Str to damage &nbsp;
-    <b>2W-P</b> = two weapons, primary hand &nbsp;
     &#9651; = light weapon (Small or Tiny size)
-  </div>
-  <div class="help-text" style="margin-top:1px;">
-    Two-weapon attack penalties &mdash;
-    <b>2W-P</b>: &minus;4 (or &minus;2 with TWF feat) &nbsp;
-    <b>2W-O(L) light off-hand</b>: &minus;4/&minus;4 (or &minus;2/&minus;2 with TWF feat) &nbsp;
-    <b>2W-O(H) heavy off-hand</b>: &minus;4/&minus;8 (or &minus;2/&minus;6 with TWF feat) &mdash;
-    Power Attack: &minus;1 hit per 4 BAB for +2 dmg (+3 two-handed)
   </div>
 </div>
 </div>

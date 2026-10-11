@@ -264,12 +264,6 @@
     </@loop>
   </div>
   </#if>
-  <div class="help-text">
-    <b>Fortitude</b> (CON): resists poison, disease, death effects &mdash;
-    <b>Reflex</b> (DEX): resists area effects, traps &mdash;
-    <b>Will</b> (WIS): resists mind-affecting, compulsion, fear &mdash;
-    DC set by the source ability or spell
-  </div>
 </div>
 </div>
   <div><!-- ═══ NOTES ═══ -->
@@ -403,13 +397,8 @@
   </div>
 </div>
 <div style="font-size:6.25pt; margin-top:1.5px;"><b>Bold</b> = class skill with rank (+3 bonus) &nbsp; &#9670; = usable untrained &nbsp; * = armor check penalty applies</div>
-<div class="help-text" style="margin-top:1.5px;">
-  Class skills give +3 if you have &ge;1 rank &mdash;
-  Max ranks = character level &mdash;
-  Take 10: non-stressful, treat roll as 10 &mdash;
-  Take 20: 20&times; longer, treat roll as 20 (no fail consequence)
-</div>
-<div class="note-box" style="margin-top:1.5px;">
+
+<div class="note-box" style="margin-top:3px;">
   <span style="font-size:6.25pt;font-weight:bold;">Conditional Skill Modifiers:</span><br/>
   <#assign hasSkillCond = false />
   <@loop from=0 to=pcvar('countdistinct("ABILITIES","ASPECT=SkillBonus")-1') ; ab , ab_has_next>
@@ -643,17 +632,7 @@
     </tr>
   </table>
   <div class="help-text">
-    <b>1H-P</b> = one-handed primary &nbsp;
-    <b>2H</b> = two-handed, adds 1.5&times; Str to damage &nbsp;
-    <b>2W-P</b> = two weapons, primary hand &nbsp;
     &#9651; = light weapon (Small or Tiny size)
-  </div>
-  <div class="help-text" style="margin-top:1px;">
-    Two-weapon attack penalties &mdash;
-    <b>2W-P</b>: &minus;4 (or &minus;2 with TWF feat) &nbsp;
-    <b>2W-O(L) light off-hand</b>: &minus;4/&minus;4 (or &minus;2/&minus;2 with TWF feat) &nbsp;
-    <b>2W-O(H) heavy off-hand</b>: &minus;4/&minus;8 (or &minus;2/&minus;6 with TWF feat) &mdash;
-    Power Attack: &minus;1 hit per 4 BAB for +2 dmg (+3 two-handed)
   </div>
 </div>
 </div>
@@ -666,8 +645,8 @@
       <th class="border" align="left" style="width:28%;">Item</th>
       <th class="border" style="width:10%;">Type</th>
       <th class="border" style="width:11%;">AC Bonus</th>
-      <th class="border" style="width:11%;">Max Dex*</th>
-      <th class="border" style="width:11%;">Check Pen&dagger;</th>
+      <th class="border" style="width:11%;">Max Dex</th>
+      <th class="border" style="width:11%;">Check Pen</th>
       <th class="border" style="width:11%;">Spell Fail</th>
       <th style="width:18%;"></th>
     </tr>
@@ -685,12 +664,6 @@
 </#if>
 </@loop>
   </table>
-  <div class="help-text">
-    * <b>Max Dex</b>: Dex bonus to AC cannot exceed this &mdash;
-    &dagger; <b>Check Penalty</b>: applies to Str/Dex skill checks and attacks if not proficient &mdash;
-    <b>Spell Failure</b>: % chance arcane spells fail (divine spells ignore this) &mdash;
-    Heavy armor reduces speed to 20ft &mdash; sleeping in medium/heavy armor leaves you fatigued
-  </div>
 </div>
 </div>
 
@@ -760,9 +733,6 @@
 </@loop>
 
 <h2 style="">Prepared Spells</h2>
-<div class="help-text" style="margin-bottom:2px;">
-  Spell descriptions shown here come from PCGen's built-in effect summary. For the full text of any spell, refer to the source book listed in brackets &mdash; or search the spell name on the Archives of Nethys (aonprd.com) for free online access to the complete Pathfinder rules text.
-</div>
 <@loop from=2 to=pcvar('COUNT[SPELLBOOKS]-1') ; spellbook , spellbook_has_next>
 <@loop from=pcvar('COUNT[SPELLRACE]') to=pcvar('COUNT[SPELLRACE]+COUNT[CLASSES]-1') ; class , class_has_next>
 <#if (pcstring("SPELLLISTCLASS.${class}") != '')>
@@ -843,7 +813,7 @@
 <#assign eqDesc = pcstring('EQ.Not.Coin.NOT.Gem.${eq}.DESC') />
 <#assign hasDetail = (eqSprop != "" || eqDesc != "") />
     <tr>
-      <td class="border" style="font-size:7.25pt;">${pcstring('EQ.Not.Coin.NOT.Gem.${eq}.NAME.MAGIC~<b>~</b>')}</td>
+      <td class="border" style="font-size:7.25pt;"><b>${pcstring('EQ.Not.Coin.NOT.Gem.${eq}.NAME')}</b><#if eqType?split(".")?seq_contains("magic")>*</#if></td>
       <td class="border" align="center" style="font-size:7.25pt;">${pcstring('EQ.Not.Coin.NOT.Gem.${eq}.LOCATION')}</td>
       <td class="border" align="center">${pcstring('EQ.Not.Coin.NOT.Gem.${eq}.QTY')}</td>
       <td class="border" align="center">${pcstring('EQ.Not.Coin.NOT.Gem.${eq}.WT')}</td>
@@ -901,6 +871,48 @@
 </div>
 </div>
 </div>
+<#-- Include hidden class grants as well as proficiency feats. -->
+<#function hasProficiency internalKey featKey>
+  <#return pcvar('countdistinct("ABILITIES","CATEGORY=Internal","KEY=${internalKey}")') gt 0 || pcvar('countdistinct("ABILITIES","CATEGORY=FEAT","KEY=${featKey}")') gt 0 />
+</#function>
+<#assign weaponProficiencies = [] />
+<#list pc.weaponprofs as proficiency>
+  <#assign weaponProficiencies = weaponProficiencies + [proficiency.displayname] />
+</#list>
+<#assign armorProficiencies = [] />
+<#list ["Light", "Medium", "Heavy"] as armorType>
+  <#if hasProficiency("Armor Prof ~ ${armorType}", "Armor Proficiency (${armorType})")>
+    <#assign armorProficiencies = armorProficiencies + [armorType] />
+  </#if>
+</#list>
+<#assign shieldProficiencies = [] />
+<#if hasProficiency("Shield Prof", "Shield Proficiency")>
+  <#assign shieldProficiencies = ["Bucklers", "Light shields", "Heavy shields"] />
+</#if>
+<#if hasProficiency("Shield Prof ~ Tower", "Tower Shield Proficiency")>
+  <#assign shieldProficiencies = shieldProficiencies + ["Tower shields"] />
+</#if>
+
+<div class="no-break">
+<h2>Proficiencies</h2>
+<div style="margin-bottom:2px;">
+  <table>
+    <tr>
+      <th class="border" align="left" style="width:15%;">Weapons</th>
+      <td class="border"><#if weaponProficiencies?has_content>${weaponProficiencies?sort?join(", ")?html}<#else>None</#if></td>
+    </tr>
+    <tr>
+      <th class="border" align="left">Armor</th>
+      <td class="border"><#if armorProficiencies?has_content>${armorProficiencies?join(", ")?html}<#else>None</#if></td>
+    </tr>
+    <tr>
+      <th class="border" align="left">Shields</th>
+      <td class="border"><#if shieldProficiencies?has_content>${shieldProficiencies?join(", ")?html}<#else>None</#if></td>
+    </tr>
+  </table>
+</div>
+</div>
+
 <div class="compact-page-start">
   <div class="no-break" style="">
 <h2>Biography</h2>

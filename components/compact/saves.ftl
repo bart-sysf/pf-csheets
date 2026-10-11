@@ -33,10 +33,4 @@
     </@loop>
   </div>
   </#if>
-  <div class="help-text">
-    <b>Fortitude</b> (CON): resists poison, disease, death effects &mdash;
-    <b>Reflex</b> (DEX): resists area effects, traps &mdash;
-    <b>Will</b> (WIS): resists mind-affecting, compulsion, fear &mdash;
-    DC set by the source ability or spell
-  </div>
 </div>

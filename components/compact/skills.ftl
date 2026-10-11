@@ -52,13 +52,8 @@
   </div>
 </div>
 <div style="font-size:6.25pt; margin-top:1.5px;"><b>Bold</b> = class skill with rank (+3 bonus) &nbsp; &#9670; = usable untrained &nbsp; * = armor check penalty applies</div>
-<div class="help-text" style="margin-top:1.5px;">
-  Class skills give +3 if you have &ge;1 rank &mdash;
-  Max ranks = character level &mdash;
-  Take 10: non-stressful, treat roll as 10 &mdash;
-  Take 20: 20&times; longer, treat roll as 20 (no fail consequence)
-</div>
-<div class="note-box" style="margin-top:1.5px;">
+
+<div class="note-box" style="margin-top:3px;">
   <span style="font-size:6.25pt;font-weight:bold;">Conditional Skill Modifiers:</span><br/>
   <#assign hasSkillCond = false />
   <@loop from=0 to=pcvar('countdistinct("ABILITIES","ASPECT=SkillBonus")-1') ; ab , ab_has_next>

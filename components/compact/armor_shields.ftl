@@ -6,8 +6,8 @@
       <th class="border" align="left" style="width:28%;">Item</th>
       <th class="border" style="width:10%;">Type</th>
       <th class="border" style="width:11%;">AC Bonus</th>
-      <th class="border" style="width:11%;">Max Dex*</th>
-      <th class="border" style="width:11%;">Check Pen&dagger;</th>
+      <th class="border" style="width:11%;">Max Dex</th>
+      <th class="border" style="width:11%;">Check Pen</th>
       <th class="border" style="width:11%;">Spell Fail</th>
       <th style="width:18%;"></th>
     </tr>
@@ -25,11 +25,5 @@
 </#if>
 </@loop>
   </table>
-  <div class="help-text">
-    * <b>Max Dex</b>: Dex bonus to AC cannot exceed this &mdash;
-    &dagger; <b>Check Penalty</b>: applies to Str/Dex skill checks and attacks if not proficient &mdash;
-    <b>Spell Failure</b>: % chance arcane spells fail (divine spells ignore this) &mdash;
-    Heavy armor reduces speed to 20ft &mdash; sleeping in medium/heavy armor leaves you fatigued
-  </div>
 </div>
 </div>

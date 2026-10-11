@@ -183,6 +183,7 @@
 {{ component:compact/spellbook }}
 {{ component:compact/prepared_spells }}
 <div class="compact-page-start">{{ component:compact/inventory }}</div>
+{{ component:compact/proficiencies }}
 <div class="compact-page-start">
   {{ component:compact/biography }}
   {{ component:compact/portrait }}
