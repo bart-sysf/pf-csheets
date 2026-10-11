@@ -1,0 +1,3 @@
+# The Pathfinder cleric converts ClericDomainCount into selectable domains.
+# In PCGen 6.08.00 RC10, save and reopen the character after equipping to refresh the domain counter.
+Aldren's Forceps	TYPE:Magic.Wondrous	COST:0	WT:1.0	DESC:The forceps that belonged to Veyrin's father, Aldren. They are adorned with glowing holy symbols and imbued with the power of Pharasma.	BONUS:VAR|ClericDomainCount|1
