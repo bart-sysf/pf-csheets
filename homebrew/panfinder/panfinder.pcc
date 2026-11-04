@@ -3,3 +3,4 @@ GAMEMODE:Pathfinder
 RANK:1
 TYPE:Homebrew
 EQUIPMENT:equipment.lst
+TEMPLATE:templates.lst
